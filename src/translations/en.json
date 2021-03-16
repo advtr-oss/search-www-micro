@@ -1,0 +1,4 @@
+{
+  "app.containers.App.header": "This is the App container!",
+  "app.containers.SearchCard.placeholder": "Search for a city"
+}
