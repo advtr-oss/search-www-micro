@@ -10,7 +10,7 @@
  *
  * */
 
-import React, { useState, useEffect, useCallback, useRef} from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { debounce, throttle } from 'throttle-debounce'
 
@@ -80,20 +80,20 @@ function SearchView({ items: initialItems, suggestion, requestDelay, onClear, on
     setItems(data.results)
   }
 
-  const debounceAutocomplete = debounce(requestDelay, handleAutocomplete)
+  // const debounceAutocomplete = debounce(requestDelay, handleAutocomplete)
   const throttleAutocomplete = throttle(requestDelay, handleAutocomplete)
 
   useEffect(() => () => {
-    debounceAutocomplete.cancel()
+    // debounceAutocomplete.cancel()
     throttleAutocomplete.cancel()
-  }, [debounceAutocomplete, throttleAutocomplete])
+  }, [/*debounceAutocomplete, */throttleAutocomplete])
 
   const handleInput = useCallback((event) => {
     const value = event.target.value
     setValue(value)
 
     throttleAutocomplete(value)
-  }, [throttleAutocomplete, debounceAutocomplete])
+  }, [throttleAutocomplete/*, debounceAutocomplete*/])
 
   const handleFocus = useCallback((event) => {
     setFocus(true)
