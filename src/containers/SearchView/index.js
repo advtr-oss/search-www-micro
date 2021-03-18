@@ -4,12 +4,14 @@
  * The main bulk of the system, here we handle the
  * searching of the city
  *
+ * Todo: Rebuild this
+ *
+ * Better states, and clearing
+ *
  * */
 
-import React, { createRef, Component, useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useRef} from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { createSelector } from 'reselect'
 import { debounce, throttle } from 'throttle-debounce'
 
 import Wrapper from './Wrapper'
@@ -27,53 +29,37 @@ function Selected (value, queryString, index) {
   this.queryString = queryString
 }
 
-export class SearchView extends Component {
-  constructor (props) {
-    super(props)
+function SearchView({ items: initialItems, suggestion, requestDelay, onClear, onComplete, title, placeholder, searchProvider }) {
+  const [items, setItems] = useState(initialItems)
+  const [focus, setFocus] = useState(false)
+  const [value, setValue] = useState(suggestion ? suggestion : '')
 
-    this.handleBlur = this.handleBlur.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
-    this.handleInput = this.handleInput.bind(this)
-    this.handleClear = this.handleClear.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
+  let sessionToken = useRef();
+  useEffect(() => {
+    sessionToken.current = window && window.sessionStorage.getItem('sessionToken')
+  })
 
-    this.debounceAutocomplete = debounce(props.requestDelay, this._handleAutocomplete)
-    this.throttleAutocomplete = throttle(props.requestDelay, this._handleAutocomplete)
+  const handleBias = () => {
+    if (window && window.localStorage.getItem('requestInfo'))
+      return JSON.parse(window.localStorage.getItem('requestInfo')).location
 
-    this.state = {
-      focus: false,
-      loading: false,
-      items: props.items,
-      isCleared: false,
-      selected: !!props.suggestion,
-      value: props.suggestion || ''
-    }
+    if (window && window.localStorage.getItem('mapPosition'))
+      return JSON.parse(window.localStorage.getItem('mapPosition'))
+
+    return { lat: '0', lon: '0' }
   }
 
-  // Cleanup
-  componentWillUnmount () {
-    this.debounceAutocomplete.cancel()
-    this.throttleAutocomplete.cancel()
-  }
+  let waitingFor;
+  const handleAutocomplete = async (query) => {
+    waitingFor = query
 
-  handleInput (event) {
-    const value = event.target.value
-    this.setState({ value }, () => {
-      if (value.length < 5 && value.length !== 0) {
-        this.throttleAutocomplete(value)
-      } else if (value.length >= 5) {
-        this.debounceAutocomplete(value)
-      }
-    })
-  }
-
-  async _handleAutocomplete (query) {
-    this.waitingFor = query
+    const token = sessionToken.current
+    const bias = handleBias()
 
     let data
     try {
       // Should use proper location data here, be it based on where, or the centre is??
-      data = await this.props.searchProvider.search(query, { location: { lat: '0', lon: '0' } })
+      data = await searchProvider.search(query, { location: bias, session: token })
     } catch (error) {
       return console.error(error)
     }
@@ -81,7 +67,7 @@ export class SearchView extends Component {
     // If the debounced function returns after the next call
     // then we can ignore the response in favour of the most
     // up to date response
-    if (query !== this.waitingFor) return
+    if (query !== waitingFor) return
 
     // Maybe errors got through
     if (data.status && data.status !== 200) {
@@ -91,81 +77,61 @@ export class SearchView extends Component {
     // If empty doesnt mean the request failed
     if (!data) return
 
-    this.setState({ items: data.results, loading: false })
+    setItems(data.results)
   }
 
-  // UI Update
-  handleFocus (event) {
-    this.setState({ focus: true, selected: false })
-  }
+  const debounceAutocomplete = debounce(requestDelay, handleAutocomplete)
+  const throttleAutocomplete = throttle(requestDelay, handleAutocomplete)
 
-  // UI Update, have to wait a timeout so you grab the selected index before it goes
-  // might not be needed anymore due to using state and not css `:focus`
-  handleBlur (event) {
-    // Waiting for onSelect to handle before blur-ing
-    setTimeout(() => {
-      this.setState({ focus: this.state.isCleared, isCleared: false })
+  useEffect(() => () => {
+    debounceAutocomplete.cancel()
+    throttleAutocomplete.cancel()
+  }, [debounceAutocomplete, throttleAutocomplete])
+
+  const handleInput = useCallback((event) => {
+    const value = event.target.value
+    setValue(value)
+
+    throttleAutocomplete(value)
+  }, [throttleAutocomplete, debounceAutocomplete])
+
+  const handleFocus = useCallback((event) => {
+    setFocus(true)
+  }, [])
+
+  // This is so we can clear effectively
+  const blur = useRef()
+  const handleBlur = useCallback((event) => {
+    blur.current = setTimeout(() => {
+      setFocus(false)
     }, 200)
-  }
+  }, [])
 
-  // TODO: See how to fix this for now??
-  // clean the state and items
-  handleClear (event) {
-    // Horrible workaround here
-    //
-    // Maybe a better way is to set a flag here that is wiped by onFocus
-    // and doesn't get in the way of onBlur ?? or do what I did before and
-    // reload the page
-    this.setState({
-      value: '',
-      items: [],
-      isCleared: true
-    })
+  const handleClear = useCallback((event) => {
+    setValue('')
+    setItems([])
 
-    const onClear = this.props.onClear
-    if (onClear) onClear(event)
-  }
+    blur.current && clearTimeout(blur.current)
 
-  // Pass this to the parent
-  handleSelect (selected) {
-    this.setState({ selected: true })
+    onClear && onClear()
+  }, [onClear])
 
-    const onComplete = this.props.onComplete
-    if (onComplete) onComplete(new Selected(selected.value, this.state.value, selected.index))
-  }
+  const handleSelect = useCallback((selected) => {
+    const query = value
+    setValue(selected.value.containers.entity.value)
 
-  render () {
-    const {
-      handleBlur,
-      handleFocus,
-      handleInput,
-      handleClear,
-      handleSelect,
-      state: {
-        focus,
-        value,
-        items,
-        loading,
-        isCleared,
-        selected
-      },
-      props: {
-        title,
-        placeholder,
-        suggestion
-      }
-    } = this
+    onComplete && onComplete(new Selected(selected.value, query, selected.index))
+  }, [onComplete, value])
 
-    return (
-      <Wrapper className='search' focus={focus}>
-        <SearchInput
-          onFocus={handleFocus} onBlur={handleBlur} onInput={handleInput}
-          onClear={handleClear} value={!!suggestion && selected ? suggestion : value } placeholder={placeholder}
-        />
-        {focus && <SearchDropdown values={items} onSelect={handleSelect} title={title} loading={loading} />}
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper className='search' focus={focus}>
+      <SearchInput
+        onFocus={handleFocus} onBlur={handleBlur} onInput={handleInput}
+        onClear={handleClear} value={value} placeholder={placeholder}
+      />
+      {focus && <SearchDropdown values={items} onSelect={handleSelect} title={title} loading={false} />}
+    </Wrapper>
+  )
 }
 
 // Just so we don't throw an errors

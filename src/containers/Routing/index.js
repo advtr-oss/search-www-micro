@@ -44,28 +44,6 @@ function RoutingProvider({ location, history, push, ...rest }) {
   )
 }
 
-// import RoutingContext, { RoutingOptions } from "../../contexts/RoutingContext";
-
-// class RoutingProvider extends Component {
-//
-//   constructor(props) {
-//     super(props);
-//   }
-//
-//   componentDidCatch(err, info) {
-//     console.error(RoutingProvider.name + " component crashed", err, info)
-//   }
-//
-//   render() {
-//     return (
-//       <>
-//
-//       </>
-//     )
-//
-//   }
-// }
-
 const mapStateToProps = state => ({
   location: state.router.location,
   history: state.router.history,

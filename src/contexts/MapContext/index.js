@@ -6,6 +6,8 @@
  * */
 import React, { createContext } from 'react'
 
-const MapContext = createContext(null)
+const MapContext = createContext({
+  setMap: () => { }
+})
 
 export default MapContext

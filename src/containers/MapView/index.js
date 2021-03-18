@@ -8,6 +8,8 @@ import { connect } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl, FeatureGroup, Marker, useMap } from 'react-leaflet'
 
 import MapProvider from "../MapProvider";
+import useMapProvider from "../../hooks/useMapProvider";
+import {zoom} from "leaflet/src/control/Control.Zoom";
 
 const layers = {
   dark: {
@@ -20,7 +22,7 @@ const layers = {
   }
 }
 
-// Workaround for now
+// Simple way to center the map, without the context doing any heavy lifting
 const ChangeView = ({ center, zoom }) => {
   const map = useMap();
   map.setView(center, zoom);
@@ -28,17 +30,17 @@ const ChangeView = ({ center, zoom }) => {
 }
 
 const MapView = ({ darkMode, selected }) => {
+  const { setMap } = useMapProvider()
+
   const layer = darkMode ? layers.dark : layers.light
 
   const locationToCoords = (point) => {
     return [point.lat, point.lon]
   }
 
-  const centre = !!selected.location ? locationToCoords(selected.location) : [51.505, -0.09]
-
   return (
-    <MapContainer center={centre} zoom={13} scrollWheelZoom={false} zoomControl={false}>
-      <ChangeView center={centre} zoom={13} />
+    <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
+      {selected.location && <ChangeView center={locationToCoords(selected.location)} zoom={13} />}
       <TileLayer {...layer} />
       <ZoomControl position="bottomright" />
       <FeatureGroup>

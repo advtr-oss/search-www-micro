@@ -8,6 +8,7 @@
 import React, { useCallback, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -26,7 +27,10 @@ import FeatherIcon from '../../components/Icons/Feather'
 
 const SearchCard = (props) => {
   const [selected, setSelected] = useState(null)
+
+  const { push } = useHistory()
   const tracking = useTracking()
+
   const { onComplete, onClear } = props
 
   // Handle analytics
@@ -58,9 +62,9 @@ const SearchCard = (props) => {
 
   // On Clear go to home, more so for when in PlaceAPI
   const handleClear = useCallback(() => {
-    // props.history.push('/')
+    if (selected) push('/')
     onClear()
-  }, [onClear])
+  }, [selected, onClear, push])
 
   const searchProvider = getSearchProvider()
 
@@ -81,7 +85,6 @@ const SearchCard = (props) => {
 const mapStateToProps = createSelector(
   makeSelectCardInput(),
   poi => {
-    console.log('mapStateToProps', poi)
     return  {
       poi
     }

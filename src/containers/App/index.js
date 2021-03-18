@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl'
+
+import { nanoid } from 'nanoid'
 
 import Theme from "../Theme";
 import Fonts from "../../components/Fonts";
@@ -11,6 +13,14 @@ import GlobalStyle from '../../components/GlobalStyle';
 import SearchPage from "../SearchPage";
 
 export default function App() {
+  // Set a session token, for our logging purposes
+  useEffect(() => {
+    const session = nanoid()
+    if (window && !window.sessionStorage.getItem('sessionToken')) {
+      window.sessionStorage.setItem('sessionToken', session)
+    }
+  });
+
   return (
     <Theme>
       <TrackingProvider>

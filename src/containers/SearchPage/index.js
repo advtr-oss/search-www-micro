@@ -8,10 +8,10 @@ import React from 'react';
 
 import Wrapper from "./Wrapper";
 import RoutingProvider from "../Routing";
+import MapProvider from "../MapProvider";
 
 import MapView from "../MapView";
-import SearchCard from "../SearchCard";
-
+// import SearchCard from "../SearchCard";
 
 const SearchPage = () => {
   return (
@@ -19,7 +19,9 @@ const SearchPage = () => {
       <div className='cards'>
         <RoutingProvider />
       </div>
-      <MapView />
+      <MapProvider>
+        <MapView />
+      </MapProvider>
     </Wrapper>
   )
 }
