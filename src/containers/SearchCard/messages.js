@@ -12,4 +12,8 @@ export default defineMessages({
     id: `${scope}.placeholder`,
     defaultMessage: 'Search for a city',
   },
+  title: {
+    id: `${scope}.title`,
+    defaultMessage: 'Search Results',
+  }
 });

@@ -4,9 +4,7 @@
  * The main bulk of the system, here we handle the
  * searching of the city
  *
- * Todo: Rebuild this
- *
- * Better states, and clearing
+ * Todo: Make sure this is 100% working
  *
  * */
 
@@ -123,6 +121,9 @@ function SearchView({ items: initialItems, suggestion, requestDelay, onClear, on
     onComplete && onComplete(new Selected(selected.value, query, selected.index))
   }, [onComplete, value])
 
+  /**
+   * May have to tie focus in here with the child component
+   * */
   return (
     <Wrapper className='search' focus={focus}>
       <SearchInput

@@ -68,15 +68,16 @@ const SearchCard = (props) => {
 
   const searchProvider = getSearchProvider()
 
-  console.log(selected)
   return (
     <Wrapper>
       <span>
         <FeatherIcon type='menu' />
       </span>
       <FormattedMessage {...messages.placeholder}>
-        {placeholder => <SearchView onComplete={handleComplete} onClear={handleClear} suggestion={selected && selected.containers.entity.value}
-                                    searchProvider={searchProvider} placeholder={placeholder} />}
+        {placeholder => <FormattedMessage {...messages.title} >
+          {title => <SearchView onComplete={handleComplete} onClear={handleClear} suggestion={selected && selected.containers.entity.value}
+                                searchProvider={searchProvider} placeholder={placeholder} title={title} />}
+        </FormattedMessage>}
       </FormattedMessage>
     </Wrapper>
   )

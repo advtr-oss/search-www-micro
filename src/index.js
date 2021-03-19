@@ -29,6 +29,7 @@ import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
+import DeviceProvider from "./containers/DeviceProvider";
 
 // Create redux store with history
 const initialState = {};
@@ -41,9 +42,11 @@ const render = messages => {
     <React.StrictMode>
       <Provider store={store}>
         <LanguageProvider messages={messages}>
-          <ConnectedRouter history={history}>
-            <App />
-          </ConnectedRouter>
+          <DeviceProvider>
+            <ConnectedRouter history={history}>
+              <App />
+            </ConnectedRouter>
+          </DeviceProvider>
         </LanguageProvider>
       </Provider>
     </React.StrictMode>,

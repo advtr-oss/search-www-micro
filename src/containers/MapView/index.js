@@ -7,9 +7,8 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl, FeatureGroup, Marker, useMap } from 'react-leaflet'
 
-import MapProvider from "../MapProvider";
 import useMapProvider from "../../hooks/useMapProvider";
-import {zoom} from "leaflet/src/control/Control.Zoom";
+import useDeviceState from "../../hooks/useDevice";
 
 const layers = {
   dark: {
@@ -31,6 +30,7 @@ const ChangeView = ({ center, zoom }) => {
 
 const MapView = ({ darkMode, selected }) => {
   const { setMap } = useMapProvider()
+  const { isMobile } = useDeviceState()
 
   const layer = darkMode ? layers.dark : layers.light
 
@@ -42,7 +42,7 @@ const MapView = ({ darkMode, selected }) => {
     <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
       {selected.location && <ChangeView center={locationToCoords(selected.location)} zoom={13} />}
       <TileLayer {...layer} />
-      <ZoomControl position="bottomright" />
+      {!isMobile && <ZoomControl position="bottomright" />}
       <FeatureGroup>
         {selected.location && <Marker position={locationToCoords(selected.location)} />}
       </FeatureGroup>

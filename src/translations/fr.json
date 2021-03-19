@@ -1,4 +1,5 @@
 {
   "app.containers.App.header": "",
-  "app.containers.SearchCard.placeholder": "Trouver une ville"
+  "app.containers.SearchCard.placeholder": "Trouver une ville",
+  "app.containers.SearchCard.title": "Résultats de recherche"
 }

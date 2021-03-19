@@ -43,7 +43,4 @@ const translationMessages = {
   fr: formatTranslationMessages('fr', frTranslationMessages)
 };
 
-exports.appLocales = appLocales;
-exports.formatTranslationMessages = formatTranslationMessages;
-exports.translationMessages = translationMessages;
-exports.DEFAULT_LOCALE = DEFAULT_LOCALE;
+export { appLocales, formatTranslationMessages, translationMessages, DEFAULT_LOCALE }
