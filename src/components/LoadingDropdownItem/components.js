@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Glow from "../Glow";
+import Glow from '../Glow'
 
 const GlowIcon = styled(Glow)`
   width: 24px;

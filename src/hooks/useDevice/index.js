@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from 'react'
 
-import DeviceContext from "../../contexts/DeviceContext";
+import DeviceContext from '../../contexts/DeviceContext'
 
-function useDeviceState() {
+function useDeviceState () {
   const context = useContext(DeviceContext)
   if (context === undefined) {
     throw new Error('useDeviceState must be used within a DeviceProvider')

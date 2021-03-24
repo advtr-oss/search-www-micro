@@ -7,14 +7,15 @@
  * */
 import React, { useCallback, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
+import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
-import messages from "./messages";
+import messages from './messages'
 import { selectPOI, clearPOI } from './actions'
-import { makeSelectCardInput } from "./selectors";
+import { makeSelectCardInput } from './selectors'
 
 import SearchView from '../SearchView'
 import Wrapper from './Wrapper'
@@ -24,6 +25,26 @@ import { ADVTR_SEARCH_RESULTS_EVENT, ADVTR_QUERY_CHARS, ADVTR_SELECTED_INDEX, AD
 import getSearchProvider from '../../hooks/getSearchProvider'
 import FeatherIcon from '../../components/Icons/Feather'
 
+/**
+ * Clean up the code a little
+ * */
+const FormattedView = ({ placeholder, title, children }) => (
+  <FormattedMessage {...placeholder}>
+    {(placeholder) => (
+      <FormattedMessage {...title}>
+        {(title) => (
+          children({ placeholder, title })
+        )}
+      </FormattedMessage>
+    )}
+  </FormattedMessage>
+)
+
+FormattedView.propTypes = {
+  placeholder: PropTypes.object,
+  title: PropTypes.object,
+  children: PropTypes.node
+}
 
 const SearchCard = (props) => {
   const [selected, setSelected] = useState(null)
@@ -69,30 +90,37 @@ const SearchCard = (props) => {
   const searchProvider = getSearchProvider()
 
   return (
-    <Wrapper>
+    <Wrapper className={clsx(selected && 'has-poi')} selected={selected}>
       <span>
         <FeatherIcon type='menu' />
       </span>
-      <FormattedMessage {...messages.placeholder}>
-        {placeholder => <FormattedMessage {...messages.title} >
-          {title => <SearchView onComplete={handleComplete} onClear={handleClear} suggestion={selected && selected.containers.entity.value}
-                                searchProvider={searchProvider} placeholder={placeholder} title={title} />}
-        </FormattedMessage>}
-      </FormattedMessage>
+      <FormattedView title={messages.title} placeholder={messages.placeholder}>
+        {({ title, placeholder }) => (
+          <SearchView
+            onComplete={handleComplete} onClear={handleClear} suggestion={selected && selected.containers.entity.value}
+            searchProvider={searchProvider} placeholder={placeholder} title={title}
+          />
+        )}
+      </FormattedView>
     </Wrapper>
   )
+}
+
+SearchCard.propTypes = {
+  onComplete: PropTypes.func,
+  onClear: PropTypes.func
 }
 
 const mapStateToProps = createSelector(
   makeSelectCardInput(),
   poi => {
-    return  {
+    return {
       poi
     }
   }
 )
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps (dispatch) {
   return {
     onComplete: evt => dispatch(selectPOI(evt.value)),
     onClear: _ => dispatch(clearPOI()),

@@ -2,6 +2,7 @@
  * This could be better maybe??
  * */
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import TrackingContext from '../../contexts/TrackingContext'
 
@@ -15,6 +16,10 @@ const TrackingProvider = ({ children }) => {
       {children}
     </TrackingContext.Provider>
   )
+}
+
+TrackingProvider.propTypes = {
+  children: PropTypes.node
 }
 
 export default TrackingProvider

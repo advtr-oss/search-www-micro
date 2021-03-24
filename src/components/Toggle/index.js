@@ -43,7 +43,7 @@ class Toggle extends Component {
   }
 
   handleClick (event) {
-    var ref = this.input
+    const ref = this.input
     if (event.target !== ref) {
       this.previouslyChecked = ref.checked
       event.preventDefault()
@@ -54,7 +54,7 @@ class Toggle extends Component {
     }
 
     // Grab the ref or the prop
-    var checked = this.props.hasOwnProperty('checked') ? this.props.checked : ref.checked
+    const checked = this.props.hasOwnProperty('checked') ? this.props.checked : ref.checked
     this.setState({
       checked
     }, () => {
@@ -63,7 +63,7 @@ class Toggle extends Component {
   }
 
   handleFocus (event) {
-    var onFocus = this.props.onFocus
+    const onFocus = this.props.onFocus
     if (onFocus) onFocus(event)
     this.setState({
       hasFocus: true
@@ -71,7 +71,7 @@ class Toggle extends Component {
   }
 
   handleBlur (event) {
-    var onBlur = this.props.onBlur
+    const onBlur = this.props.onBlur
     if (onBlur) onBlur(event)
     this.setState({
       hasFocus: false

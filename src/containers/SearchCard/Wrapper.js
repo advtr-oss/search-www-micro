@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { lighten } from 'polished'
 
 import Card from '../../components/Card'
@@ -27,7 +27,14 @@ const Wrapper = styled(Card)`
     height: unset;
     line-height: unset;
     
-    color: ${({ theme }) => lighten(0.3, theme.main.colors.text['gray-dark'])};
+    ${({ selected }) => selected
+      ? css`
+        color: ${({ theme }) => theme.main.colors.text['gray-dark']};
+      `
+      : css`
+        color: ${({ theme }) => lighten(0.3, theme.main.colors.text['gray-dark'])};
+      `
+    }
   }
   
   & > .search .input--focus {

@@ -8,14 +8,14 @@
  * Might be more generic in the future but will work for
  * what I needed it to
  * */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-import Grid from "./Grid";
-import Wrapper from "./Wrapper";
+import Grid from './Grid'
+import Wrapper from './Wrapper'
 
-import Glow from "../Glow";
-import PhotoGalleryItem from "../PhotoGalleryItem";
+import Glow from '../Glow'
+import PhotoGalleryItem from '../PhotoGalleryItem'
 
 // Will be replaced by a map
 const Item = ({ src, alt, color }) => (

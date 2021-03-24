@@ -7,11 +7,12 @@
  *
  * */
 import React, { useState, useEffect, useCallback } from 'react'
+import PropTypes from 'prop-types'
 
-import MapContext from "../../contexts/MapContext";
-import where from "../../utils/where";
+import MapContext from '../../contexts/MapContext'
+import where from '../../utils/where'
 
-function MapProvider({ children }) {
+function MapProvider ({ children }) {
   const [map, setMap] = useState(undefined)
 
   const locationToCoords = (point) => {
@@ -63,17 +64,22 @@ function MapProvider({ children }) {
   useEffect(() => {
     map && map.on('move', onMove)
     return () => {
-      map &&  map.off('move', onMove)
+      map && map.off('move', onMove)
     }
   }, [map, onMove])
 
   return (
     <MapContext.Provider value={{
       setMap: handleMapSet
-    }}>
+    }}
+    >
       {children}
     </MapContext.Provider>
   )
+}
+
+MapProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default MapProvider

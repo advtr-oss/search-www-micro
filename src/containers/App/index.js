@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl'
+import React, { useEffect } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
 import { nanoid } from 'nanoid'
 
-import Theme from "../Theme";
-import Fonts from "../../components/Fonts";
+import Theme from '../Theme'
+import Fonts from '../../components/Fonts'
 
-import TrackingProvider from "../TrackingProvider";
-import GlobalStyle from '../../components/GlobalStyle';
+import TrackingProvider from '../TrackingProvider'
+import GlobalStyle from '../../components/GlobalStyle'
 
-import SearchPage from "../SearchPage";
+import SearchPage from '../SearchPage'
 
-export default function App() {
+export default function App () {
   // Set a session token, for our logging purposes
   useEffect(() => {
     const session = nanoid()
     if (window && !window.sessionStorage.getItem('sessionToken')) {
       window.sessionStorage.setItem('sessionToken', session)
     }
-  });
+  })
 
   return (
     <Theme>
@@ -27,9 +26,9 @@ export default function App() {
         <GlobalStyle />
         <Fonts />
         <Switch>
-          <Route path="*" component={SearchPage} />
+          <Route path='*' component={SearchPage} />
         </Switch>
       </TrackingProvider>
     </Theme>
-  );
+  )
 }

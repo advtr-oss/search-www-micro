@@ -1,7 +1,9 @@
 import React, { Children } from 'react'
-import DeviceContext from "../../contexts/DeviceContext";
+import PropTypes from 'prop-types'
 
-function DeviceProvider({ children }) {
+import DeviceContext from '../../contexts/DeviceContext'
+
+function DeviceProvider ({ children }) {
   const deviceData = {
     isApple: false,
     isMobile: false,
@@ -31,6 +33,10 @@ function DeviceProvider({ children }) {
       {Children.only(children)}
     </DeviceContext.Provider>
   )
+}
+
+DeviceProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default DeviceProvider

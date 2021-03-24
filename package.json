@@ -45,7 +45,8 @@
     "postextract": "bash ./scripts/post-extract.sh"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "parser": "babel-eslint",
+    "extends": ["standard", "standard-jsx", "standard-react"]
   },
   "browserslist": {
     "production": [
@@ -71,6 +72,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.4.0",
     "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "8.1.0",
     "babel-plugin-dynamic-import-node": "2.2.0",
     "babel-plugin-lodash": "3.3.4",
@@ -78,6 +80,13 @@
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-styled-components": "1.10.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-jsx": "^10.0.0",
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1",
     "glob": "^7.1.6",
     "serve": "^11.3.2",
     "shelljs": "^0.8.4"

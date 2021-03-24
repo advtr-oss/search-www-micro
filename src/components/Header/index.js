@@ -10,10 +10,10 @@
  * */
 
 import React from 'react'
-import clsx from "clsx";
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 
-import Wrapper from "./Wrapper";
+import Wrapper from './Wrapper'
 
 import typography from '../../themes/typography'
 
@@ -31,8 +31,10 @@ const className = (level) => htmlElement(level) ? null : level
  * If children is set we use that over a title
  * */
 const Header = (props) => (
-  <Wrapper as={htmlElement(props.level) ? props.level : 'div'}
-           className={clsx(className(props.level), props.className)}>
+  <Wrapper
+    as={htmlElement(props.level) ? props.level : 'div'}
+    className={clsx(className(props.level), props.className)}
+  >
     {props.children ? props.children : props.title}
   </Wrapper>
 )

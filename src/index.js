@@ -13,27 +13,27 @@ import 'sanitize.css/sanitize.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router';
-import history from './utils/history';
+import { ConnectedRouter } from 'connected-react-router'
+import history from './utils/history'
 
-import serviceWorker from './serviceWorker'
+// import serviceWorker from './serviceWorker'
 import reportWebVitals from './reportWebVitals'
 
 // Import root app
-import App from './containers/App';
+import App from './containers/App'
 
 // Import Language Provider
-import LanguageProvider from './containers/LanguageProvider';
+import LanguageProvider from './containers/LanguageProvider'
 
-import configureStore from './configureStore';
+import configureStore from './configureStore'
 
 // Import i18n messages
-import { translationMessages } from './i18n';
-import DeviceProvider from "./containers/DeviceProvider";
+import { translationMessages } from './i18n'
+import DeviceProvider from './containers/DeviceProvider'
 
 // Create redux store with history
-const initialState = {};
-const store = configureStore(initialState, history);
+const initialState = {}
+const store = configureStore(initialState, history)
 
 const MOUNT_NODE = document.getElementById('root') || document.createElement('div')
 
@@ -64,25 +64,24 @@ if (module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./i18n', './containers/App'], () => {
-    ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    render(translationMessages);
-  });
+    ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+    render(translationMessages)
+  })
 }
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
   new Promise(resolve => {
-    resolve(import('intl'));
+    resolve(import('intl'))
   })
     .then(() => Promise.all([import('intl/locale-data/jsonp/en.js')]))
     .then(() => render(translationMessages))
     .catch(err => {
-      throw err;
-    });
+      throw err
+    })
 } else {
-  render(translationMessages);
+  render(translationMessages)
 }
-
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -84,13 +84,15 @@ const GlobalStyle = createGlobalStyle`
       line-height: 1.2;
       
       // If their is a mobile version of the header force it here
-      ${hasMobileVersion(bp) ? css`
-        @media (max-width: ${props => props.theme.main.sizes.breakpoints.sm}) {
-          font-size: ${props.theme.main.typography.headers[`${bp}-mobile`]};
-        }
-      ` : null}
+      ${hasMobileVersion(bp)
+        ? css`
+          @media (max-width: ${props => props.theme.main.sizes.breakpoints.sm}) {
+            font-size: ${props.theme.main.typography.headers[`${bp}-mobile`]};
+          }
+        `
+        : null}
     }
   `)}
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle

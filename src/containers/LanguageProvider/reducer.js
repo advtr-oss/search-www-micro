@@ -7,31 +7,31 @@
  * @note: Not the best but will work
  */
 
-import produce from 'immer';
-import { get, includes, split } from 'lodash';
+import produce from 'immer'
+import { get, includes, split } from 'lodash'
 
-import { CHANGE_LOCALE, LOCALE_KEY } from './constants';
-import { DEFAULT_LOCALE, appLocales } from '../../i18n';
+import { CHANGE_LOCALE, LOCALE_KEY } from './constants'
+import { DEFAULT_LOCALE, appLocales } from '../../i18n'
 
 // Detect user language.
 const userLanguage =
   window.localStorage.getItem(LOCALE_KEY) ||
   window.navigator.language ||
-  window.navigator.userLanguage;
+  window.navigator.userLanguage
 
-let foundLanguage = includes(appLocales, userLanguage) && userLanguage;
+let foundLanguage = includes(appLocales, userLanguage) && userLanguage
 
 if (!foundLanguage) {
   // Split user language in a correct format.
-  const userLanguageShort = get(split(userLanguage, '-'), '0');
+  const userLanguageShort = get(split(userLanguage, '-'), '0')
 
   // Check that the language is included in the admin configuration.
-  foundLanguage = includes(appLocales, userLanguageShort) && userLanguageShort;
+  foundLanguage = includes(appLocales, userLanguageShort) && userLanguageShort
 }
 
 export const initialState = {
-  locale: foundLanguage || DEFAULT_LOCALE,
-};
+  locale: foundLanguage || DEFAULT_LOCALE
+}
 
 /* eslint-disable default-case, no-param-reassign */
 const languageProviderReducer = (state = initialState, action) =>
@@ -39,9 +39,9 @@ const languageProviderReducer = (state = initialState, action) =>
     switch (action.type) {
       case CHANGE_LOCALE:
         window.localStorage && window.localStorage.setItem(LOCALE_KEY, action.locale)
-        draft.locale = action.locale;
-        break;
+        draft.locale = action.locale
+        break
     }
-  });
+  })
 
-export default languageProviderReducer;
+export default languageProviderReducer

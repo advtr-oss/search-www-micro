@@ -6,13 +6,19 @@
  *
  * */
 
-import clsx from 'clsx'
+// import clsx from 'clsx'
 import React from 'react'
 import PropTypes from 'prop-types'
 
 import Item from './Item'
 import { Primary, Secondary } from './components'
 import FeatherIcon from '../Icons/Feather'
+
+const IconTypes = PropTypes.oneOf([
+  'city',
+  'cafe',
+  'airport'
+])
 
 // Wrapper
 const Icon = ({ type }) => {
@@ -27,12 +33,16 @@ const Icon = ({ type }) => {
   }
 }
 
+Icon.propTypes = {
+  type: IconTypes
+}
+
 const SearchDropdownItem = (props) => {
   const primary = props.containers.entity.value
-  const secondary = !!props.containers.nation ? props.containers.nation.value : primary
+  const secondary = props.containers.nation ? props.containers.nation.value : primary
   return (
     <Item>
-      <Icon className='search-icon' type={props.type} />
+      <Icon className='search-icon' type={props.type.toLowerCase()} />
       <span>
         <Primary>{primary}</Primary>
         <Secondary>{secondary}</Secondary>
@@ -42,11 +52,7 @@ const SearchDropdownItem = (props) => {
 }
 
 SearchDropdownItem.propTypes = {
-  type: PropTypes.oneOf([
-    'city',
-    'cafe',
-    'airport'
-  ]),
+  type: IconTypes,
   containers: PropTypes.shape({
     entity: PropTypes.object,
     nation: PropTypes.object

@@ -54,6 +54,7 @@ Dropdown.propTypes = {
   component: PropTypes.elementType,
   className: PropTypes.string,
   'data-title': PropTypes.string,
+  name: PropTypes.string,
   onSelect: PropTypes.func,
   role: PropTypes.string,
   values: PropTypes.arrayOf(PropTypes.oneOfType([

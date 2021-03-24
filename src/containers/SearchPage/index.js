@@ -4,21 +4,21 @@
  * Will work on getting it to be a clone of the original
  * then look to add the contexts for a better future
  * */
-import React from 'react';
+import React from 'react'
 
-import Wrapper from "./Wrapper";
-import RoutingProvider from "../Routing";
-import MapProvider from "../MapProvider";
+import Wrapper from './Wrapper'
+import RoutingProvider from '../Routing'
+import MapProvider from '../MapProvider'
 
-import MapView from "../MapView";
-// import SearchCard from "../SearchCard";
+import MapView from '../MapView'
+import { CardGroup } from './components'
 
 const SearchPage = () => {
   return (
     <Wrapper>
-      <div className='cards'>
+      <CardGroup>
         <RoutingProvider />
-      </div>
+      </CardGroup>
       <MapProvider>
         <MapView />
       </MapProvider>

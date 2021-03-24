@@ -2,13 +2,13 @@
  * Map view, this should be heavily linked with redux and update when we get a
  * new marker, with plans for GeoJSON in the future
  * */
-import React, { useState, useMemo }  from "react";
-import PropTypes from "prop-types";
+import React, { } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl, FeatureGroup, Marker, useMap } from 'react-leaflet'
 
-import useMapProvider from "../../hooks/useMapProvider";
-import useDeviceState from "../../hooks/useDevice";
+import useMapProvider from '../../hooks/useMapProvider'
+import useDeviceState from '../../hooks/useDevice'
 
 const layers = {
   dark: {
@@ -23,9 +23,9 @@ const layers = {
 
 // Simple way to center the map, without the context doing any heavy lifting
 const ChangeView = ({ center, zoom }) => {
-  const map = useMap();
-  map.setView(center, zoom);
-  return null;
+  const map = useMap()
+  map.setView(center, zoom)
+  return null
 }
 
 const MapView = ({ darkMode, selected }) => {
@@ -42,7 +42,7 @@ const MapView = ({ darkMode, selected }) => {
     <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
       {selected.location && <ChangeView center={locationToCoords(selected.location)} zoom={13} />}
       <TileLayer {...layer} />
-      {!isMobile && <ZoomControl position="bottomright" />}
+      {!isMobile && <ZoomControl position='bottomright' />}
       <FeatureGroup>
         {selected.location && <Marker position={locationToCoords(selected.location)} />}
       </FeatureGroup>
@@ -52,12 +52,12 @@ const MapView = ({ darkMode, selected }) => {
 
 MapView.propTypes = {
   darkMode: PropTypes.bool,
-  poi: PropTypes.shape({
+  selected: PropTypes.shape({
     location: PropTypes.shape({
       lat: PropTypes.number,
       lon: PropTypes.number
     })
-  }),
+  })
 }
 
 /**

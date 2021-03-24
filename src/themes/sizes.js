@@ -27,11 +27,14 @@ for (let i = 1; i < 12; i++) {
  * */
 const spacer = 8
 
-// eslint-disable-next-line no-redeclare
+// eslint-disable-next-line no-var, no-redeclare
 var inc = (i) => (i === 0
-  ? '0' : i === 1
-    ? `${Math.round(spacer / 2)}px` : i === 2
-      ? `${spacer}px` : `${spacer * (i - 1)}px`)
+  ? '0'
+  : i === 1
+    ? `${Math.round(spacer / 2)}px`
+    : i === 2
+      ? `${spacer}px`
+      : `${spacer * (i - 1)}px`)
 
 const spacing = {}
 
@@ -44,7 +47,7 @@ for (let i = 0; i < 7; i++) {
  * */
 const size = 16
 
-// eslint-disable-next-line no-redeclare
+// eslint-disable-next-line no-var, no-redeclare
 var inc = (i) => (i === 8 ? 16 : i > 5 ? 8 : 4)
 
 const scale = {

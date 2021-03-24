@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * SearchView.js
  *
@@ -27,27 +29,25 @@ function Selected (value, queryString, index) {
   this.queryString = queryString
 }
 
-function SearchView({ items: initialItems, suggestion, requestDelay, onClear, onComplete, title, placeholder, searchProvider }) {
+function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, onComplete, title, placeholder, searchProvider }) {
   const [items, setItems] = useState(initialItems)
   const [focus, setFocus] = useState(false)
-  const [value, setValue] = useState(suggestion ? suggestion : '')
+  const [value, setValue] = useState(suggestion || '')
 
-  let sessionToken = useRef();
+  const sessionToken = useRef()
   useEffect(() => {
     sessionToken.current = window && window.sessionStorage.getItem('sessionToken')
   })
 
   const handleBias = () => {
-    if (window && window.localStorage.getItem('requestInfo'))
-      return JSON.parse(window.localStorage.getItem('requestInfo')).location
+    if (window && window.localStorage.getItem('requestInfo')) { return JSON.parse(window.localStorage.getItem('requestInfo')).location }
 
-    if (window && window.localStorage.getItem('mapPosition'))
-      return JSON.parse(window.localStorage.getItem('mapPosition'))
+    if (window && window.localStorage.getItem('mapPosition')) { return JSON.parse(window.localStorage.getItem('mapPosition')) }
 
     return { lat: '0', lon: '0' }
   }
 
-  let waitingFor;
+  let waitingFor
   const handleAutocomplete = async (query) => {
     waitingFor = query
 
@@ -84,14 +84,14 @@ function SearchView({ items: initialItems, suggestion, requestDelay, onClear, on
   useEffect(() => () => {
     // debounceAutocomplete.cancel()
     throttleAutocomplete.cancel()
-  }, [/*debounceAutocomplete, */throttleAutocomplete])
+  }, [/* debounceAutocomplete, */throttleAutocomplete])
 
   const handleInput = useCallback((event) => {
     const value = event.target.value
     setValue(value)
 
     throttleAutocomplete(value)
-  }, [throttleAutocomplete/*, debounceAutocomplete*/])
+  }, [throttleAutocomplete/*, debounceAutocomplete */])
 
   const handleFocus = useCallback((event) => {
     setFocus(true)
@@ -114,11 +114,14 @@ function SearchView({ items: initialItems, suggestion, requestDelay, onClear, on
     onClear && onClear()
   }, [onClear])
 
-  const handleSelect = useCallback((selected) => {
+  const handleSelect = useCallback(async (selected) => {
     const query = value
-    setValue(selected.value.containers.entity.value)
 
-    onComplete && onComplete(new Selected(selected.value, query, selected.index))
+    blur.current && clearTimeout(blur.current)
+
+    // setValue(selected.value.containers.entity.value)
+    //
+    // onComplete && onComplete(new Selected(selected.value, query, selected.index))
   }, [onComplete, value])
 
   /**

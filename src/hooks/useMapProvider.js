@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
-import MapContext from "../contexts/MapContext";
+import MapContext from '../contexts/MapContext'
 
 const useMapProvider = () => {
   const context = useContext(MapContext)

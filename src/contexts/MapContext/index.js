@@ -4,7 +4,7 @@
  * TODO: Figure what the fuck this should do
  *
  * */
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
 const MapContext = createContext({
   setMap: () => { }

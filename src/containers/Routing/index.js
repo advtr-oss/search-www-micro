@@ -3,15 +3,16 @@
  * */
 
 import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 
-import Wrapper from "./Wrapper";
+// import Wrapper from './Wrapper'
 
-import createURL from "../../utils/placeRouterURL";
-import SearchCard from "../SearchCard";
+import createURL from '../../utils/placeRouterURL'
+import SearchCard from '../SearchCard'
 
-function RoutingProvider({ location, history, push, ...rest }) {
+function RoutingProvider ({ location, history, push, ...rest }) {
   useEffect(() => {
     if (rest.poi && !rest.poi.loading) {
       const url = createURL(rest.poi)
@@ -25,15 +26,15 @@ function RoutingProvider({ location, history, push, ...rest }) {
       }
 
       push(data)
-      sessionStorage.setItem("lastVisitedPoi", JSON.stringify(data))
+      sessionStorage.setItem('lastVisitedPoi', JSON.stringify(data))
     }
   }, [push, rest.poi])
 
   useEffect(() => {
     const params = new URLSearchParams(location.search)
-    if (params.has('id')) {
+    if (params.has('id') && !rest.poi) {
       const data = params.get('id')
-      console.log(data)
+      console.log('routing', data)
     }
   }, [location.search])
 
@@ -42,6 +43,12 @@ function RoutingProvider({ location, history, push, ...rest }) {
       <SearchCard />
     </>
   )
+}
+
+RoutingProvider.propTypes = {
+  location: PropTypes.object,
+  history: PropTypes.object,
+  push: PropTypes.func
 }
 
 const mapStateToProps = state => ({

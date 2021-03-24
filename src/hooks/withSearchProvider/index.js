@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  *
  * Wrap the component with SearchProvider

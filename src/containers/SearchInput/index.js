@@ -8,29 +8,28 @@
  *
  * */
 
-import React, { createRef, Component } from "react";
+import React, { createRef, Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
+import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
 import { IconContainer } from './components'
 
 import { updateSearch, clearSearch } from './actions'
 import { makeSelectSearchInput } from './selectors'
 
-import Input from "../../components/Input";
-import FeatherIcon from "../../components/Icons/Feather";
+import Input from '../../components/Input'
+import FeatherIcon from '../../components/Icons/Feather'
 
 /**
  *
  * <-4px->Input       | X
  * */
 export class SearchInput extends Component {
-
   input = createRef()
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.handleBlur = this.handleBlur.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
@@ -44,14 +43,14 @@ export class SearchInput extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // If it mounts with a value focus it
     if (this.props.value && this.input.current) {
       this.input.current.focus()
     }
   }
 
-  handleInput(event) {
+  handleInput (event) {
     // Pass it up the chain
     const onInput = this.props.onInput
     if (onInput) onInput(event)
@@ -64,12 +63,12 @@ export class SearchInput extends Component {
 
   // Just remove the clear icon if their
   // is no value.
-  handleBlur(event) {
+  handleBlur (event) {
     // Pass it up the chain
     const onBlur = this.props.onBlur
     if (onBlur) onBlur(event)
 
-    let input = this.input
+    const input = this.input
     if (input.current && this.state.active) {
       this.setState({
         active: !!input.current.value,
@@ -78,14 +77,14 @@ export class SearchInput extends Component {
     }
   }
 
-  handleFocus(event) {
+  handleFocus (event) {
     // Pass it up the chain
     const onFocus = this.props.onFocus
     if (onFocus) onFocus(event)
   }
 
   // Not sure on this as of now??
-  handleClear(event) {
+  handleClear (event) {
     event.preventDefault()
 
     // Clear the input
@@ -93,9 +92,9 @@ export class SearchInput extends Component {
     // Might not be the best but will see
     //
     //
-    let input = this.input
+    const input = this.input
     if (input.current) {
-      input.current.value = ""
+      input.current.value = ''
       input.current.focus()
     }
 
@@ -110,7 +109,7 @@ export class SearchInput extends Component {
     })
   }
 
-  render() {
+  render () {
     // Seems to be a workaround, no idea why it wont work normally??
     if (this.props.value && this.input.current) {
       this.input.current.value = this.props.value
@@ -118,9 +117,11 @@ export class SearchInput extends Component {
 
     return (
       <>
-        <Input className='search--input' placeholder={this.props.placeholder}
-               value={this.props.value} ref={this.input} onInput={this.handleInput}
-               onBlur={this.handleBlur} onFocus={this.handleFocus} />
+        <Input
+          className='search--input' placeholder={this.props.placeholder}
+          value={this.props.value} ref={this.input} onInput={this.handleInput}
+          onBlur={this.handleBlur} onFocus={this.handleFocus}
+        />
         <IconContainer active={this.state.active} onClick={this.handleClear}>
           <FeatherIcon type='x' className='search--input-cancel-icon' />
         </IconContainer>
@@ -146,10 +147,10 @@ const mapStateToProps = createSelector(
   makeSelectSearchInput(),
   value => ({
     value
-  }),
+  })
 )
 
-export function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps (dispatch) {
   return {
     onInput: evt => dispatch(updateSearch(evt.target.value)),
     onClear: _ => dispatch(clearSearch()),

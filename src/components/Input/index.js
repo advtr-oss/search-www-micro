@@ -26,7 +26,7 @@ class Input extends Component {
 
   // Pass the value up the chain
   handleInput (event) {
-    var onInput = this.props.onInput
+    const onInput = this.props.onInput
     if (onInput) onInput(event)
     this.setState({
       empty: !event.target.value
@@ -34,7 +34,7 @@ class Input extends Component {
   }
 
   handleFocus (event) {
-    var onFocus = this.props.onFocus
+    const onFocus = this.props.onFocus
     if (onFocus) onFocus(event)
     this.setState({
       hasFocus: true
@@ -42,7 +42,7 @@ class Input extends Component {
   }
 
   handleBlur (event) {
-    var onBlur = this.props.onBlur
+    const onBlur = this.props.onBlur
     if (onBlur) onBlur(event)
     this.setState({
       hasFocus: false
@@ -63,12 +63,14 @@ class Input extends Component {
       this.props.disabled && 'input--disabled'
     )
 
-    return <ImportComponent
-      className={clsName} type='text' ref={innerRef}
-      aria-label={this.props['aria-label']} disabled={this.props.disabled}
-      onFocus={this.handleFocus} onBlur={this.handleBlur} onInput={this.handleInput}
-      defaultValue={value} placeholder={placeholder} autoComplete="off"
-    />
+    return (
+      <ImportComponent
+        className={clsName} type='text' ref={innerRef}
+        aria-label={this.props['aria-label']} disabled={this.props.disabled}
+        onFocus={this.handleFocus} onBlur={this.handleBlur} onInput={this.handleInput}
+        defaultValue={value} placeholder={placeholder} autoComplete='off'
+      />
+    )
   }
 }
 
@@ -82,7 +84,7 @@ Input.propTypes = {
     PropTypes.func,
     PropTypes.object
   ]),
-  name: PropTypes.string,
+  // name: PropTypes.string,
   value: PropTypes.string,
   placeholder: PropTypes.string,
   'aria-label': PropTypes.string
