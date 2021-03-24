@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * SearchView.js
  *
@@ -12,7 +10,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { debounce, throttle } from 'throttle-debounce'
+import { throttle } from 'throttle-debounce'
 
 import Wrapper from './Wrapper'
 
@@ -20,10 +18,11 @@ import { SearchInput } from '../SearchInput'
 import { SearchDropdown } from '../SearchDropdown'
 import withSearchProvider from '../../hooks/withSearchProvider'
 
-function Selected (value, queryString, index) {
+function Selected (value, queryString, score, index) {
   this.name = 'search-view'
   this.value = value
   this.index = index
+  this.score = score
 
   // For analytics
   this.queryString = queryString
@@ -32,7 +31,11 @@ function Selected (value, queryString, index) {
 function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, onComplete, title, placeholder, searchProvider }) {
   const [items, setItems] = useState(initialItems)
   const [focus, setFocus] = useState(false)
-  const [value, setValue] = useState(suggestion || '')
+  const [value, setValue] = useState(!suggestion ? '' : suggestion)
+
+  useEffect(() => {
+    setValue(suggestion)
+  }, [suggestion])
 
   const sessionToken = useRef()
   useEffect(() => {
@@ -78,20 +81,18 @@ function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, o
     setItems(data.results)
   }
 
-  // const debounceAutocomplete = debounce(requestDelay, handleAutocomplete)
   const throttleAutocomplete = throttle(requestDelay, handleAutocomplete)
 
   useEffect(() => () => {
-    // debounceAutocomplete.cancel()
     throttleAutocomplete.cancel()
-  }, [/* debounceAutocomplete, */throttleAutocomplete])
+  }, [throttleAutocomplete])
 
   const handleInput = useCallback((event) => {
     const value = event.target.value
     setValue(value)
 
     throttleAutocomplete(value)
-  }, [throttleAutocomplete/*, debounceAutocomplete */])
+  }, [throttleAutocomplete])
 
   const handleFocus = useCallback((event) => {
     setFocus(true)
@@ -117,11 +118,29 @@ function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, o
   const handleSelect = useCallback(async (selected) => {
     const query = value
 
+    // Stop the blur for now
     blur.current && clearTimeout(blur.current)
 
-    // setValue(selected.value.containers.entity.value)
-    //
-    // onComplete && onComplete(new Selected(selected.value, query, selected.index))
+    const token = sessionToken.current
+
+    let data
+    try {
+      data = await searchProvider.getDetails(selected.value.placeid, { session: token })
+    } catch (error) {
+      return console.error(error)
+    }
+
+    // Maybe errors got through
+    if (data.status && data.status !== 200) {
+      return console.error(data.error.message)
+    }
+
+    const location = data.data
+    setValue(location.name)
+
+    onComplete && onComplete(new Selected(location, query, selected.score, selected.index))
+
+    setFocus(false)
   }, [onComplete, value])
 
   /**
@@ -146,21 +165,25 @@ SearchView.defaultProps = {
   placeholder: 'Search for a city',
   requestDelay: 200,
   title: 'Search Results',
-  onInputClear: noop,
   onComplete: noop,
   onClear: noop
 }
 
-SearchView.propsTypes = {
+const propTypes = {
   items: PropTypes.array,
   onClear: PropTypes.func,
-  onInputClear: PropTypes.func,
   onComplete: PropTypes.func,
   placeholder: PropTypes.string,
   requestDelay: PropTypes.number,
-  searchProvider: PropTypes.object,
+  searchProvider: PropTypes.shape({
+    search: PropTypes.func,
+    getDetails: PropTypes.func
+  }),
   suggestion: PropTypes.string,
   title: PropTypes.string
 }
 
+SearchView.propTypes = propTypes
+
 export default withSearchProvider(SearchView)
+export { propTypes }

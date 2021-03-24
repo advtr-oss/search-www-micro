@@ -44,10 +44,13 @@ export class SearchInput extends Component {
   }
 
   componentDidMount () {
+    /**
+     * Removed for now, until can see a way to work this better
+     * */
     // If it mounts with a value focus it
-    if (this.props.value && this.input.current) {
-      this.input.current.focus()
-    }
+    // if (this.props.value && this.input.current) {
+    //   this.input.current.focus()
+    // }
   }
 
   handleInput (event) {

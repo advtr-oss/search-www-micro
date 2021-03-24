@@ -32,9 +32,9 @@ const FormattedView = ({ placeholder, title, children }) => (
   <FormattedMessage {...placeholder}>
     {(placeholder) => (
       <FormattedMessage {...title}>
-        {(title) => (
-          children({ placeholder, title })
-        )}
+        {(title) => {
+          return children({ placeholder: placeholder[0], title: title[0] })
+        }}
       </FormattedMessage>
     )}
   </FormattedMessage>
@@ -43,11 +43,11 @@ const FormattedView = ({ placeholder, title, children }) => (
 FormattedView.propTypes = {
   placeholder: PropTypes.object,
   title: PropTypes.object,
-  children: PropTypes.node
+  children: PropTypes.func
 }
 
 const SearchCard = (props) => {
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState(!!props.poi)
 
   const { push } = useHistory()
   const tracking = useTracking()
@@ -71,20 +71,21 @@ const SearchCard = (props) => {
     tracking.trackGoogleAnalyticsEvent('event', ADVTR_QUERY_SCORE, {
       event_category: ADVTR_SEARCH_RESULTS_EVENT,
       event_label: 'search',
-      value: selected.value.score
+      value: selected.score
     })
 
     // All is done in the router
 
     // props.history.push(createURL(selected))
     onComplete(selected)
-    setSelected(selected.value)
+    setSelected(true)
   }, [onComplete, setSelected])
 
   // On Clear go to home, more so for when in PlaceAPI
   const handleClear = useCallback(() => {
     if (selected) push('/')
     onClear()
+    setSelected(false)
   }, [selected, onClear, push])
 
   const searchProvider = getSearchProvider()
@@ -97,7 +98,7 @@ const SearchCard = (props) => {
       <FormattedView title={messages.title} placeholder={messages.placeholder}>
         {({ title, placeholder }) => (
           <SearchView
-            onComplete={handleComplete} onClear={handleClear} suggestion={selected && selected.containers.entity.value}
+            onComplete={handleComplete} onClear={handleClear} suggestion={selected && props.poi.name}
             searchProvider={searchProvider} placeholder={placeholder} title={title}
           />
         )}
@@ -108,14 +109,15 @@ const SearchCard = (props) => {
 
 SearchCard.propTypes = {
   onComplete: PropTypes.func,
-  onClear: PropTypes.func
+  onClear: PropTypes.func,
+  poi: PropTypes.object
 }
 
 const mapStateToProps = createSelector(
   makeSelectCardInput(),
-  poi => {
+  selected => {
     return {
-      poi
+      poi: selected
     }
   }
 )

@@ -1,11 +1,12 @@
 // '/place/{nation}/{admin1}/{admin2}/{entity}?id=${place-id}'
 const createURL = (target) => {
-  const containers = target.containers
+  const containers = target.geoContainers.reduce((acc, el) => ({ ...acc, [el.type]: el.name }), { })
+
   const components = [
-    containers.nation?.value,
-    containers.admin1?.value,
-    containers.admin2?.value,
-    containers.entity.value
+    containers.Country,
+    containers.FirstLevelNationAdministrativeDivision,
+    containers.SecondLevelNationAdministrativeDivision,
+    target.name
   ].filter((el) => !!el).map((el) => el.toLowerCase().replace(/ /g, '-'))
 
   // TODO: Fix me

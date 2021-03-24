@@ -6,7 +6,7 @@ const selectSearchCard = state => state.searchCard || initialState
 const makeSelectCardInput = () =>
   createSelector(
     selectSearchCard,
-    state => state.poi
+    state => state.selected
   )
 
 export { selectSearchCard, makeSelectCardInput }

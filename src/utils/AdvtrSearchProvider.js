@@ -17,7 +17,7 @@ export default class AdvtrSearchProvider extends SearchProvider {
     return (await fetch(request)).json()
   }
 
-  async getDetails (placeid, options) {
+  async getDetails (placeid, options = {}) {
     const url = new URL(`https://api.${window.advtr.uri}/geolocation/data/${placeid}`)
 
     if (options.session) url.searchParams.append('sessiontoken', options.session)

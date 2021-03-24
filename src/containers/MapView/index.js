@@ -34,17 +34,24 @@ const MapView = ({ darkMode, selected }) => {
 
   const layer = darkMode ? layers.dark : layers.light
 
-  const locationToCoords = (point) => {
-    return [point.lat, point.lon]
+  // Could be handled on the server, maybe a query param
+  const immutableReverse = (array) => {
+    const temp = [...array]
+    temp.reverse()
+    return temp
+  }
+
+  const geoJSONToCoords = (location) => {
+    return location.type === 'Point' && immutableReverse(location.coordinates)
   }
 
   return (
     <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
-      {selected.location && <ChangeView center={locationToCoords(selected.location)} zoom={13} />}
+      {selected.geometry && <ChangeView center={geoJSONToCoords(selected.geometry.location)} zoom={13} />}
       <TileLayer {...layer} />
       {!isMobile && <ZoomControl position='bottomright' />}
       <FeatureGroup>
-        {selected.location && <Marker position={locationToCoords(selected.location)} />}
+        {selected.geometry && <Marker position={geoJSONToCoords(selected.geometry.location)} />}
       </FeatureGroup>
     </MapContainer>
   )
@@ -52,12 +59,7 @@ const MapView = ({ darkMode, selected }) => {
 
 MapView.propTypes = {
   darkMode: PropTypes.bool,
-  selected: PropTypes.shape({
-    location: PropTypes.shape({
-      lat: PropTypes.number,
-      lon: PropTypes.number
-    })
-  })
+  selected: PropTypes.object
 }
 
 /**

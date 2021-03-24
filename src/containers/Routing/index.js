@@ -1,18 +1,25 @@
 /**
- * Maybe not important, but could come in handy, just an idea for now
+ * This is really messy, but is probably more important than it looks
+ *
+ * Handles any routing and url parsing for now, should do switching when needs be
+ *
  * */
 
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 
-// import Wrapper from './Wrapper'
-
-import createURL from '../../utils/placeRouterURL'
 import SearchCard from '../SearchCard'
 
+import { selectPOI } from '../SearchCard/actions'
+import createURL from '../../utils/placeRouterURL'
+import getSearchProvider from '../../hooks/getSearchProvider'
+
 function RoutingProvider ({ location, history, push, ...rest }) {
+  const searchProvider = getSearchProvider()
+  const dispatch = useDispatch()
+
   useEffect(() => {
     if (rest.poi && !rest.poi.loading) {
       const url = createURL(rest.poi)
@@ -30,13 +37,25 @@ function RoutingProvider ({ location, history, push, ...rest }) {
     }
   }, [push, rest.poi])
 
+  // If someone sends a link we need to know
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
-    if (params.has('id') && !rest.poi) {
-      const data = params.get('id')
-      console.log('routing', data)
+    const lookup = async (id) => {
+      let data
+      try {
+        data = await searchProvider.getDetails(id)
+      } catch (err) {
+        return console.error(err)
+      }
+
+      return data.data
     }
-  }, [location.search])
+
+    const params = new URLSearchParams(location.search)
+    if (params.has('id') && rest.poi.loading) {
+      const data = params.get('id')
+      lookup(data).then((response) => dispatch(selectPOI(response)))
+    }
+  }, [location.search, dispatch])
 
   return (
     <>
