@@ -12,6 +12,7 @@ import { connect, useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 
 import SearchCard from '../SearchCard'
+import Detail from '../Detail'
 
 import { selectPOI } from '../SearchCard/actions'
 import createURL from '../../utils/placeRouterURL'
@@ -60,6 +61,7 @@ function RoutingProvider ({ location, history, push, ...rest }) {
 
   return (
     <Switch>
+      <Route exact path='/place/*' component={Detail} />
       <Route path='*' component={SearchCard} />
     </Switch>
   )
