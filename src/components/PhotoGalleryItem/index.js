@@ -11,7 +11,6 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import Wrapper from './Wrapper'
-import Glow from '../Glow'
 
 const PhotoGalleryItem = (props) => {
   const {

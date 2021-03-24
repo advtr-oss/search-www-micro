@@ -5,7 +5,7 @@
  * maybe, or have a mocked API ??
  *
  * */
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
@@ -46,13 +46,16 @@ FormattedView.propTypes = {
   children: PropTypes.func
 }
 
-const SearchCard = (props) => {
-  const [selected, setSelected] = useState(!!props.poi)
+const SearchCard = ({ onComplete, onClear, poi, ...rest }) => {
+  const [selected, setSelected] = useState(!!poi)
 
   const { push } = useHistory()
   const tracking = useTracking()
 
-  const { onComplete, onClear } = props
+  // Keep selected up to date
+  useEffect(() => {
+    setSelected(!!poi)
+  }, [poi])
 
   // Handle analytics
   const handleComplete = useCallback((selected) => {
@@ -76,7 +79,6 @@ const SearchCard = (props) => {
 
     // All is done in the router
 
-    // props.history.push(createURL(selected))
     onComplete(selected)
     setSelected(true)
   }, [onComplete, setSelected])
@@ -98,7 +100,7 @@ const SearchCard = (props) => {
       <FormattedView title={messages.title} placeholder={messages.placeholder}>
         {({ title, placeholder }) => (
           <SearchView
-            onComplete={handleComplete} onClear={handleClear} suggestion={selected && props.poi.name}
+            onComplete={handleComplete} onClear={handleClear} suggestion={selected && poi.name}
             searchProvider={searchProvider} placeholder={placeholder} title={title}
           />
         )}

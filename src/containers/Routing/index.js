@@ -7,6 +7,7 @@
 
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { Switch, Route } from 'react-router-dom'
 import { connect, useDispatch } from 'react-redux'
 import { push } from 'connected-react-router'
 
@@ -58,9 +59,9 @@ function RoutingProvider ({ location, history, push, ...rest }) {
   }, [location.search, dispatch])
 
   return (
-    <>
-      <SearchCard />
-    </>
+    <Switch>
+      <Route path='*' component={SearchCard} />
+    </Switch>
   )
 }
 

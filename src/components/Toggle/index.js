@@ -38,6 +38,7 @@ class Toggle extends Component {
   // Not sure on this
   componentDidUpdate (prevProps, prevState, snapshot) {
     if (prevProps.checked !== this.props.checked) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ checked: !!this.props.checked })
     }
   }
@@ -54,7 +55,7 @@ class Toggle extends Component {
     }
 
     // Grab the ref or the prop
-    const checked = this.props.hasOwnProperty('checked') ? this.props.checked : ref.checked
+    const checked = this.props.checked ? this.props.checked : ref.checked
     this.setState({
       checked
     }, () => {
@@ -103,7 +104,7 @@ class Toggle extends Component {
         </Track>
         <Thumb checked={this.state.checked} />
         <Checkbox
-          type='checkbox' aria-label={this.props['aria-label']} ref={(ref) => this.input = ref}
+          type='checkbox' aria-label={this.props['aria-label']} ref={(ref) => { this.input = ref }}
           onFocus={this.handleFocus} onBlur={this.handleBlur} disabled={this.props.disabled}
         />
       </Wrapper>

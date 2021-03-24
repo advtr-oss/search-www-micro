@@ -8,7 +8,7 @@
  * Might be more generic in the future but will work for
  * what I needed it to
  * */
-import React, { useEffect, useState } from 'react'
+import React, { } from 'react'
 import PropTypes from 'prop-types'
 
 import Grid from './Grid'
@@ -23,6 +23,12 @@ const Item = ({ src, alt, color }) => (
     <PhotoGalleryItem src={src} alt={alt} color={color} />
   </li>
 )
+
+Item.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired
+}
 
 // Could go in its own component maybe ??
 const LoadingItem = () => (
