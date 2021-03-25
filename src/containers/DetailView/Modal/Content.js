@@ -15,18 +15,18 @@ const Content = styled(Card)`
   order: 1;
   margin-bottom: 0;
   
-  ${({ hidden }) => hidden
+  ${({ open }) => open
   ? css`
-    transition: max-height 0.15s ease-out;
-    max-height: 20%;
-  `
-  : css`
     max-height: 50%;
     transition: max-height 0.15s ease-in;
     
     & > div {
       overflow-y: scroll !important;
     }
+  `
+  : css`
+    transition: max-height 0.15s ease-out;
+    max-height: 20%;
   `}
   
   & > ${Section} {
