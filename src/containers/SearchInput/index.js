@@ -1,10 +1,9 @@
 /**
+ *
  * SearchInput.js
  *
  * The main input container to handle the searching
  * of a location
- *
- * // TODO: Move redux if not needed here
  *
  * */
 
@@ -40,6 +39,14 @@ export class SearchInput extends Component {
     this.state = {
       active: !!this.props.value,
       clear: !this.props.value
+    }
+  }
+
+  // Seems to fix an issue where when detail page appears the state resets out
+  static getDerivedStateFromProps (props, state) {
+    return {
+      active: !!props.value,
+      clear: !props.value
     }
   }
 
