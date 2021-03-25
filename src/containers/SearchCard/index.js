@@ -60,20 +60,20 @@ const SearchCard = ({ onComplete, onClear, poi, ...rest }) => {
   // Handle analytics
   const handleComplete = useCallback((selected) => {
     tracking.trackGoogleAnalyticsEvent('event', ADVTR_QUERY_CHARS, {
-      event_category: ADVTR_SEARCH_RESULTS_EVENT,
-      event_label: 'search',
+      category: ADVTR_SEARCH_RESULTS_EVENT,
+      label: 'search',
       value: selected.queryString
     })
 
     tracking.trackGoogleAnalyticsEvent('event', ADVTR_SELECTED_INDEX, {
-      event_category: ADVTR_SEARCH_RESULTS_EVENT,
-      event_label: 'search',
+      category: ADVTR_SEARCH_RESULTS_EVENT,
+      label: 'search',
       value: selected.index
     })
 
     tracking.trackGoogleAnalyticsEvent('event', ADVTR_QUERY_SCORE, {
-      event_category: ADVTR_SEARCH_RESULTS_EVENT,
-      event_label: 'search',
+      category: ADVTR_SEARCH_RESULTS_EVENT,
+      label: 'search',
       value: selected.score
     })
 

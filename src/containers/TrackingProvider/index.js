@@ -3,12 +3,16 @@
  * */
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactGA from 'react-ga'
 
 import TrackingContext from '../../contexts/TrackingContext'
 
 const TrackingProvider = ({ children }) => {
-  const track = (...rest) => {
-    console.log(rest)
+  const track = (method, action, options) => {
+    ReactGA[method]({
+      ...options,
+      action
+    })
   }
 
   return (

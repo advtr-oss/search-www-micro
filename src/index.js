@@ -16,6 +16,10 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import history from './utils/history'
 
+// Analytics
+import './utils/ga'
+import sendWebVitalsToGA from './utils/webVitalsAnalytics'
+
 // import serviceWorker from './serviceWorker'
 import reportWebVitals from './reportWebVitals'
 
@@ -87,4 +91,4 @@ if (!window.Intl) {
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 // serviceWorker.unregister();
-reportWebVitals(console.log)
+reportWebVitals(sendWebVitalsToGA)
