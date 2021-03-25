@@ -9,7 +9,7 @@ import withDetail from '../../../hooks/withDetails'
 const DetailView = ({ photoQuery, primary, secondary, placeid }) => (
   <Wrapper>
     <POIView className='poi'>
-      <PhotoSection title={photoQuery} />
+      <PhotoSection query={photoQuery} />
       <HeaderSection primary={primary} secondary={secondary} />
       <ShareSection placeid={placeid} />
     </POIView>

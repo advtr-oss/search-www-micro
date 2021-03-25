@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react'
 
 import Wrapper from './Wrapper'
+import Content from './Content'
 
 import { PhotoSection, HeaderSection, ShareSection, propTypes, POIView } from '../Shared'
 
 import withDetail from '../../../hooks/withDetails'
-import Content from './Content'
+import useTracking from '../../../hooks/useTracking'
+import { ADVTR_DETAIL_DISPLAYED_MODAL, ADVTR_DETAIL_EVENT } from '../../../utils/analyticsConstants'
 
 const DetailModalView = ({ photoQuery, primary, secondary, placeid }) => {
   const [hidden, setHidden] = useState(true)
 
+  const { trackGoogleAnalyticsEvent } = useTracking()
+
   useEffect(() => {
-    console.log('modal')
+    trackGoogleAnalyticsEvent('event', ADVTR_DETAIL_DISPLAYED_MODAL, {
+      category: ADVTR_DETAIL_EVENT,
+      label: 'detail',
+      value: window.innerWidth
+    })
   }, [])
 
   return (
@@ -21,7 +29,7 @@ const DetailModalView = ({ photoQuery, primary, secondary, placeid }) => {
           <HeaderSection primary={primary} secondary={secondary} />
           {!hidden && (
             <>
-              <PhotoSection title={photoQuery} />
+              <PhotoSection query={photoQuery} />
               <ShareSection id={placeid} />
             </>
           )}

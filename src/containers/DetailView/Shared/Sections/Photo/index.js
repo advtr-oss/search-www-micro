@@ -11,7 +11,7 @@ import Wrapper from './Wrapper'
 import PhotoGallery from '../../../../../components/PhotoGallery'
 
 const PhotoSection = (props) => {
-  const { error, isLoading, photos } = useFetch(props.title)
+  const { error, isLoading, photos } = useFetch(props.query)
 
   // Show nothing
   if (error) return null
@@ -25,7 +25,7 @@ const PhotoSection = (props) => {
 }
 
 PhotoSection.propTypes = {
-  title: PropTypes.string.isRequired
+  query: PropTypes.string.isRequired
 }
 
 export default PhotoSection
