@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
 
-import Section from '../../components/Section'
-import Card from '../../components/Card'
+import Section from '../../../components/Section'
+import Card from '../../../components/Card'
 
-const Wrapper = styled(Card)`
+const Content = styled(Card)`
   position: absolute;
   bottom: 0;
   border-bottom-left-radius: 0;
@@ -16,11 +16,11 @@ const Wrapper = styled(Card)`
   margin-bottom: 0;
   
   ${({ hidden }) => hidden
-? css`
+  ? css`
     transition: max-height 0.15s ease-out;
     max-height: 20%;
   `
-: css`
+  : css`
     max-height: 50%;
     transition: max-height 0.15s ease-in;
     
@@ -39,4 +39,4 @@ const Wrapper = styled(Card)`
   }
 `
 
-export default Wrapper
+export default Content

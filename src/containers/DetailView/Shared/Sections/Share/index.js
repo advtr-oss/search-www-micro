@@ -9,8 +9,8 @@ import PropTypes from 'prop-types'
 import IconItem from './IconItem'
 import IconGroup from './IconGroup'
 
-import Section from '../../../../components/Section'
-import FeatherIcon from '../../../../components/Icons/Feather'
+import Section from '../../../../../components/Section'
+import FeatherIcon from '../../../../../components/Icons/Feather'
 
 const ShareSection = (props) => {
   const openSharebox = async (event) => {

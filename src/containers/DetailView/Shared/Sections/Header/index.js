@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import Wrapper from './Wrapper'
 
-import Section from '../../../../components/Section'
-import Header from '../../../../components/Header'
+import Section from '../../../../../components/Section'
+import Header from '../../../../../components/Header'
 
 const HeaderSection = (props) => {
   return (

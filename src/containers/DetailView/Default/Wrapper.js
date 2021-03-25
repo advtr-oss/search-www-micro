@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import Section from '../../components/Section'
-import Card from '../../components/Card'
+import Section from '../../../components/Section'
+import Card from '../../../components/Card'
 
 const Wrapper = styled(Card)`
   order: 1;

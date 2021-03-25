@@ -10,6 +10,8 @@ Preferably should be built generic, as certain ideas will be shared with multipl
 
 ## Architecture
 
+> Very, very simplified, and doesn't show where redux connects
+
 ```
 +---------------+                                                                      
 |               |                                                                      
@@ -73,3 +75,11 @@ Preferably should be built generic, as certain ideas will be shared with multipl
 > - \** This is a collection of containers, with MapProvider handling the map updates, and MapView displaying the map
 >
 > - \*** This is a HOC for both `DetailCard` and `DetailCardModal`, should note this isn't the way it will stay, soon to change
+
+```jsx
+const Detail = ({ isMobile }) => (
+  <DetailCard>
+    {props} => isMobile ? <DetailViewModal {...props} /> : <DetailView {...props} />
+  </DetailCard>
+)
+```

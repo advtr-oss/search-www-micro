@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import useFetch from './hooks'
 
 import Wrapper from './Wrapper'
-import PhotoGallery from '../../../../components/PhotoGallery'
+import PhotoGallery from '../../../../../components/PhotoGallery'
 
 const PhotoSection = (props) => {
   const { error, isLoading, photos } = useFetch(props.title)

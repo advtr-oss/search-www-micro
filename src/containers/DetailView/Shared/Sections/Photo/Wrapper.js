@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Section from '../../../../components/Section'
+import Section from '../../../../../components/Section'
 
 const Wrapper = styled(Section)`
   padding: 0px;
