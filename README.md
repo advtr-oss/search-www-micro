@@ -10,7 +10,7 @@ Preferably should be built generic, as certain ideas will be shared with multipl
 
 ## Architecture
 
-```bash
+```
 +---------------+                                                                      
 |               |                                                                      
 |               |                                                  +------------------+
@@ -45,7 +45,7 @@ Preferably should be built generic, as certain ideas will be shared with multipl
 |                |                +-------------------+             +-----------------+
 +----------------+                          ^                                          
         |                                   |                                ^         
-        |                                   |                                |         
+        |                                   | /place/*                       | /*         
         |                                   |                                |         
         v                                                                    |         
 +----------------+                 +-----------------+              +-----------------+
