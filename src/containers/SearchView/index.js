@@ -62,6 +62,7 @@ function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, o
       // Should use proper location data here, be it based on where, or the centre is??
       data = await searchProvider.search(query, { location: bias, session: token })
     } catch (error) {
+      // Add a notification layer to show these of too
       return console.error(error)
     }
 

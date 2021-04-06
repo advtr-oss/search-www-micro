@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import Theme from '../Theme'
-import Fonts from '../../components/Fonts'
 
 import TrackingProvider from '../TrackingProvider'
 import GlobalStyle from '../../components/GlobalStyle'
@@ -24,7 +23,6 @@ export default function App () {
     <Theme>
       <TrackingProvider>
         <GlobalStyle />
-        <Fonts />
         <Switch>
           <Route path='*' component={SearchPage} />
         </Switch>

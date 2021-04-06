@@ -16,7 +16,6 @@ export const initialState = {
 
 const searchCardReducer = (state = initialState, action) =>
   produce(state, draft => {
-    console.log(state, draft, action)
     switch (action.type) {
       case CLEARED_CARD:
         draft.selected = initialState.selected

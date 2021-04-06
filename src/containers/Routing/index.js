@@ -42,19 +42,14 @@ function RoutingProvider ({ location, history, push, ...rest }) {
   // If someone sends a link we need to know
   useEffect(() => {
     const lookup = async (id) => {
-      let data
-      try {
-        data = await searchProvider.getDetails(id)
-      } catch (err) {
-        return console.error(err)
-      }
-
+      const data = await searchProvider.getDetails(id)
       return data.data
     }
 
     const params = new URLSearchParams(location.search)
     if (params.has('id') && rest.poi.loading) {
       const data = params.get('id')
+      // Look up the response
       lookup(data).then((response) => dispatch(selectPOI(response)))
     }
   }, [location.search, dispatch])

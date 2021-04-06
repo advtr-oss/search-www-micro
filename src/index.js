@@ -33,7 +33,10 @@ import configureStore from './configureStore'
 
 // Import i18n messages
 import { translationMessages } from './i18n'
+
+// Providers
 import DeviceProvider from './containers/DeviceProvider'
+import Fonts from './components/Fonts'
 
 // Create redux store with history
 const initialState = {}
@@ -45,6 +48,7 @@ const render = messages => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
+        <Fonts />
         <LanguageProvider messages={messages}>
           <DeviceProvider>
             <ConnectedRouter history={history}>
@@ -59,9 +63,13 @@ const render = messages => {
 }
 
 // Global objects
-window.advtr = {
-  uri: 'advtr.co.uk'
-}
+window.advtr = Object.assign(window.advtr || {}, {
+  env: process.env.NODE_ENV,
+  uri: 'advtr.co.uk',
+  router: history,
+  languages: translationMessages,
+  store
+})
 
 if (module.hot) {
   // Hot reloadable React components and translation json files
