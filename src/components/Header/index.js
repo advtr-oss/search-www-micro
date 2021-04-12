@@ -32,8 +32,8 @@ const className = (level) => htmlElement(level) ? null : level
  * */
 const Header = (props) => (
   <Wrapper
-    as={htmlElement(props.level) ? props.level : 'div'}
-    className={clsx(className(props.level), props.className)}
+    as={props.as ? props.as : htmlElement(props.level) ? props.level : 'div'}
+    className={clsx(props.as ? props.level : className(props.level), props.className)}
   >
     {props.children ? props.children : props.title}
   </Wrapper>
@@ -44,6 +44,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
+  as: PropTypes.string,
   className: PropTypes.string,
   level: PropTypes.oneOf(headerLevels),
   title: PropTypes.string,

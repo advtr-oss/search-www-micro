@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { createSelector } from 'reselect'
 
 import messages from './messages'
@@ -24,6 +24,7 @@ import useTracking from '../../hooks/useTracking'
 import { ADVTR_SEARCH_RESULTS_EVENT, ADVTR_SELECTED_INDEX, ADVTR_QUERY_SCORE } from '../../utils/analyticsConstants'
 import getSearchProvider from '../../hooks/getSearchProvider'
 import FeatherIcon from '../../components/Icons/Feather'
+import { openModal } from '../SettingModal/actions'
 
 /**
  * Clean up the code a little
@@ -51,6 +52,7 @@ const SearchCard = ({ onComplete, onClear, poi, ...rest }) => {
 
   const { push } = useHistory()
   const tracking = useTracking()
+  const dispatch = useDispatch()
 
   // Keep selected up to date
   useEffect(() => {
@@ -99,7 +101,7 @@ const SearchCard = ({ onComplete, onClear, poi, ...rest }) => {
   return (
     <Wrapper className={clsx(selected && 'has-poi')} selected={selected}>
       <span>
-        <FeatherIcon type='menu' />
+        <FeatherIcon onClick={() => dispatch(openModal())} type='menu' />
       </span>
       <FormattedView title={messages.title} placeholder={messages.placeholder}>
         {({ title, placeholder }) => (

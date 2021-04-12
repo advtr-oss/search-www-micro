@@ -11,6 +11,7 @@ import GlobalStyle from '../../components/GlobalStyle'
 
 import SearchPage from '../SearchPage'
 import AcknowledgmentsPage from '../Acknowledgments'
+import SettingModal from '../SettingModal'
 
 const set = (obj) => {
   window.ga && ReactGA.set(obj)
@@ -36,6 +37,7 @@ export default function App () {
           <Route path='/acknowledgments' component={AcknowledgmentsPage} />
           <Route path='*' component={SearchPage} />
         </Switch>
+        <SettingModal />
       </TrackingProvider>
     </Theme>
   )

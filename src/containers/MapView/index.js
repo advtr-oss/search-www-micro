@@ -2,7 +2,7 @@
  * Map view, this should be heavily linked with redux and update when we get a
  * new marker, with plans for GeoJSON in the future
  * */
-import React, { } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { MapContainer, TileLayer, ZoomControl, FeatureGroup, Marker, useMap } from 'react-leaflet'
@@ -29,10 +29,13 @@ const ChangeView = ({ center, zoom }) => {
 }
 
 const MapView = ({ darkMode, selected }) => {
+  const [layer, setLayer] = useState(darkMode ? layers.dark : layers.light)
   const { setMap } = useMapProvider()
   const { isMobile } = useDeviceState()
 
-  const layer = darkMode ? layers.dark : layers.light
+  useEffect(() => {
+    setLayer(darkMode ? layers.dark : layers.light)
+  }, [darkMode])
 
   // Could be handled on the server, maybe a query param
   const immutableReverse = (array) => {
@@ -46,7 +49,7 @@ const MapView = ({ darkMode, selected }) => {
   }
 
   return (
-    <MapContainer center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
+    <MapContainer key={darkMode} center={[0, 0]} zoom={13} scrollWheelZoom={false} zoomControl={false} whenCreated={setMap}>
       {selected.geometry && <ChangeView center={geoJSONToCoords(selected.geometry.location)} zoom={13} />}
       <TileLayer {...layer} />
       {!isMobile && <ZoomControl position='bottomright' />}
