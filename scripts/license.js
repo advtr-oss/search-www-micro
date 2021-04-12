@@ -111,6 +111,7 @@ readPackage.then((buffer) => JSON.parse(buffer)).then((pkg) => {
 
       const tree = {
         project: pkg.name,
+        date: Date.now(),
         version: pkg.version,
         dependencies: {}
       }
@@ -130,7 +131,7 @@ readPackage.then((buffer) => JSON.parse(buffer)).then((pkg) => {
 
       writingMetaTask.then(() => {
         writingMetaTaskDone()
-        process.exit(1)
+        process.exit(0)
       })
     })
   })

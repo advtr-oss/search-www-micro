@@ -1,4 +1,6 @@
 {
+  "app.containers.Acknowledgment.header": "Remerciements",
+  "app.containers.Acknowledgment.lastUpdated": "Dernière mise à jour",
   "app.containers.App.header": "",
   "app.containers.SearchCard.placeholder": "Trouver une ville",
   "app.containers.SearchCard.title": "Résultats de recherche"

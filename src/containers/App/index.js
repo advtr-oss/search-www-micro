@@ -10,6 +10,11 @@ import TrackingProvider from '../TrackingProvider'
 import GlobalStyle from '../../components/GlobalStyle'
 
 import SearchPage from '../SearchPage'
+import AcknowledgmentsPage from '../Acknowledgments'
+
+const set = (obj) => {
+  window.ga && ReactGA.set(obj)
+}
 
 export default function App () {
   // Set a session token, for our logging purposes
@@ -17,9 +22,9 @@ export default function App () {
     const session = nanoid()
     if (window && !window.sessionStorage.getItem('sessionToken')) {
       window.sessionStorage.setItem('sessionToken', session)
-      ReactGA.set({ dimension1: session })
+      set({ dimension1: session })
     } else if (window.sessionStorage.getItem('sessionToken')) {
-      ReactGA.set({ dimension1: window.sessionStorage.getItem('sessionToken') })
+      set({ dimension1: window.sessionStorage.getItem('sessionToken') })
     }
   })
 
@@ -28,6 +33,7 @@ export default function App () {
       <TrackingProvider>
         <GlobalStyle />
         <Switch>
+          <Route path='/acknowledgments' component={AcknowledgmentsPage} />
           <Route path='*' component={SearchPage} />
         </Switch>
       </TrackingProvider>

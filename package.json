@@ -15,6 +15,7 @@
     "intl": "^1.2.5",
     "leaflet": "^1.7.1",
     "lodash": "^4.17.21",
+    "luxon": "^1.26.0",
     "nanoid": "^3.1.22",
     "polished": "^4.1.1",
     "prop-types": "^15.7.2",
@@ -39,7 +40,7 @@
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint ./src --fix",
-    "prebuild": "npm run extract && npm run lint",
+    "prebuild": "npm run extract && npm run acknowledgments && npm run lint",
     "build": "react-scripts build",
     "prebuild:profile": "npm run prebuild",
     "build:profile": "react-scripts build --profile",
@@ -51,7 +52,8 @@
     "serve:profile": "serve -s build",
     "preextract": "bash ./scripts/pre-extract.sh",
     "extract": "node ./scripts/extract-intl.js",
-    "postextract": "bash ./scripts/post-extract.sh"
+    "postextract": "bash ./scripts/post-extract.sh",
+    "acknowledgments": "node ./scripts/license.js"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
