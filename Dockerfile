@@ -1,5 +1,7 @@
 FROM node:15.13-alpine3.13 as build
 
+ARG REACT_APP_GOOGLE_ANALYTICS
+
 # Add bash for just running
 # some build scripts
 RUN apk update && \
@@ -7,6 +9,7 @@ RUN apk update && \
 
 # Add any args or env here
 ENV GENERATE_SOURCEMAP=false
+ENV REACT_APP_GOOGLE_ANALYTICS=$REACT_APP_GOOGLE_ANALYTICS
 
 WORKDIR /app
 

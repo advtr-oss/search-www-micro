@@ -14,7 +14,7 @@ const useFetch = (query) => {
 
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:9999/photos/search?q=${query}`, { signal })
+        const res = await fetch(`https://assets.${window.advtr.uri}/photos/search?q=${query}`, { signal })
         const data = await res.json()
 
         const photos = data.results.reduce((acc, curr) => {

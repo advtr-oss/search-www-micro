@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import Wrapper from './Wrapper'
 import Content from './Content'
 
-import { PhotoSection, HeaderSection, ShareSection, propTypes, POIView } from '../Shared'
+import { PhotoSection, HeaderSection/*, ShareSection */, propTypes, POIView } from '../Shared'
 
 import withDetail from '../../../hooks/withDetails'
 import useTracking from '../../../hooks/useTracking'
@@ -65,7 +65,7 @@ const DetailModalView = ({ photoQuery, primary, secondary, placeid, isOpen }) =>
           {open && (
             <>
               <PhotoSection query={photoQuery} />
-              <ShareSection id={placeid} />
+              {/* <ShareSection id={placeid} /> */}
             </>
           )}
         </POIView>

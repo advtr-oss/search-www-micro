@@ -21,7 +21,7 @@ import SearchView from '../SearchView'
 import Wrapper from './Wrapper'
 
 import useTracking from '../../hooks/useTracking'
-import { ADVTR_SEARCH_RESULTS_EVENT, ADVTR_QUERY_CHARS, ADVTR_SELECTED_INDEX, ADVTR_QUERY_SCORE } from '../../utils/analyticsConstants'
+import { ADVTR_SEARCH_RESULTS_EVENT, ADVTR_SELECTED_INDEX, ADVTR_QUERY_SCORE } from '../../utils/analyticsConstants'
 import getSearchProvider from '../../hooks/getSearchProvider'
 import FeatherIcon from '../../components/Icons/Feather'
 
@@ -59,11 +59,15 @@ const SearchCard = ({ onComplete, onClear, poi, ...rest }) => {
 
   // Handle analytics
   const handleComplete = useCallback((selected) => {
-    tracking.trackGoogleAnalyticsEvent('event', ADVTR_QUERY_CHARS, {
-      category: ADVTR_SEARCH_RESULTS_EVENT,
-      label: 'search',
-      value: selected.queryString
-    })
+    /**
+     * Hide this for now, maybe will look at seeing if I can get it to work
+     * or add different analytics tool
+     * */
+    // tracking.trackGoogleAnalyticsEvent('event', ADVTR_QUERY_CHARS, {
+    //   category: ADVTR_SEARCH_RESULTS_EVENT,
+    //   label: 'search',
+    //   value: selected.queryString
+    // })
 
     tracking.trackGoogleAnalyticsEvent('event', ADVTR_SELECTED_INDEX, {
       category: ADVTR_SEARCH_RESULTS_EVENT,
