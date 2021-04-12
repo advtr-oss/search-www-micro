@@ -6,6 +6,8 @@ services:
     dockerfile: .
     default_tag: development
     rm: true
+    build_arguments:
+      - REACT_APP_GOOGLE_ANALYTICS=ga
 
 registry:
   docker:
