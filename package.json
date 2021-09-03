@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "clsx": "^1.1.1",
     "connected-react-router": "^6.9.1",
-    "immer": "^8.0.1",
+    "immer": "^9.0.6",
     "immutable": "^4.0.0-rc.12",
     "intl": "^1.2.5",
     "leaflet": "^1.7.1",
