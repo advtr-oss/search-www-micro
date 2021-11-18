@@ -1,5 +1,7 @@
 /**
  *
+ * TODO: Have this as a dev/prod providers
+ *
  * Global class for SearchProvider, should be
  * extended and updated for any provider we may use
  * be it a API change, or even just removing the API

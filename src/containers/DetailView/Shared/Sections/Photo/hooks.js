@@ -1,5 +1,16 @@
 import { useEffect, useState, useRef } from 'react'
 
+// Create the URI with the new createURI function
+const createURI = (query) => {
+  const url = new URL(`${window.advtr.createURI({
+    path: '-/api/assets'
+  })}/photos/search`)
+
+  url.searchParams.append('query', query)
+
+  return url.href
+}
+
 const useFetch = (query) => {
   const isMounted = useRef(true)
   const [state, setState] = useState({
@@ -14,7 +25,7 @@ const useFetch = (query) => {
 
     const fetchData = async () => {
       try {
-        const res = await fetch(`https://assets.${window.advtr.uri}/photos/search?q=${query}`, { signal })
+        const res = await fetch(createURI(query), { signal })
         const data = await res.json()
 
         const photos = data.results.reduce((acc, curr) => {

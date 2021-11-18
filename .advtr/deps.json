@@ -1,0 +1,29 @@
+{
+  "advtr/where": {
+    "tag": "main",
+    "deps": {
+      "zipkin": {
+        "repo": "openzipkin/zipkin",
+        "args": "--logging.level.zipkin2=DEBUG"
+      }
+  },
+  "advtr/unsplash-proxy": {
+    "tag": "zipkin",
+    "deps": {
+      "zipkin": {
+        "repo": "openzipkin/zipkin",
+        "args": "--logging.level.zipkin2=DEBUG"
+      },
+      "rejson": "redislabs/rejson"
+    }
+  },
+  "advtr/geolookup": {
+    "tag": "mock"
+  },
+  "advtr/geospatial": {
+    "tag": "mock",
+    "deps": {
+      "mongo": "mongo"
+    }
+  }
+}

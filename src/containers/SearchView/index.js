@@ -43,7 +43,7 @@ function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, o
   })
 
   const handleBias = () => {
-    if (window && window.localStorage.getItem('requestInfo')) { return JSON.parse(window.localStorage.getItem('requestInfo')).location }
+    if (window && window.localStorage.getItem('requestInfo')) { return JSON.parse(window.localStorage.getItem('requestInfo')).result.location }
 
     if (window && window.localStorage.getItem('mapPosition')) { return JSON.parse(window.localStorage.getItem('mapPosition')) }
 
@@ -136,7 +136,7 @@ function SearchView ({ items: initialItems, suggestion, requestDelay, onClear, o
       return console.error(data.error.message)
     }
 
-    const location = data.data
+    const location = data.result
     setValue(location.name)
 
     onComplete && onComplete(new Selected(location, query, selected.score, selected.index))

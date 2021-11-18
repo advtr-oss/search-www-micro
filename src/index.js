@@ -33,6 +33,7 @@ import configureStore from './configureStore'
 
 // Import i18n messages
 import { translationMessages } from './i18n'
+import createURI from './utils/uri'
 
 // Providers
 import DeviceProvider from './containers/DeviceProvider'
@@ -65,7 +66,7 @@ const render = messages => {
 // Global objects
 window.advtr = Object.assign(window.advtr || {}, {
   env: process.env.NODE_ENV,
-  uri: 'advtr.co.uk',
+  createURI: createURI,
   router: history,
   languages: translationMessages,
   store

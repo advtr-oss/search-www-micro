@@ -43,7 +43,7 @@ function RoutingProvider ({ location, history, push, ...rest }) {
   useEffect(() => {
     const lookup = async (id) => {
       const data = await searchProvider.getDetails(id)
-      return data.data
+      return data.result
     }
 
     const params = new URLSearchParams(location.search)

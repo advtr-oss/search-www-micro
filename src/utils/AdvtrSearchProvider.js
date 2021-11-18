@@ -7,8 +7,12 @@ export default class AdvtrSearchProvider extends SearchProvider {
   }
 
   async search (query, options) {
-    const url = new URL(`https://api.${window.advtr.uri}/autocomplete`)
-    url.searchParams.append('input', query)
+    const url = new URL(`${window.advtr.createURI({
+      path: '-/api/geolookup'
+    })}/geolookup`)
+
+    url.searchParams.append('query', query)
+    console.log(options)
 
     // These should come from both MapContext and redux respectively
     if (options.location) url.searchParams.append('location', `${options.location.lat},${options.location.lon}`)
@@ -19,7 +23,9 @@ export default class AdvtrSearchProvider extends SearchProvider {
   }
 
   async getDetails (placeid, options = {}) {
-    const url = new URL(`https://api.${window.advtr.uri}/details/${placeid}`)
+    const url = new URL(`${window.advtr.createURI({
+      path: '-/api/geolocation'
+    })}/geolocation/${placeid}`)
 
     if (options.session) url.searchParams.append('sessiontoken', options.session)
 
