@@ -1,15 +1,14 @@
 import SearchProvider from './SearchProvider'
-import JSONFetch from './advtr-fetch'
+import JSONFetch from '../advtr-fetch'
 
+// TODO: #27
 export default class AdvtrSearchProvider extends SearchProvider {
   get name () {
     return 'ADVTR_SEARCH_PROVIDER'
   }
 
   async search (query, options) {
-    const url = new URL(`${window.advtr.createURI({
-      path: '-/api/geolookup'
-    })}/geolookup`)
+    const url = new URL(`${window.advtr.api.service('geolookup')}/geolookup`)
 
     url.searchParams.append('query', query)
     console.log(options)
@@ -23,9 +22,7 @@ export default class AdvtrSearchProvider extends SearchProvider {
   }
 
   async getDetails (placeid, options = {}) {
-    const url = new URL(`${window.advtr.createURI({
-      path: '-/api/geolocation'
-    })}/geolocation/${placeid}`)
+    const url = new URL(`${window.advtr.api.service('geolocation')}/geolocation/${placeid}`)
 
     if (options.session) url.searchParams.append('sessiontoken', options.session)
 

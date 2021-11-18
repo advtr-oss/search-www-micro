@@ -12,6 +12,43 @@ The main map view and tester for what will be `https://map.advtr.co.uk`, where w
 - [ ] All round refactoring
 - [ ] Tests
 
+## API's
+
+### Where
+
+```shell
+# PROD ${{scheme}}://${{service}}.${{host}}
+$ curl https://where.advtr.co.uk
+# DEV ${{scheme}}://${{host}}/-/api/${{service}}
+$ curl http://127.0.0.1/-/api/where
+```
+
+### Geospatial
+
+```shell
+# PROD ${{scheme}}://api.${{host}}/${{service}}
+$ curl https://api.advtr.co.uk/geo{location|lookup}
+# DEV ${{scheme}}://${{host}}/-/api/${{service}}
+$ curl http://127.0.0.1/-/api/geo{location|lookup}
+```
+
+### Photos
+
+```shell
+# PROD ${{scheme}}://api.${{host}}/${{service}}
+$ curl https://api.advtr.co.uk/photos
+# DEV ${{scheme}}://${{host}}/-/api/${{service}}
+$ curl http://127.0.0.1/-/api/photos
+```
+
+### CDN
+
+This is the only constant as of now
+
+```shell
+# PROD/DEV https://cdn.advtr.co.uk
+$ curl https://cdn.advtr.co.uk
+```
 
 ## Components
 

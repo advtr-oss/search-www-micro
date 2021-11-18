@@ -1,4 +1,4 @@
-import AdvtrSearchProvider from '../../utils/AdvtrSearchProvider'
+import AdvtrSearchProvider from '../../utils/providers/AdvtrSearchProvider'
 
 // Handle the provider based on env/ab testing
 const provider = (ab = false) => new AdvtrSearchProvider()

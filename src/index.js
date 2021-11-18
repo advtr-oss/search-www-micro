@@ -29,11 +29,11 @@ import App from './containers/App'
 // Import Language Provider
 import LanguageProvider from './containers/LanguageProvider'
 
+import AdvtrAPI from './utils/advtr'
 import configureStore from './configureStore'
 
 // Import i18n messages
 import { translationMessages } from './i18n'
-import createURI from './utils/uri'
 
 // Providers
 import DeviceProvider from './containers/DeviceProvider'
@@ -63,12 +63,16 @@ const render = messages => {
   )
 }
 
+// The AdvtrAPI class
+const api = AdvtrAPI()
+
 // Global objects
 window.advtr = Object.assign(window.advtr || {}, {
   env: process.env.NODE_ENV,
-  createURI: createURI,
+  uri: api.host,
   router: history,
   languages: translationMessages,
+  api,
   store
 })
 

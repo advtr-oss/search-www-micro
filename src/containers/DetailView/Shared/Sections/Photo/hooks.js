@@ -2,12 +2,8 @@ import { useEffect, useState, useRef } from 'react'
 
 // Create the URI with the new createURI function
 const createURI = (query) => {
-  const url = new URL(`${window.advtr.createURI({
-    path: '-/api/assets'
-  })}/photos/search`)
-
+  const url = new URL(`${window.advtr.api.service('photos')}/photos/search`)
   url.searchParams.append('query', query)
-
   return url.href
 }
 
