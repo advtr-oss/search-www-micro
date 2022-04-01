@@ -17,6 +17,7 @@ Point.prototype.validate = function () {
 }
 
 const lat = ['lat', 'x']
+const lon = ['lon', 'lng', 'y']
 
 export const standardiseCoordinates = (location) => {
   if (!location || (Array.isArray(location) && location.length !== 2)) throw new TypeError('Invalid Location')
@@ -39,7 +40,9 @@ export const standardiseCoordinates = (location) => {
 
     // Turn an object into Point probably never called but should be okay
     return Object.keys(location).reduce((loc, el) => {
-      loc[lat.includes(el) ? 'lat' : 'lon'] = parseFloat(location[el])
+      const key = lat.includes(el) ? 'lat' : lon.includes(el) ? 'lon' : null
+      if (key == null) return loc
+      loc[key] = parseFloat(location[el])
       return loc
     }, new Point(0, 0)).validate()
   } else {
