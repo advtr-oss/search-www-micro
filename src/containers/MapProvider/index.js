@@ -57,7 +57,7 @@ function MapProvider ({ children }) {
     // the users browser
     where().then(info => {
       if (!previousPosition) handlePositionSet(info.location)
-      window && window.localStorage.setItem('requestInfo', JSON.stringify(info))
+      window && window.localStorage.setItem('requestInfo', JSON.stringify(info).result)
     }).catch(console.error)
   }, [handlePositionSet])
 

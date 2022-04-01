@@ -18,15 +18,22 @@ const DEFAULT_PRODUCTION_API_TEMPLATE = "${{scheme}}://api.${{host}}/${{service}
 const DEFAULT_DEVELOPMENT_API_TEMPLATE = "${{scheme}}://${{host}}/-/api/${{service}}"
 
 // The standard API template
-const API_TEMPLATE = getENV('API_TEMPLATE') || env === 'production'
-  ? DEFAULT_PRODUCTION_API_TEMPLATE
-  : DEFAULT_DEVELOPMENT_API_TEMPLATE
+const API_TEMPLATE = getENV('API_TEMPLATE')
+  // eslint-disable-next-line
+  ? getENV('API_TEMPLATE') : env === 'production'
+    // eslint-disable-next-line
+    ? DEFAULT_PRODUCTION_API_TEMPLATE
+    : DEFAULT_DEVELOPMENT_API_TEMPLATE
 
 // Use the API HOST
 const API_HOST = getENV('API_HOST') || 'localhost'
 
 // Set the scheme
-const SCHEME = getENV('API_SCHEME') || env === 'production' ? 'https' : 'http'
+const SCHEME = getENV('API_SCHEME')
+  // eslint-disable-next-line
+  ? getENV('API_SCHEME') : env === 'production'
+    // eslint-disable-next-line
+    ? 'https' : 'http'
 
 // Use the CDN
 const CDN_HOST = getENV('CDN_HOST') || 'https://cdn.advtr.co.uk'
@@ -53,10 +60,12 @@ class Advtr {
 
   where () {
     // where has a unique production API since proxies can get in the way
-    const template = getENV('WHERE_TEMPLATE') || env === 'production'
+    const template = getENV('WHERE_TEMPLATE')
       // eslint-disable-next-line
-      ? '${{scheme}}://${{service}}.${{host}}'
-      : DEFAULT_DEVELOPMENT_API_TEMPLATE
+      ? getENV('WHERE_TEMPLATE') : env === 'production'
+        // eslint-disable-next-line
+        ? '${{scheme}}://${{service}}.${{host}}'
+        : DEFAULT_DEVELOPMENT_API_TEMPLATE
 
     const ctx = { ...this._context, service: 'where' }
     const tpl = createTemplatingContext(ctx)
