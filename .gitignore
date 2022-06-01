@@ -31,3 +31,4 @@ yarn-error.log*
 
 ./example.js
 /example.js
+/old-src
