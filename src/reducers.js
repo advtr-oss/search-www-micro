@@ -2,29 +2,21 @@
  * Combine all reducers in this file and export the combined reducers.
  */
 
+// import { sync } from "glob";
 import { combineReducers } from 'redux'
-import { connectRouter } from 'connected-react-router'
-
-import history from './utils/history'
 
 // Dynamically load these??
-import themeReducer from './containers/Theme/reducer'
-import searchCardReducer from './containers/SearchCard/reducer'
-import searchInputReducer from './containers/SearchInput/reducer'
 import languageProviderReducer from './containers/LanguageProvider/reducer'
-import settingModalReducer from './containers/SettingModal/reducer'
+
+// sync('**/reducer.js', { cwd: __dirname })
+//   .map((el) => console.log(el))
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
 export default function createReducer (injectedReducers = {}) {
   const rootReducer = combineReducers({
-    theme: themeReducer,
-    modal: settingModalReducer,
     language: languageProviderReducer,
-    searchInput: searchInputReducer,
-    searchCard: searchCardReducer,
-    router: connectRouter(history),
     ...injectedReducers
   })
 

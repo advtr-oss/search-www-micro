@@ -3,11 +3,11 @@
  */
 
 import { createStore, applyMiddleware, compose } from 'redux'
-import { routerMiddleware } from 'connected-react-router'
 import createSagaMiddleware from 'redux-saga'
+
 import createReducer from './reducers'
 
-export default function configureStore (initialState = {}, history) {
+export default function configureStore (initialState = {}) {
   let composeEnhancers = compose
   const reduxSagaMonitorOptions = {}
 
@@ -15,15 +15,9 @@ export default function configureStore (initialState = {}, history) {
   /* istanbul ignore next */
   if (process.env.NODE_ENV !== 'production' && typeof window === 'object') {
     /* eslint-disable no-underscore-dangle */
-    if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) { composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 }) }
-
-    // NOTE: Uncomment the code below to restore support for Redux Saga
-    // Dev Tools once it supports redux-saga version 1.x.x
-    // if (window.__SAGA_MONITOR_EXTENSION__)
-    //   reduxSagaMonitorOptions = {
-    //     sagaMonitor: window.__SAGA_MONITOR_EXTENSION__,
-    //   };
-    /* eslint-enable */
+    if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
+      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ trace: true, traceLimit: 25 })
+    }
   }
 
   const sagaMiddleware = createSagaMiddleware(reduxSagaMonitorOptions)
@@ -31,7 +25,7 @@ export default function configureStore (initialState = {}, history) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [sagaMiddleware, routerMiddleware(history)]
+  const middlewares = [sagaMiddleware]
 
   const enhancers = [applyMiddleware(...middlewares)]
 

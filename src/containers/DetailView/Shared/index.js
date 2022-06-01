@@ -1,5 +1,0 @@
-export { default as PhotoSection } from './Sections/Photo'
-export { default as HeaderSection } from './Sections/Header'
-export { default as ShareSection } from './Sections/Share'
-export { default as POIView } from './POIView'
-export { default as propTypes } from './Types'

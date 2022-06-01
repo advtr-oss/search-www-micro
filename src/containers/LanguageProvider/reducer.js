@@ -8,7 +8,9 @@
  */
 
 import produce from 'immer'
-import { get, includes, split } from 'lodash'
+import get from 'lodash.get'
+import split from 'lodash.split'
+import includes from 'lodash.includes'
 
 import { CHANGE_LOCALE, LOCALE_KEY } from './constants'
 import { DEFAULT_LOCALE, appLocales } from '../../i18n'
