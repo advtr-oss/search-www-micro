@@ -1,29 +1,12 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
+/**
+ * @advtr/tidy tries to be un-opinionated, so for this we need to import `LanguageProvider` and wrap it for redux
+ * */
+
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
-// import { IntlProvider } from 'react-intl'
 import { LanguageProvider } from '@advtr/tidy'
 
 import { makeSelectLocale } from './selectors'
-
-// export function LanguageProvider (props) {
-//   return (
-//     <IntlProvider
-//       locale={props.locale}
-//       key={props.locale}
-//       messages={props.messages[props.locale]}
-//     >
-//       {React.Children.only(props.children)}
-//     </IntlProvider>
-//   )
-// }
-//
-// LanguageProvider.propTypes = {
-//   locale: PropTypes.string,
-//   messages: PropTypes.object,
-//   children: PropTypes.element.isRequired
-// }
 
 const mapStateToProps = createSelector(
   makeSelectLocale(),

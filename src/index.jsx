@@ -24,8 +24,9 @@ import ReactDOMClient from 'react-dom/client'
 
 import { ThemeProvider, GlobalStyle } from '@advtr/tidy'
 
+import logWebVitals from './utils/logWebVitals'
 // import serviceWorkers from './serviceWorkers'
-// import reportWebVitals from './reportWebVitals'
+import reportWebVitals from './reportWebVitals'
 
 // Import Language Provider
 import LanguageProvider from './containers/LanguageProvider'
@@ -83,3 +84,5 @@ if (!window.Intl) {
 } else {
   render(translationMessages)
 }
+
+reportWebVitals(logWebVitals)

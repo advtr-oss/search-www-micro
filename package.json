@@ -100,7 +100,7 @@
     "@storybook/testing-library": "^0.0.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "13.3.0",
-    "@testing-library/user-event": "^14.1.1",
+    "@testing-library/user-event": "^14.2.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.4",
@@ -126,5 +126,10 @@
     "shelljs": "^0.8.4",
     "storybook-addon-mock": "^2.4.0",
     "webpack": "^4.46.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@advtr/tidy$": "<rootDir>/node_modules/@advtr/tidy/dist/cjs/index.js"
+    }
   }
 }

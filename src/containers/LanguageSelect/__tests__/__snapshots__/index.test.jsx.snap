@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Language Select should allow the user to change locale 1`] = `
+.c1 {
+  background-color: #f6f8fa;
+  border-radius: 4px;
+  color: #24292f;
+  border-style: none;
+  padding: 4px 8px;
+}
+
+.c0 {
+  padding: 2px;
+}
+
+<div
+  class="c0"
+>
+  <select
+    class="c1"
+  >
+    <option
+      value="en"
+    >
+      Anglaise
+    </option>
+    <option
+      value="fr"
+    >
+      Français
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Language Select should render snapshot 1`] = `
+.c1 {
+  background-color: #f6f8fa;
+  border-radius: 4px;
+  color: #24292f;
+  border-style: none;
+  padding: 4px 8px;
+}
+
+.c0 {
+  padding: 2px;
+}
+
+<div
+  class="c0"
+>
+  <select
+    class="c1"
+  >
+    <option
+      value="en"
+    >
+      English
+    </option>
+    <option
+      value="fr"
+    >
+      French
+    </option>
+  </select>
+</div>
+`;

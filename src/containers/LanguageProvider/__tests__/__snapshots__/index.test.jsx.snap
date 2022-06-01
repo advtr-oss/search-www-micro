@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageProvider should render snapshot 1`] = `
+<div>
+  {"en":{"boilerplate.containers.locale.en":"English","boilerplate.containers.locale.fr":"French"},"fr":{"boilerplate.containers.locale.en":"Anglaise","boilerplate.containers.locale.fr":"Français"}}
+</div>
+`;

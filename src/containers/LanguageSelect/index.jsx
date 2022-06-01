@@ -1,8 +1,10 @@
-/*
- *
+/**
  * LanguageSelect
  *
- */
+ * This is a basic select that allows for the changing of a locale by the user
+ *
+ * @note: `@advtr/tidy` tries to be un-opinionated, so for this we need to import `LanguageSelect` and wrap it for redux
+ * */
 
 import React from 'react'
 import PropTypes from 'prop-types'
