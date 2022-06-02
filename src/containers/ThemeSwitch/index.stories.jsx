@@ -2,11 +2,11 @@ import React from 'react'
 
 import { action } from '@storybook/addon-actions'
 
-import ThemeSwitch from './index'
+import ADVThemeSwitch from './index'
 
 export default {
   title: 'UI/ThemeSwitch',
-  component: ThemeSwitch
+  component: ADVThemeSwitch
 }
 
-export const Default = () => <ThemeSwitch onClick={action('change-theme')} />
+export const ThemeSwitch = () => <ADVThemeSwitch onClick={action('change-theme')} />
