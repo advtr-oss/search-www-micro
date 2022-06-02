@@ -7,6 +7,7 @@
     "@advtr/tidy": "^0.1.0-beta.2",
     "@harrytwright/logger": "^3.0.0-beta.6",
     "clsx": "^1.1.1",
+    "gh-pages": "^4.0.0",
     "immer": "^9.0.14",
     "intl": "1.2.5",
     "lodash.get": "^4.4.2",
@@ -30,6 +31,7 @@
     "start:storybook": "start-storybook -p 6006 -s public",
     "build": "react-scripts build",
     "build:storybook": "build-storybook -s public",
+    "deploy:gh-pages": "gh-pages",
     "lint": "eslint ./src/**/*.{js,jsx} --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

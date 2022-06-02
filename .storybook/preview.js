@@ -1,5 +1,11 @@
+import { Provider } from 'react-redux'
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider, GlobalStyle, get } from  "@advtr/tidy"
+
+import configureStore from '../src/configureStore'
+
+const initialState = {}
+const store = configureStore(initialState, history)
 
 const Backgrounds = createGlobalStyle`
   body {
@@ -10,11 +16,13 @@ const Backgrounds = createGlobalStyle`
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider colorScheme="auto">
-      <GlobalStyle />
-      <Backgrounds />
-      <Story />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider colorScheme="auto">
+        <GlobalStyle />
+        <Backgrounds />
+        <Story />
+      </ThemeProvider>
+    </Provider>
   ),
 ]
 
