@@ -8,8 +8,8 @@ import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 
-import LanguageSelect from "../index"
-import LanguageProvider from "../../LanguageProvider";
+import LanguageSelect from '../index'
+import LanguageProvider from '../../LanguageProvider'
 
 import { translationMessages, DEFAULT_LOCALE } from '../../../i18n'
 import configureStore from '../../../configureStore'
@@ -38,7 +38,7 @@ describe('Language Select', function () {
     )
 
     expect(container.firstChild).toMatchSnapshot()
-  });
+  })
 
   it('should have default locale value selected', function () {
     const { getByText } = redux(
@@ -46,9 +46,9 @@ describe('Language Select', function () {
     )
 
     // This should allow for it to work in CI, I hope
-    const element = getByText(translationMessages[DEFAULT_LOCALE]["boilerplate.containers.locale.en"])
+    const element = getByText(translationMessages[DEFAULT_LOCALE]['boilerplate.containers.locale.en'])
     expect(element.selected).toBeTruthy()
-  });
+  })
 
   it('should allow the user to change locale', async function () {
     user.setup()
@@ -60,7 +60,7 @@ describe('Language Select', function () {
     // Wait for it to change, should look at getting this data from the translations themselves
     await user.selectOptions(
       getByRole('combobox'),
-      getByRole('option', {name: 'French'})
+      getByRole('option', { name: 'French' })
     )
 
     expect(getByRole('option', { name: 'Français' }).selected).toBeTruthy()
@@ -68,5 +68,5 @@ describe('Language Select', function () {
 
     // Should have the options in French
     expect(container.firstChild).toMatchSnapshot()
-  });
-});
+  })
+})

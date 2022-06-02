@@ -22,7 +22,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import ReactDOMClient from 'react-dom/client'
 
-import { ThemeProvider, GlobalStyle } from '@advtr/tidy'
+import { GlobalStyle } from '@advtr/tidy'
 
 import logWebVitals from './utils/logWebVitals'
 // import serviceWorkers from './serviceWorkers'
@@ -37,6 +37,9 @@ import configureStore from './configureStore'
 import { translationMessages } from './i18n'
 import LanguageSelect from './containers/LanguageSelect'
 
+// Load the theme
+import { Theme } from './containers/Theme'
+
 // Create redux store with history
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -49,12 +52,12 @@ const render = (messages) => {
     <React.StrictMode>
       <Provider store={store}>
         <LanguageProvider messages={messages}>
-          <ThemeProvider>
+          <Theme>
             <Fragment>
               <GlobalStyle />
               <LanguageSelect />
             </Fragment>
-          </ThemeProvider>
+          </Theme>
         </LanguageProvider>
       </Provider>
     </React.StrictMode>

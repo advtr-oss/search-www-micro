@@ -1,7 +1,7 @@
 import React from 'react'
 
-import ADVLanguageSelect from "../LanguageSelect"
-import LanguageProvider from "../LanguageProvider";
+import ADVLanguageSelect from '../LanguageSelect'
+import LanguageProvider from '../LanguageProvider'
 
 import { translationMessages } from '../../i18n'
 

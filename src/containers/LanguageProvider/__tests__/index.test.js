@@ -4,9 +4,9 @@
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
-import LanguageProvider from "../index"
+import LanguageProvider from '../index'
 
 import { translationMessages } from '../../../i18n'
 import configureStore from '../../../configureStore'
@@ -21,7 +21,6 @@ const redux = (ui, opts) => render((
 ), opts)
 
 describe('LanguageProvider', function () {
-
   // This mainly checks that it doesn't throw, and we get a snapshot out
   // of it, so we know it renders a child component of out choice, will
   // require a new snap each time we update translationMessages, so we know
@@ -33,6 +32,5 @@ describe('LanguageProvider', function () {
       </LanguageProvider>
     )
     expect(container.firstChild).toMatchSnapshot()
-  });
-
-});
+  })
+})
