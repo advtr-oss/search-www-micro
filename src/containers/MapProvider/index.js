@@ -56,8 +56,8 @@ function MapProvider ({ children }) {
     // Get the users location to help bias results, this is not saved anywhere except in
     // the users browser
     where().then(info => {
-      if (!previousPosition) handlePositionSet(info.location)
-      window && window.localStorage.setItem('requestInfo', JSON.stringify(info).result)
+      if (!previousPosition) handlePositionSet(info.result.location)
+      window && window.localStorage.setItem('requestInfo', JSON.stringify(info.result))
     }).catch(console.error)
   }, [handlePositionSet])
 

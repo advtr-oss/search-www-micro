@@ -61,12 +61,7 @@
     "parser": "@babel/eslint-parser",
     "env": {
       "browser": true
-    },
-    "extends": [
-      "standard",
-      "standard-jsx",
-      "standard-react"
-    ]
+    }
   },
   "browserslist": {
     "production": [
@@ -101,14 +96,6 @@
     "babel-plugin-styled-components": "^2.0.6",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "chalk": "^4.1.2",
-    "eslint": "^8.12.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-config-standard-jsx": "^10.0.0",
-    "eslint-config-standard-react": "^11.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.23.1",
     "glob": "^7.2.0",
     "serve": "^13.0.2",
     "shelljs": "^0.8.4"

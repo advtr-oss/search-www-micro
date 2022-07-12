@@ -51,7 +51,7 @@ function replace (string, withRegex, replacer) {
 
 class Advtr {
   get _context () {
-    return { scheme: SCHEME, host: API_HOST }
+    return { scheme: SCHEME, host: API_HOST, template: API_TEMPLATE }
   }
 
   get host () {
