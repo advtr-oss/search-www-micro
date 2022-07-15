@@ -13,7 +13,6 @@ describe('Input', function () {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-
   it('should hide icon', async function () {
     const { getByLabelText } = render(<Input hide />)
 
@@ -56,5 +55,5 @@ describe('Input', function () {
 
     expect(screen.getByLabelText('Search autocomplete').value).toBe('Hello World')
     expect(handleInput).toBeCalledTimes(1)
-  });
+  })
 })

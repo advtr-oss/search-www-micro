@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { action } from '@storybook/addon-actions'
 
 import { Dropdown } from './index'
@@ -33,6 +34,10 @@ const CustomComponent = ({ value }) => (
   <span style={{ color: 'red' }}>{value}</span>
 )
 
+CustomComponent.propTypes = {
+  value: PropTypes.string.isRequired
+}
+
 Custom.args = {
   values: [
     'Hello',
@@ -46,6 +51,11 @@ export const ComplexCustom = Template.bind({})
 const ComplexCustomComponent = ({ value, color }) => (
   <span style={{ color }}>{value}</span>
 )
+
+ComplexCustomComponent.propTypes = {
+  color: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
+}
 
 ComplexCustom.args = {
   values: [

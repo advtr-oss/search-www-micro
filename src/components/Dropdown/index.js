@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Item } from './Item'
-import Wrapper from "./Wrapper";
+import Wrapper from './Wrapper'
 
 function Selected (name, value, index) {
   this.type = 'dropdown'

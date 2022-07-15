@@ -30,7 +30,7 @@ const Input = forwardRef((
   // Hide the icon on clear
   useEffect(() => {
     setHidden(!value || value === '')
-  }, [value]);
+  }, [value])
 
   // Update the hidden icon
   const handleInput = useCallback((event) => {
@@ -40,7 +40,7 @@ const Input = forwardRef((
 
   return (<ADVInput ref={ref} value={value} onClick={onClear} onInput={handleInput}
                  onFocus={onFocus} onBlur={onBlur} placeholder={placeholder}
-                 Icon={X} hide={hidden} side={"right"} disabled={disabled}
+                 Icon={X} hide={hidden} side={'right'} disabled={disabled}
                  listener={false} aria-label='Search autocomplete' />)
 })
 
