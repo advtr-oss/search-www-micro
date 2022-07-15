@@ -18,8 +18,8 @@ exports[`ThemeSwitch should fire click event 1`] = `
   width: 200px;
   height: 100px;
   border-radius: 100px;
-  border: 5px solid rgba(240,246,252,0.9);
-  background: #161b22;
+  border: 5px solid rgba(205,217,229,0.1);
+  background: #2d333b;
   -webkit-transition: all 350ms ease-in;
   transition: all 350ms ease-in;
 }
@@ -36,12 +36,12 @@ exports[`ThemeSwitch should fire click event 1`] = `
   content: "";
   width: 82px;
   height: 82px;
-  border: 5px solid #f2cc60;
+  border: 5px solid #eac55f;
   top: 4px;
   left: 4px;
   position: absolute;
   border-radius: 82px;
-  background: #e3b341;
+  background: #daaa3f;
 }
 
 .c3::after {
@@ -83,8 +83,8 @@ exports[`ThemeSwitch should fire click event 1`] = `
 }
 
 .c1:checked +.c2::before {
-  background: #ffffff;
-  border-color: rgba(33,38,45,0.5);
+  background: #cdd9e5;
+  border-color: rgba(55,62,71,0.5);
   -webkit-animation-name: coksJc;
   animation-name: coksJc;
   -webkit-animation-duration: 350ms;
@@ -97,7 +97,7 @@ exports[`ThemeSwitch should fire click event 1`] = `
   -webkit-transition-delay: 350ms;
   transition-delay: 350ms;
   opacity: 1;
-  box-shadow: rgba(33,38,45,0.5) -13px 0 0 2px,rgba(33,38,45,0.5) -24px 14px 0 -2px;
+  box-shadow: rgba(55,62,71,0.5) -13px 0 0 2px,rgba(55,62,71,0.5) -24px 14px 0 -2px;
 }
 
 <div
@@ -134,7 +134,7 @@ exports[`ThemeSwitch should render switch 1`] = `
   width: 200px;
   height: 100px;
   border-radius: 100px;
-  border: 5px solid rgba(27,31,36,0.85);
+  border: 5px solid rgba(27,31,36,0.15);
   background: #ffffff;
   -webkit-transition: all 350ms ease-in;
   transition: all 350ms ease-in;

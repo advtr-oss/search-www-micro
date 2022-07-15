@@ -6,7 +6,7 @@
 import { combineReducers } from 'redux'
 
 // Dynamically load these??
-import languageProviderReducer from './containers/LanguageProvider/reducer'
+import languageProviderReducer from './providers/LanguageProvider/reducer'
 
 // sync('**/reducer.js', { cwd: __dirname })
 //   .map((el) => console.log(el))

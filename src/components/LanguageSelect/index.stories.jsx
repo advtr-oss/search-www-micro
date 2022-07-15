@@ -1,12 +1,12 @@
 import React from 'react'
 
 import ADVLanguageSelect from '../LanguageSelect'
-import LanguageProvider from '../LanguageProvider'
+import LanguageProvider from '../../providers/LanguageProvider'
 
 import { translationMessages } from '../../i18n'
 
 export default {
-  title: 'UI/LanguageSelect',
+  title: 'Select/Language',
   component: ADVLanguageSelect
 }
 

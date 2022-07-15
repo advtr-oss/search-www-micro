@@ -7,7 +7,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 
 import ThemeSwitch from "../index";
 
-import { Theme } from "../../Theme";
+import { Theme } from "../../../containers/Theme";
 
 const theme = (ui, opts) => render((
   <Theme>

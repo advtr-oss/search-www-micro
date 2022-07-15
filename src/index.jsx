@@ -15,27 +15,26 @@ import 'sanitize.css/sanitize.css'
 // Third party css library needed
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
-import './utils/process-shim'
-
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import ReactDOMClient from 'react-dom/client'
 
 import { GlobalStyle } from '@advtr/tidy'
+import logger from '@harrytwright/logger'
 
 import logWebVitals from './utils/logWebVitals'
 // import serviceWorkers from './serviceWorkers'
 import reportWebVitals from './reportWebVitals'
 
 // Import Language Provider
-import LanguageProvider from './containers/LanguageProvider'
+import LanguageProvider from './providers/LanguageProvider'
 
 import configureStore from './configureStore'
 
 // Import i18n messages
 import { translationMessages } from './i18n'
-import LanguageSelect from './containers/LanguageSelect'
+import LanguageSelect from './components/LanguageSelect'
 
 // Load the theme
 import { Theme } from './containers/Theme'
@@ -47,12 +46,14 @@ const store = configureStore(initialState, history)
 const MOUNT_NODE = document.getElementById('root') || document.createElement('div')
 
 const render = (messages) => {
+  logger.set('level', 'info')
+
   const root = ReactDOMClient.createRoot(MOUNT_NODE)
   root.render(
     <React.StrictMode>
       <Provider store={store}>
         <LanguageProvider messages={messages}>
-          <Theme>
+          <Theme colorScheme={'auto'}>
             <Fragment>
               <GlobalStyle />
               <LanguageSelect />

@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import ADVThemeSwitch from './index'
 
 export default {
-  title: 'UI/ThemeSwitch',
+  title: 'Switch/Theme',
   component: ADVThemeSwitch
 }
 

@@ -15,8 +15,8 @@ import { LanguageSelect as ADVLanguageSelect } from '@advtr/tidy'
 
 import messages from './messages'
 import { appLocales } from '../../i18n'
-import { changeLocale } from '../LanguageProvider/actions'
-import { makeSelectLocale } from '../LanguageProvider/selectors'
+import { changeLocale } from '../../providers/LanguageProvider/actions'
+import { makeSelectLocale } from '../../providers/LanguageProvider/selectors'
 
 function LanguageSelect (props) {
   return <ADVLanguageSelect locale={props.locale} locales={appLocales} messages={messages} onLocaleToggle={props.onLocaleToggle} />
