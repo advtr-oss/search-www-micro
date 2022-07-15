@@ -32,3 +32,4 @@ yarn-error.log*
 ./example.js
 /example.js
 /old-src/
+.jest-test-results.json
