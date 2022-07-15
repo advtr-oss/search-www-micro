@@ -11,6 +11,7 @@ import PropTypes from 'prop-types'
 
 import { X } from 'react-feather'
 import { Input as ADVInput } from '@advtr/tidy'
+import Wrapper from './Wrapper'
 
 const Input = forwardRef((
   {
@@ -38,10 +39,14 @@ const Input = forwardRef((
     onInput && onInput(event)
   }, [onInput])
 
-  return (<ADVInput ref={ref} value={value} onClick={onClear} onInput={handleInput}
-                 onFocus={onFocus} onBlur={onBlur} placeholder={placeholder}
-                 Icon={X} hide={hidden} side={'right'} disabled={disabled}
-                 listener={false} aria-label='Search autocomplete' />)
+  return (
+    <Wrapper>
+      <ADVInput ref={ref} value={value} onClick={onClear} onInput={handleInput}
+                onFocus={onFocus} onBlur={onBlur} placeholder={placeholder}
+                Icon={X} hide={hidden} side={'right'} disabled={disabled}
+                listener={false} aria-label='Search autocomplete' />
+    </Wrapper>
+  )
 })
 
 Input.displayName = 'Search.Input'

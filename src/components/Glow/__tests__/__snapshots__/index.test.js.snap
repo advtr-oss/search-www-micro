@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `
+.c0 {
+  -webkit-animation: bQashm 1.5s ease-in-out infinite;
+  animation: bQashm 1.5s ease-in-out infinite;
+  color: transparent;
+  cursor: progress;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+<span
+  class="c0"
+/>
+`;

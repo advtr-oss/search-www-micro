@@ -20,9 +20,25 @@ export default {
   }
 }
 
+const style = {
+  width: '420px',
+  padding: '20px',
+  overflowY: 'auto',
+  position: 'absolute',
+  left: 0,
+  bottom: 0,
+  top: 0
+}
+
 const Template = (args) => {
   const ref = createRef()
-  return <Input ref={ref} {...args} />
+  return (
+    <div style={style}>
+      <div style={{ position: 'relative' }}>
+        <Input ref={ref} {...args} />
+      </div>
+    </div>
+  )
 }
 
 export const Default = Template.bind({})
