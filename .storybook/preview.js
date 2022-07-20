@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { ThemeProvider, GlobalStyle, get } from  "@advtr/tidy"
 
 import configureStore from '../src/configureStore'
+import logger from "@harrytwright/logger";
 
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -14,8 +15,9 @@ const Backgrounds = createGlobalStyle`
   }
 `
 
-export const decorators = [
-  (Story) => (
+const withRedux = (Story) => {
+  logger.set('level', 'notice')
+  return (
     <Provider store={store}>
       <ThemeProvider colorScheme="auto">
         <GlobalStyle />
@@ -23,7 +25,11 @@ export const decorators = [
         <Story />
       </ThemeProvider>
     </Provider>
-  ),
+  )
+}
+
+export const decorators = [
+  withRedux,
 ]
 
 export const parameters = {
