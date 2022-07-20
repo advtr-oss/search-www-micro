@@ -41,7 +41,7 @@ const Input = forwardRef((
 
   return (
     <Wrapper>
-      <ADVInput ref={ref} value={value} onClick={onClear} onInput={handleInput}
+      <ADVInput border={null} canvas={'overlay'} shadow={'medium'} ref={ref} value={value} onClick={onClear} onInput={handleInput}
                 onFocus={onFocus} onBlur={onBlur} placeholder={placeholder}
                 Icon={X} hide={hidden} side={'right'} disabled={disabled}
                 listener={false} aria-label='Search autocomplete' />

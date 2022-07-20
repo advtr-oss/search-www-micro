@@ -5,8 +5,9 @@ import { get } from '@advtr/tidy'
 // although I may move all to this instead, or have canvas set by a prop
 const Wrapper = styled.div`
   & > div {
-    background-color: ${get('elements.canvas.overlay')};
-    box-shadow: ${get('elements.shadow.medium')};
+    // background-color: ${get('elements.canvas.overlay')};
+    // box-shadow: ${get('elements.shadow.medium')};
+    // border: none;
   }
 `
 
