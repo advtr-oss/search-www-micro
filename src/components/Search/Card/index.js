@@ -14,11 +14,12 @@ import logger from '@harrytwright/logger'
 // eslint-disable-next-line
 import { unsafe__useAutocorrect as useAutocorrect } from '@advtr/tidy'
 
+import withSearchProvider from "../../../hooks/withSearchProvider";
 import useBlur from '../../../hooks/useBlur'
 import { setSelected } from './actions'
 
-import { Input } from '../../../components/Search/Input'
-import { Dropdown } from '../../../components/Search/Dropdown'
+import { Input } from '../Input'
+import { Dropdown } from '../Dropdown'
 import Wrapper from './Wrapper'
 
 function Selected (value, queryString, index) {
@@ -30,7 +31,7 @@ function Selected (value, queryString, index) {
   this.queryString = queryString
 }
 
-const Card = ({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, disabled, ...props }) => {
+const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, disabled, ...props }) => {
   const input = useRef(null)
   const [focus, handleFocus, handleBlur] = useBlur()
 
@@ -84,6 +85,7 @@ const Card = ({ defaultValue = '', defaultItems, onSelect, searchProvider, reque
     }
   }, [input, clear])
 
+  console.log(defaultItems, value, items)
   return (
     <Wrapper>
       <Input value={value} ref={input} onFocus={handleFocus} onBlur={handleBlur} placeholder={placeholder}
@@ -91,9 +93,7 @@ const Card = ({ defaultValue = '', defaultItems, onSelect, searchProvider, reque
       {focus && value.length > 0 && <Dropdown values={items} onSelect={handleSelected} loading />}
     </Wrapper>
   )
-}
-
-Card.displayName = 'Search.Card'
+}, 'Search.Card')
 
 Card.defaultProps = {
   defaultItems: [],

@@ -4,7 +4,7 @@
  * if they're generic
  *
  * */
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { get } from '@advtr/tidy'
 
 const Wrapper = styled.div`
@@ -23,6 +23,19 @@ const Wrapper = styled.div`
 
     // Shadow
     box-shadow: ${get('elements.shadow.medium')};
+    
+    // Force the cursor
+    ${({ loading }) => loading 
+            ? css` 
+              & * {
+                cursor: default;
+              }
+            ` 
+            : css`
+              & * {
+                cursor: pointer;
+              }
+            `}
     
     &:before {
       content: attr(data-title);

@@ -37,6 +37,7 @@
     "deploy:gh-pages": "gh-pages",
     "lint": "eslint ./src --fix",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "browserslist": {

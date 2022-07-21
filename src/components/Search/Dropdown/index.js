@@ -15,9 +15,9 @@ export const Dropdown = ({ values, title, loading, onSelect, ...props }) => {
   // we move onto the SearchItem view
   if (loading && values.length === 0) {
     return (
-      <Wrapper>
+      <Wrapper loading>
         <InternalDropdown data-title={title} values={loadingValues}
-                          component={Loading} onSelect={onSelect} />
+                          component={Loading} />
       </Wrapper>
     )
   }

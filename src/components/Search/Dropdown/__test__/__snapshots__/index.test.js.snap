@@ -12,6 +12,10 @@ exports[`Search.Dropdown should display the container 1`] = `
   overflow: hidden;
 }
 
+.c0 > ul * {
+  cursor: pointer;
+}
+
 .c0 > ul:before {
   content: attr(data-title);
   display: -webkit-box;
@@ -63,6 +67,10 @@ exports[`Search.Dropdown should display the loading container 1`] = `
   top: 100%;
   display: block;
   overflow: hidden;
+}
+
+.c0 > ul * {
+  cursor: default;
 }
 
 .c0 > ul:before {

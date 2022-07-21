@@ -1,5 +1,11 @@
 import { SearchProvider } from '../shared'
 
+let delayTimout = 100
+Object.defineProperty(global, 'mock_delay', {
+  get: () => delayTimout,
+  set: (v) => delayTimout = v
+})
+
 async function fakeFetch (provider, query) {
   const results = provider.scoring().filter((el) => el.score(query) >= 1).map((el) => el.id)
   const hits = provider.processedData.filter((el) => results.includes(el._id)).map((hit) => ({
@@ -10,7 +16,16 @@ async function fakeFetch (provider, query) {
 
   if (hits.length === 0) throw new Error('No Content')
 
-  return await delay(100, {
+  if (global.mock_delay === 0) {
+    return {
+      meta: {status: 200},
+      results: hits
+    }
+  }
+
+  console.log(hits)
+
+  return await delay(global.mock_delay, {
     meta: { status: 200 },
     results: hits
   })
