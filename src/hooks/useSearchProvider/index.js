@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import SearchProviderContext from "../../contexts/SearchProviderContext";
+import { useContext } from 'react'
+import SearchProviderContext from '../../contexts/SearchProviderContext'
 
 const useSearchProvider = () => {
   return useContext(SearchProviderContext)

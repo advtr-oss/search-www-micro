@@ -1,6 +1,6 @@
-import { createContext } from "react";
+import { createContext } from 'react'
 
-import MockSearchProvider from "../../utils/providers/mock";
+import MockSearchProvider from '../../utils/providers/mock'
 
 // Set a default value for tests, storybook, etc.
 //

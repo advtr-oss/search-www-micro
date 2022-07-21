@@ -25,12 +25,12 @@ const Wrapper = styled.div`
     box-shadow: ${get('elements.shadow.medium')};
     
     // Force the cursor
-    ${({ loading }) => loading 
+    ${({ loading }) => loading
             ? css` 
               & * {
                 cursor: default;
               }
-            ` 
+            `
             : css`
               & * {
                 cursor: pointer;

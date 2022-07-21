@@ -2,16 +2,16 @@
  * @jest-environment jsdom
  */
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
-
 import React from 'react'
 import { Provider } from 'react-redux'
-import {act, fireEvent, render, screen, waitFor, within} from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 
-import configureStore from "../../../../configureStore";
-import Card from "../index";
+import configureStore from '../../../../configureStore'
+import Card from '../index'
+
+globalThis.IS_REACT_ACT_ENVIRONMENT = true
 
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -32,7 +32,7 @@ describe('Search.Card', function () {
   it('should render a snapshot', function () {
     const { container } = redux(<Card />)
     expect(container.firstChild).toMatchSnapshot()
-  });
+  })
 
   it('should render loading dropdown on focus and typing', async function () {
     user.setup()
@@ -42,14 +42,14 @@ describe('Search.Card', function () {
     const label = getByLabelText('Search autocomplete')
     expect(label.value).toBe('')
 
-    await act(async ()=> {
+    await act(async () => {
       label.focus()
       await user.type(label, 'H')
     })
 
     expect(container.firstChild).toMatchSnapshot()
     expect(label).toHaveFocus()
-  });
+  })
 
   it('should render search dropdown on focus and typing', async function () {
     user.setup()
@@ -60,7 +60,7 @@ describe('Search.Card', function () {
     const label = getByLabelText('Search autocomplete')
     expect(label.value).toBe('')
 
-    await act(async ()=> {
+    await act(async () => {
       label.focus()
       await user.type(label, 'halifa')
       await delay(1000, true)
@@ -76,8 +76,8 @@ describe('Search.Card', function () {
     expect(label).toHaveFocus()
 
     global.mock_delay = 100
-  });
-});
+  })
+})
 
 function delay (t, val) {
   return new Promise(function (resolve) {

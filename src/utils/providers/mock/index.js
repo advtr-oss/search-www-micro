@@ -3,7 +3,9 @@ import { SearchProvider } from '../shared'
 let delayTimout = 100
 Object.defineProperty(global, 'mock_delay', {
   get: () => delayTimout,
-  set: (v) => delayTimout = v
+  set: (v) => {
+    delayTimout = v
+  }
 })
 
 async function fakeFetch (provider, query) {
@@ -18,7 +20,7 @@ async function fakeFetch (provider, query) {
 
   if (global.mock_delay === 0) {
     return {
-      meta: {status: 200},
+      meta: { status: 200 },
       results: hits
     }
   }

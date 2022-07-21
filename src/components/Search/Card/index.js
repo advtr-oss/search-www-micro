@@ -14,7 +14,7 @@ import logger from '@harrytwright/logger'
 // eslint-disable-next-line
 import { unsafe__useAutocorrect as useAutocorrect } from '@advtr/tidy'
 
-import withSearchProvider from "../../../hooks/withSearchProvider";
+import withSearchProvider from '../../../hooks/withSearchProvider'
 import useBlur from '../../../hooks/useBlur'
 import { setSelected } from './actions'
 

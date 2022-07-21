@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 
-import SearchProviderContext from "../../contexts/SearchProviderContext";
+import SearchProviderContext from '../../contexts/SearchProviderContext'
 
 export default function withSearchProvider (WrappedComponent, displayName) {
   const InternalComponent = (props) => {
