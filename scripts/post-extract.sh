@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 i18N=./scripts/helpers/i18n.js
 TRANSLATIONS=./scripts/helpers/translations

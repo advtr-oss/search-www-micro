@@ -119,7 +119,7 @@ exports[`Search.Card should render a snapshot 1`] = `
         aria-label="Search autocomplete"
         autocomplete="off"
         class="c2 c3 input--empty"
-        placeholder="Input..."
+        placeholder="Search..."
         type="text"
         value=""
       />
@@ -364,7 +364,7 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
         aria-label="Search autocomplete"
         autocomplete="off"
         class="c2 c3 input--focus"
-        placeholder="Input..."
+        placeholder="Search..."
         type="text"
         value="H"
       />
@@ -660,7 +660,7 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
         aria-label="Search autocomplete"
         autocomplete="off"
         class="c2 c3 input--focus"
-        placeholder="Input..."
+        placeholder="Search..."
         type="text"
         value="halifa"
       />

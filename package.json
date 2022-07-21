@@ -31,9 +31,12 @@
   "scripts": {
     "start": "react-scripts start",
     "start:storybook": "start-storybook -p 6006 -s public",
+    "prebuild:intl": "sh ./scripts/pre-extract.sh",
     "build": "react-scripts build",
+    "build:intl": "node ./scripts/extract-intl.js",
     "build:storybook": "build-storybook -s public",
     "build:acknowledgments": "node ./scripts/license.js",
+    "postbuild:intlx": "sh ./scripts/post-extract.sh",
     "deploy:gh-pages": "gh-pages",
     "lint": "eslint ./src --fix",
     "test": "react-scripts test",

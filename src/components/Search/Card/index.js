@@ -31,7 +31,7 @@ function Selected (value, queryString, index) {
   this.queryString = queryString
 }
 
-const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, disabled, ...props }) => {
+const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, searchTitle, disabled, ...props }) => {
   const input = useRef(null)
   const [focus, handleFocus, handleBlur] = useBlur()
 
@@ -89,14 +89,17 @@ const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, se
     <Wrapper>
       <Input value={value} ref={input} onFocus={handleFocus} onBlur={handleBlur} placeholder={placeholder}
              disabled={disabled} onInput={handleInput} onClear={handleClear} />
-      {focus && value.length > 0 && <Dropdown values={items} onSelect={handleSelected} loading />}
+      {focus && value.length > 0 && <Dropdown values={items} onSelect={handleSelected} title={searchTitle} loading />}
     </Wrapper>
   )
 }, 'Search.Card')
 
 Card.defaultProps = {
   defaultItems: [],
-  requestDelay: 200
+  requestDelay: 200,
+
+  placeholder: 'Search...',
+  searchTitle: 'Search Results'
 }
 
 Card.propTypes = {
@@ -105,6 +108,7 @@ Card.propTypes = {
   onSelect: PropTypes.func,
 
   placeholder: PropTypes.string,
+  searchTitle: PropTypes.string,
 
   disabled: PropTypes.bool,
 
