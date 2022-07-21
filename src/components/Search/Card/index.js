@@ -85,7 +85,6 @@ const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, se
     }
   }, [input, clear])
 
-  console.log(defaultItems, value, items)
   return (
     <Wrapper>
       <Input value={value} ref={input} onFocus={handleFocus} onBlur={handleBlur} placeholder={placeholder}

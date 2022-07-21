@@ -4,17 +4,14 @@
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import { act, render, screen, waitFor, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 
 import configureStore from '../../../../configureStore'
 import Card from '../index'
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true
-
-const initialState = {}
-const store = configureStore(initialState, history)
+const store = configureStore()
 
 // Add theme provider here too, will look at moving this out and adding a generic one
 const redux = (ui, opts) => render((
@@ -63,7 +60,7 @@ describe('Search.Card', function () {
     await act(async () => {
       label.focus()
       await user.type(label, 'halifa')
-      await delay(1000, true)
+      await delay(1000, true) // Wait for the fake API to load
     })
 
     const dropdown = screen.getByRole('listbox')
@@ -74,8 +71,59 @@ describe('Search.Card', function () {
 
     expect(container.firstChild).toMatchSnapshot()
     expect(label).toHaveFocus()
+  })
 
-    global.mock_delay = 100
+  it('should update redux state on selection', async function () {
+    user.setup()
+
+    // Add a fake item for now to pass the test
+    const { getByLabelText } = redux(<Card />)
+
+    const query = 'halifa'
+    const label = getByLabelText('Search autocomplete')
+
+    await act(async () => {
+      label.focus()
+      await user.type(label, query)
+      await delay(1000, true) // Wait for the fake API to load
+    })
+
+    const dropdown = screen.getByRole('listbox')
+    const { getAllByRole } = within(dropdown)
+    const items = getAllByRole('option')
+
+    await waitFor(() => expect(items).toHaveLength(1))
+    items[0].click()
+
+    const state = store.getState()
+    expect(state.search.selected.loading).toBeFalsy()
+    expect(state.search.selected.queryString).toEqual(query)
+  })
+
+  it('should clear on button press', async function () {
+    user.setup()
+
+    // Add a fake item for now to pass the test
+    const { getByLabelText } = redux(<Card />)
+
+    const query = 'halifa'
+    const label = getByLabelText('Search autocomplete')
+
+    await act(async () => {
+      label.focus()
+      await user.type(label, query)
+      await delay(1000, true) // Wait for the fake API to load
+    })
+
+    expect(label.value).toEqual(query)
+
+    await act(() => {
+      // Only works on the SVG
+      const btn = getByLabelText('input-icon')
+      fireEvent.click(btn)
+    })
+
+    expect(label.value).toEqual('')
   })
 })
 

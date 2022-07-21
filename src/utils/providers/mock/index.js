@@ -25,8 +25,6 @@ async function fakeFetch (provider, query) {
     }
   }
 
-  console.log(hits)
-
   return await delay(global.mock_delay, {
     meta: { status: 200 },
     results: hits
