@@ -16,7 +16,7 @@ import { unsafe__useAutocorrect as useAutocorrect } from '@advtr/tidy'
 
 import withSearchProvider from '../../../hooks/withSearchProvider'
 import useBlur from '../../../hooks/useBlur'
-import { setSelected } from './actions'
+import { setSelected, clearSelected } from './actions'
 
 import { Input } from '../Input'
 import { Dropdown } from '../Dropdown'
@@ -31,7 +31,7 @@ function Selected (value, queryString, index) {
   this.queryString = queryString
 }
 
-const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, searchTitle, disabled, ...props }) => {
+const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, searchTitle, disabled, dispatch, ...props }) => {
   const input = useRef(null)
   const [focus, handleFocus, handleBlur] = useBlur()
 
@@ -79,11 +79,15 @@ const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, se
     setValue('')
     clear()
 
+    // Only here to make sure the state is cleared, as `Search.Input` may get reused
+    // by `Detail`
+    dispatch(clearSelected())
+
     if (input && input.current) {
       input.current.value = ''
       input.current.focus()
     }
-  }, [input, clear])
+  }, [input, clear, dispatch])
 
   return (
     <Wrapper>
@@ -117,7 +121,8 @@ Card.propTypes = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onSelect: (selected) => dispatch(setSelected(selected))
+  onSelect: (selected) => dispatch(setSelected(selected)),
+  dispatch
 })
 
 export default connect(null, mapDispatchToProps)(Card)

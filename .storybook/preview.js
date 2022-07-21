@@ -1,6 +1,10 @@
+import React from "react";
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from "styled-components";
 import { ThemeProvider, GlobalStyle, get } from  "@advtr/tidy"
+
+import LanguageProvider from '../src/providers/LanguageProvider'
+import { translationMessages } from '../src/i18n'
 
 import configureStore from '../src/configureStore'
 import logger from "@harrytwright/logger";
@@ -20,11 +24,13 @@ const withRedux = (Story) => {
   return (
     <Provider store={store}>
       <ThemeProvider colorScheme="auto">
-        <>
-          <GlobalStyle />
-          <Backgrounds />
-          <Story />
-        </>
+        <LanguageProvider messages={translationMessages}>
+          <React.Fragment>
+            <GlobalStyle />
+            <Backgrounds />
+            <Story />
+          </React.Fragment>
+        </LanguageProvider>
       </ThemeProvider>
     </Provider>
   )
