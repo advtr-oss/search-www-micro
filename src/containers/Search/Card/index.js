@@ -8,19 +8,18 @@
 import PropTypes from 'prop-types'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { debounce, throttle } from 'throttle-debounce'
+import { connect } from 'react-redux'
 
 import logger from '@harrytwright/logger'
 // eslint-disable-next-line
 import { unsafe__useAutocorrect as useAutocorrect } from '@advtr/tidy'
 
 import useBlur from '../../../hooks/useBlur'
+import { setSelected } from './actions'
 
 import { Input } from '../../../components/Search/Input'
 import { Dropdown } from '../../../components/Search/Dropdown'
 import Wrapper from './Wrapper'
-
-// import MockSearchProvider from '../../../utils/providers/mock'
-// import _react from 'react'
 
 function Selected (value, queryString, index) {
   this.name = 'search-view'
@@ -113,5 +112,11 @@ Card.propTypes = {
   requestDelay: PropTypes.number,
   searchProvider: PropTypes.object
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  onSelect: (selected) => dispatch(setSelected(selected))
+})
+
+export default connect(null, mapDispatchToProps)(Card)
 
 export { Card }

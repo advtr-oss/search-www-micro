@@ -7,6 +7,7 @@ import { combineReducers } from 'redux'
 
 // Dynamically load these??
 import languageProviderReducer from './providers/LanguageProvider/reducer'
+import searchCardReducer from './containers/Search/Card/reducer'
 
 // sync('**/reducer.js', { cwd: __dirname })
 //   .map((el) => console.log(el))
@@ -17,6 +18,7 @@ import languageProviderReducer from './providers/LanguageProvider/reducer'
 export default function createReducer (injectedReducers = {}) {
   const rootReducer = combineReducers({
     language: languageProviderReducer,
+    search: searchCardReducer,
     ...injectedReducers
   })
 

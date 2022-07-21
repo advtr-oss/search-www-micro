@@ -20,9 +20,11 @@ const withRedux = (Story) => {
   return (
     <Provider store={store}>
       <ThemeProvider colorScheme="auto">
-        <GlobalStyle />
-        <Backgrounds />
-        <Story />
+        <>
+          <GlobalStyle />
+          <Backgrounds />
+          <Story />
+        </>
       </ThemeProvider>
     </Provider>
   )

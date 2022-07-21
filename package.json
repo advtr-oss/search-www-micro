@@ -33,6 +33,7 @@
     "start:storybook": "start-storybook -p 6006 -s public",
     "build": "react-scripts build",
     "build:storybook": "build-storybook -s public",
+    "build:acknowledgments": "node ./scripts/license.js",
     "deploy:gh-pages": "gh-pages",
     "lint": "eslint ./src --fix",
     "test": "react-scripts test",

@@ -1,7 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 
-import { Card } from './index'
+import Card from './index'
 import MockSearchProvider from '../../../utils/providers/mock'
 
 export default {
@@ -11,7 +11,6 @@ export default {
   args: {
     // Default args that aren't buttons
     placeholder: 'Hello',
-    onSelect: action('select'),
     disabled: false,
     searchProvider: MockSearchProvider.default()
   }

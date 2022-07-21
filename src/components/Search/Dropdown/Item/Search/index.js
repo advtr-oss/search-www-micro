@@ -17,10 +17,13 @@ import { Coffee, Send, MapPin } from 'react-feather'
 const Icon = ({ type }) => {
   switch (type) {
     case 'cafe':
+    case 'Cafe':
       return <Coffee />
     case 'airport':
+    case 'Airport':
       return <Send />
     case 'city':
+    case 'City':
     default:
       return <MapPin />
   }
@@ -29,8 +32,11 @@ const Icon = ({ type }) => {
 Icon.propTypes = {
   type: PropTypes.oneOf([
     'city',
+    'City',
     'cafe',
-    'airport'
+    'Cafe',
+    'airport',
+    'Airport'
   ])
 }
 
@@ -54,8 +60,11 @@ Search.displayName = 'Search.Dropdown.Search'
 Search.propTypes = {
   type: PropTypes.oneOf([
     'city',
+    'City',
     'cafe',
-    'airport'
+    'Cafe',
+    'airport',
+    'Airport'
   ]),
   containers: PropTypes.shape({
     entity: PropTypes.object,
