@@ -1,4 +1,6 @@
 {
+  "app.containers.SearchView.placeholder": "Search the world",
+  "app.containers.SearchView.title": "Search Results",
   "boilerplate.containers.locale.en": "English",
   "boilerplate.containers.locale.fr": "French"
 }

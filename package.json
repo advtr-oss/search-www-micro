@@ -36,7 +36,7 @@
     "build:intl": "node ./scripts/extract-intl.js",
     "build:storybook": "build-storybook -s public",
     "build:acknowledgments": "node ./scripts/license.js",
-    "postbuild:intlx": "sh ./scripts/post-extract.sh",
+    "postbuild:intl": "sh ./scripts/post-extract.sh",
     "deploy:gh-pages": "gh-pages",
     "lint": "eslint ./src --fix",
     "test": "react-scripts test",

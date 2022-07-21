@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 OLD_TRANSLATIONS=./src/translations
 TRANSLATIONS=./scripts/helpers/translations
