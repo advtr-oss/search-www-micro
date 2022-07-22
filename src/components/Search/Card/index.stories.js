@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Card from './index'
-import MockSearchProvider from '../../../utils/providers/mock'
 
 export default {
   title: 'Search/Card',
@@ -10,8 +9,7 @@ export default {
   args: {
     // Default args that aren't buttons
     placeholder: 'Hello',
-    disabled: false,
-    searchProvider: MockSearchProvider.default()
+    disabled: false
   }
 }
 
