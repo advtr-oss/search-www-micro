@@ -6,6 +6,8 @@ import { ThemeProvider, GlobalStyle, get } from '@advtr/tidy'
 import LanguageProvider from '../src/providers/LanguageProvider'
 import { translationMessages } from '../src/i18n'
 
+import CustomDocumentation from './Documentation.mdx'
+
 import configureStore from '../src/configureStore'
 import logger from '@harrytwright/logger'
 
@@ -47,5 +49,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/
     }
+  },
+  docs: {
+    page: CustomDocumentation
   }
 }
