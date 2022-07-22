@@ -1,0 +1,2 @@
+var c=__STORYBOOKADDONS__,{AddonStore:p,Channel:d,HooksContext:D,addons:s,applyHooks:S,isSupportedType:_,makeDecorator:i,mockChannel:m,types:A,useArgs:O,useCallback:C,useChannel:R,useEffect:k,useGlobals:f,useMemo:x,useParameter:T,useReducer:h,useRef:y,useState:I,useStoryContext:N}=__STORYBOOKADDONS__;var e="storybook/links";var n={NAVIGATE:`${e}/navigate`,REQUEST:`${e}/request`,RECEIVE:`${e}/receive`};s.register(e,r=>{s.getChannel().on(n.REQUEST,({kind:a,name:u})=>{let l=r.storyId(a,u);r.emit(n.RECEIVE,l)})});
+//# sourceMappingURL=manager.mjs.map
