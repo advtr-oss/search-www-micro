@@ -38,7 +38,8 @@
     "build:acknowledgments": "node ./scripts/license.js",
     "postbuild:intl": "sh ./scripts/post-extract.sh",
     "deploy:gh-pages": "gh-pages",
-    "lint": "eslint ./src --fix",
+    "lint": "eslint ./src ./.storybook ./scripts --ext .jsx --ext .js",
+    "lint:fix": "eslint ./src ./.storybook ./scripts --fix --ext .jsx --ext .js",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject"
@@ -85,7 +86,17 @@
       "react": {
         "version": "detect"
       }
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.18.6",

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 import { Provider } from 'react-redux'
-import { createGlobalStyle } from "styled-components";
-import { ThemeProvider, GlobalStyle, get } from  "@advtr/tidy"
+import { createGlobalStyle } from 'styled-components'
+import { ThemeProvider, GlobalStyle, get } from '@advtr/tidy'
 
 import LanguageProvider from '../src/providers/LanguageProvider'
 import { translationMessages } from '../src/i18n'
 
 import configureStore from '../src/configureStore'
-import logger from "@harrytwright/logger";
+import logger from '@harrytwright/logger'
 
 const initialState = {}
 const store = configureStore(initialState, history)
@@ -37,15 +37,15 @@ const withRedux = (Story) => {
 }
 
 export const decorators = [
-  withRedux,
+  withRedux
 ]
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
+      date: /Date$/
+    }
+  }
 }

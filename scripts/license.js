@@ -65,14 +65,14 @@ const includes = (arr, key) => arr.some((route) => route === key)
 const readPackage = readFile(path.join(process.cwd(), './package.json'))
 const packageDone = task('Reading package.json')
 
-function PackageData(path, pkg) {
+function PackageData (path, pkg) {
   this.package = pkg
   this.path = path
-  this.$_data = void 0
+  this._data = undefined
 }
 
 PackageData.prototype.readData = function () {
-  const self = this;
+  const self = this
   return readFile(this.path).then((buffer) => JSON.parse(buffer)).then((json) => {
     self.$_data = json
   }).then(() => self)
@@ -93,7 +93,6 @@ readPackage.then((buffer) => JSON.parse(buffer)).then((pkg) => {
       .map(el => ({ name: el.split('/').filter((el) => !['node_modules', 'package.json'].includes(el)).join('/'), file: el }))
       .filter(({ name }) => includes(Object.keys(pkg.dependencies), name))
       .map(({ file, name: pkg }) => new PackageData(file, pkg))
-
 
     const readingTaskDone = task('Reading package.json files')
 
@@ -117,9 +116,9 @@ readPackage.then((buffer) => JSON.parse(buffer)).then((pkg) => {
       }
 
       const readingTreeTaskDone = task('Parsing the dependency tree for meta data')
-      packages.forEach(({ package, $_data }) => {
-        const { name, version, description, license, author, repository, } = $_data
-        tree.dependencies[package] = {
+      packages.forEach(({ package: pkg, _data }) => {
+        const { name, version, description, license, author, repository } = _data
+        tree.dependencies[pkg] = {
           name, version, description, license, author, repository
         }
       })
@@ -136,4 +135,3 @@ readPackage.then((buffer) => JSON.parse(buffer)).then((pkg) => {
     })
   })
 })
-
