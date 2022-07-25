@@ -12,7 +12,7 @@ const glow = keyframes`
 
 const Glow = styled.span`
   animation: ${glow} 1.5s ease-in-out infinite;
-  background: ${get('elements.foreground.muted')};
+  background: ${get('elements.foreground.subtle')};
   color: transparent;
   cursor: progress;
   display: block;

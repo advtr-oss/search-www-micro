@@ -17,7 +17,7 @@ export const Dropdown = ({ values, title, loading, onSelect, ...props }) => {
     return (
       <Wrapper loading>
         <InternalDropdown data-title={title} values={loadingValues}
-                          component={Loading} />
+                          component={Loading} aria-label={Dropdown.defaultProps.title} />
       </Wrapper>
     )
   }
@@ -25,7 +25,8 @@ export const Dropdown = ({ values, title, loading, onSelect, ...props }) => {
   return (
     <Wrapper>
       <InternalDropdown data-title={title} values={values}
-                        component={Search} onSelect={onSelect} />
+                        component={Search} onSelect={onSelect}
+                        aria-label={Dropdown.defaultProps.title} />
     </Wrapper>
   )
 }

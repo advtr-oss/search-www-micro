@@ -19,7 +19,8 @@ import { changeLocale } from '../../providers/LanguageProvider/actions'
 import { makeSelectLocale } from '../../providers/LanguageProvider/selectors'
 
 function LanguageSelect (props) {
-  return <ADVLanguageSelect locale={props.locale} locales={appLocales} messages={messages} onLocaleToggle={props.onLocaleToggle} />
+  // This won't propagate just yet until we update Tidy props to be a little more helpful for 1.x.x
+  return <ADVLanguageSelect aria-label='Language Select' locale={props.locale} locales={appLocales} messages={messages} onLocaleToggle={props.onLocaleToggle} />
 }
 
 LanguageSelect.propTypes = {
