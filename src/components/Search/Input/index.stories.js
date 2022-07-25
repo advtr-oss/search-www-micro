@@ -2,23 +2,7 @@ import React, { createRef } from 'react'
 
 import { action } from '@storybook/addon-actions'
 
-import { Input } from './index'
-
-export default {
-  title: 'Search/Input',
-  component: Input,
-
-  args: {
-    onBlur: action('on-blur'),
-    onFocus: action('on-focus'),
-    onInput: action('on-input'),
-    onClear: action('on-click'),
-
-    // Default args that aren't buttons
-    placeholder: 'Hello',
-    disabled: false
-  }
-}
+import { Input as Ipt } from './index'
 
 const style = {
   width: '420px',
@@ -30,16 +14,37 @@ const style = {
   top: 0
 }
 
-const Template = (args) => {
-  const ref = createRef()
-  return (
-    <div style={style}>
-      <div style={{ position: 'relative' }}>
-        <Input ref={ref} {...args} />
+export default {
+  title: 'Search/Input',
+  component: Ipt,
+  decorators: [
+    (Story) => (
+      <div style={style}>
+        <div style={{ position: 'relative' }}>
+          <Story />
+        </div>
       </div>
-    </div>
-  )
+    )
+  ]
 }
 
-export const Default = Template.bind({})
-Default.args = {}
+const Input = ({ ...args }) => {
+  const ref = createRef()
+  return <Ipt ref={ref} {...args} />
+}
+
+Input.displayName = Ipt.displayName
+
+export const Default = {
+  render: (args) => <Input {...args} />,
+  args: {
+    onBlur: action('on-blur'),
+    onFocus: action('on-focus'),
+    onInput: action('on-input'),
+    onClear: action('on-click'),
+
+    // Default args that aren't buttons
+    placeholder: 'Hello',
+    disabled: false
+  }
+}
