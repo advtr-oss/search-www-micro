@@ -328,7 +328,7 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
 .c8 {
   -webkit-animation: bQashm 1.5s ease-in-out infinite;
   animation: bQashm 1.5s ease-in-out infinite;
-  background: #57606a;
+  background: #6e7781;
   color: transparent;
   cursor: progress;
   display: block;
@@ -403,6 +403,7 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
     class="c5"
   >
     <ul
+      aria-label="Search Results"
       class="c6"
       data-title="Search Results"
       role="listbox"
@@ -699,6 +700,7 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
     class="c5"
   >
     <ul
+      aria-label="Search Results"
       class="c6"
       data-title="Search Results"
       role="listbox"

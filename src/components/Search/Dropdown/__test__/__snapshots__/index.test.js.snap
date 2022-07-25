@@ -50,6 +50,7 @@ exports[`Search.Dropdown should display the container 1`] = `
   class="c0"
 >
   <ul
+    aria-label="Search Results"
     class="c1"
     data-title="Search Results"
     role="listbox"
@@ -142,6 +143,7 @@ exports[`Search.Dropdown should display the loading container 1`] = `
   class="c0"
 >
   <ul
+    aria-label="Search Results"
     class="c1"
     data-title="Search Results"
     role="listbox"
