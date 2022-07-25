@@ -34,3 +34,27 @@ jobs:
           npm run deploy:gh-pages -- -d ./build -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy-chromatic:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.commits[0].message, '[skip ci]')"
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: '16'
+          registry-url: https://registry.npmjs.org
+      - name: Install dependencies
+        run: npm ci
+      name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build:storybook
+          skip: 'dependabot/**'
