@@ -6,39 +6,30 @@
  * */
 
 import PropTypes from 'prop-types'
-import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { debounce, throttle } from 'throttle-debounce'
 import { connect } from 'react-redux'
+import { useAutocorrect } from '@advtr/tidy'
+import { debounce, throttle } from 'throttle-debounce'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 
-import logger from '@harrytwright/logger'
-// eslint-disable-next-line
-import { unsafe__useAutocorrect as useAutocorrect } from '@advtr/tidy'
-
-import withSearchProvider from '../../../hooks/withSearchProvider'
-import useBlur from '../../../hooks/useBlur'
 import { setSelected, clearSelected } from './actions'
+
+import Wrapper from './Wrapper'
 
 import { Input } from '../Input'
 import { Dropdown } from '../Dropdown'
-import Wrapper from './Wrapper'
 
-function Selected (value, queryString, index) {
-  this.name = 'search-view'
-  this.value = value
-  this.index = index
+import useBlur from '../../../hooks/useBlur'
+import withSearchProvider from '../../../hooks/withSearchProvider'
 
-  // For analytics
-  this.queryString = queryString
-}
-
-const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, searchProvider, requestDelay, placeholder, searchTitle, disabled, dispatch, ...props }) => {
+const Card = withSearchProvider(({ initialValue, initialItems, onSelectionChange, searchProvider, onClear, requestDelay, searchTitle, ...props }) => {
   const input = useRef(null)
+
   const [focus, handleFocus, handleBlur] = useBlur()
 
-  const [value, setValue] = useState(defaultValue)
+  const [value, setValue] = useState(initialValue)
   // This is experimental, it works for now, but we'll see if I like the UI
   const { items, handleAutocomplete, clear } = useAutocorrect({
-    items: defaultItems, initialQuery: defaultValue, fetch: searchProvider.search
+    items: initialItems, initialQuery: initialValue, fetch: searchProvider.search
   })
 
   const debounceAutocomplete = debounce(requestDelay, handleAutocomplete)
@@ -52,79 +43,72 @@ const Card = withSearchProvider(({ defaultValue = '', defaultItems, onSelect, se
     }
   }, [throttleAutocomplete, debounceAutocomplete])
 
-  // Set the input via state, in theory could move this to autocomplete too
-  const handleInput = useCallback((event) => {
-    const value = event.target.value
-    setValue(value)
-  }, [debounceAutocomplete, throttleAutocomplete])
-
   // Handle the effect of input changing
   useEffect(() => {
-    logger.silly('Card.postSetValue', value)
-    if (value.length < 5 && value.length !== 0) {
+    if (value && value.length < 5 && value.length !== 0) {
       throttleAutocomplete(value)
-    } else if (value.length >= 5) {
+    } else if (value && value.length >= 5) {
       debounceAutocomplete(value)
     }
   }, [value])
 
-  const handleSelected = useCallback((selected) => {
-    onSelect && onSelect(new Selected(selected.value, value, selected.index))
-  }, [onSelect, value])
+  // Set the input via state, in theory could move this to autocomplete too
+  const handleChange = useCallback((event) => {
+    const value = event.target.value
+    setValue(value)
+  }, [debounceAutocomplete, throttleAutocomplete])
+
+  const handleSelectionChange = useCallback((selected) => {
+    // This is for analytics only
+    onSelectionChange && onSelectionChange({ ...selected, $__query: value })
+  }, [value, onSelectionChange])
 
   const handleClear = useCallback((event) => {
     event.preventDefault()
-    logger.verbose('search.view', 'handleClear clicked')
 
-    setValue('')
     clear()
-
-    // Only here to make sure the state is cleared, as `Search.Input` may get reused
-    // by `Detail`
-    dispatch(clearSelected())
+    setValue('')
+    onClear && onClear(event)
 
     if (input && input.current) {
       input.current.value = ''
       input.current.focus()
     }
-  }, [input, clear, dispatch])
+  }, [input, clear, onClear])
 
   return (
     <Wrapper>
-      <Input value={value} ref={input} onFocus={handleFocus} onBlur={handleBlur} placeholder={placeholder}
-             disabled={disabled} onInput={handleInput} onClear={handleClear} />
-      {focus && value.length > 0 && <Dropdown values={items} onSelect={handleSelected} title={searchTitle} loading />}
+      <Input ref={input} value={value} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} onClick={handleClear} {...props} />
+      {focus && value.length > 0 && <Dropdown onSelectionChange={handleSelectionChange} values={items} title={searchTitle} isLoading />}
     </Wrapper>
   )
 }, 'Search.Card')
 
 Card.defaultProps = {
-  defaultItems: [],
+  initialItems: [],
+  initialValue: '',
   requestDelay: 200,
-
-  placeholder: 'Search...',
   searchTitle: 'Search Results'
 }
 
 Card.propTypes = {
-  defaultValue: PropTypes.string,
-  defaultItems: PropTypes.array,
-  onSelect: PropTypes.func,
-
   placeholder: PropTypes.string,
+  initialValue: PropTypes.string,
+  initialItems: PropTypes.array,
+
+  onClear: PropTypes.func,
+  onSelectionChange: PropTypes.func,
+
   searchTitle: PropTypes.string,
-
-  disabled: PropTypes.bool,
-
-  requestDelay: PropTypes.number,
-  searchProvider: PropTypes.object
+  searchProvider: PropTypes.object,
+  requestDelay: PropTypes.number
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onSelect: (selected) => dispatch(setSelected(selected)),
-  dispatch
+  onSelectionChange: (selected) => dispatch(setSelected(selected)),
+  onClear: () => dispatch(clearSelected())
 })
 
-export default connect(null, mapDispatchToProps)(Card)
+const _Card = connect(null, mapDispatchToProps)(Card)
 
-export { Card }
+export { _Card as Card }

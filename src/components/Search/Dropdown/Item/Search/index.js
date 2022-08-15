@@ -41,12 +41,12 @@ Icon.propTypes = {
 }
 
 const Search = (props) => {
-  const primary = props.containers.entity.value
-  const secondary = props.containers.nation.value
+  const primary = props.value.containers.entity.value
+  const secondary = props.value.containers.nation.value
 
   return (
     <Wrapper>
-      <Icon className='search-icon' type={props.type} />
+      <Icon className='search-icon' type={props.value.type} />
       <span>
         <Primary>{primary}</Primary>
         <Secondary>{secondary}</Secondary>
@@ -58,17 +58,19 @@ const Search = (props) => {
 Search.displayName = 'Search.Dropdown.Search'
 
 Search.propTypes = {
-  type: PropTypes.oneOf([
-    'city',
-    'City',
-    'cafe',
-    'Cafe',
-    'airport',
-    'Airport'
-  ]),
-  containers: PropTypes.shape({
-    entity: PropTypes.object,
-    nation: PropTypes.object
+  value: PropTypes.shape({
+    type: PropTypes.oneOf([
+      'city',
+      'City',
+      'cafe',
+      'Cafe',
+      'airport',
+      'Airport'
+    ]),
+    containers: PropTypes.shape({
+      entity: PropTypes.object,
+      nation: PropTypes.object
+    })
   })
 }
 

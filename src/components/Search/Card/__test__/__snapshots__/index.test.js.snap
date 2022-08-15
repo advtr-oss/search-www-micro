@@ -1,41 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Search.Card should render a snapshot 1`] = `
-.c3 {
+.c5 {
   width: 100%;
   border-style: none;
   color: #24292f;
   background-color: #ffffff;
 }
 
-.c3::-webkit-input-placeholder {
+.c5::-webkit-input-placeholder {
   color: #6e7781;
 }
 
-.c3::-moz-placeholder {
+.c5::-moz-placeholder {
   color: #6e7781;
 }
 
-.c3:-ms-input-placeholder {
+.c5:-ms-input-placeholder {
   color: #6e7781;
 }
 
-.c3::placeholder {
+.c5::placeholder {
   color: #6e7781;
 }
 
-.c3:disabled {
+.c5:disabled {
   color: #57606a;
   background-color: #f6f8fa;
 }
 
-.c3:focus {
+.c5:focus {
   outline: none;
 }
 
-.c1 {
+.c2 {
   position: relative;
-  width: 100%;
+}
+
+.c2 {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,58 +54,71 @@ exports[`Search.Card should render a snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 48px;
-  color: #24292f;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(140,149,159,0.15);
-  border: none;
-  border-radius: 6px;
+}
+
+.c2 {
   padding: 0 8px;
+  border-radius: 4px;
+  width: 100%;
+  height: 48px;
 }
 
-.c1 .c2 {
+.c2:disabled {
+  color: #57606a !important;
+  background-color: #f6f8fa !important;
+}
+
+.c2 > .c4 {
   padding: 0 8px 0 8px;
+  color: inherit;
   background-color: inherit;
-  font-weight: 500;
   line-height: 40px;
+  font-weight: 500;
 }
 
-.c1:disabled {
-  color: #57606a;
-  background-color: #f6f8fa;
+.c3 {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.c4 {
-  display: none;
+.c3 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  cursor: pointer;
-  height: 40px;
-  padding-left: 8px;
-  color: #24292f;
-  background-color: inherit;
-  border-style: none;
-  border-radius: 10px;
+  padding-right: 8px;
 }
 
-.c4 > svg {
+.c3 {
+  border-style: none;
+  border-radius: 10px;
+  height: 40px;
+}
+
+.c3 {
+  color: #24292f;
+  background-color: inherit;
+}
+
+.c3:disabled {
+  cursor: default;
+}
+
+.c3:disabled > svg {
+  cursor: default;
+  color: #57606a;
+}
+
+.c3 > svg {
   width: 16px;
   height: 16px;
 }
 
-.c4:disabled {
-  cursor: default;
-}
-
-.c4:enabled > svg:hover {
+.c3:enabled > svg:hover {
   color: #0969da;
-}
-
-.c4:disabled > svg {
-  cursor: default;
-  color: #57606a;
 }
 
 .c0 {
@@ -106,25 +126,24 @@ exports[`Search.Card should render a snapshot 1`] = `
   gap: 16px 0;
 }
 
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 <div
   class="c0"
 >
   <div
-    class=""
+    class="c1"
   >
     <div
-      class="c1"
+      class="c2"
     >
-      <input
-        aria-label="Search autocomplete"
-        autocomplete="off"
-        class="c2 c3 input--empty"
-        placeholder="Search..."
-        type="text"
-        value=""
-      />
       <button
-        class="c4"
+        class="c3"
       >
         <svg
           aria-label="input-icon"
@@ -138,61 +157,92 @@ exports[`Search.Card should render a snapshot 1`] = `
           width="24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <line
-            x1="18"
-            x2="6"
-            y1="6"
-            y2="18"
+          <circle
+            cx="11"
+            cy="11"
+            r="8"
           />
           <line
-            x1="6"
-            x2="18"
-            y1="6"
-            y2="18"
+            x1="21"
+            x2="16.65"
+            y1="21"
+            y2="16.65"
           />
         </svg>
       </button>
+      <input
+        aria-disabled="false"
+        aria-label="Search autocomplete"
+        aria-readonly="false"
+        autocomplete="off"
+        class="c4 c5 input--empty"
+        placeholder="Search the world..."
+        type="text"
+        value=""
+      />
     </div>
   </div>
 </div>
 `;
 
 exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
-.c3 {
+.c7 {
+  width: 100%;
+}
+
+.c9 {
+  -webkit-animation: bQashm 1.5s ease-in-out infinite;
+  animation: bQashm 1.5s ease-in-out infinite;
+  background: #6e7781;
+  color: transparent;
+  cursor: progress;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.c4 {
   width: 100%;
   border-style: none;
   color: #24292f;
   background-color: #ffffff;
 }
 
-.c3::-webkit-input-placeholder {
+.c4::-webkit-input-placeholder {
   color: #6e7781;
 }
 
-.c3::-moz-placeholder {
+.c4::-moz-placeholder {
   color: #6e7781;
 }
 
-.c3:-ms-input-placeholder {
+.c4:-ms-input-placeholder {
   color: #6e7781;
 }
 
-.c3::placeholder {
+.c4::placeholder {
   color: #6e7781;
 }
 
-.c3:disabled {
+.c4:disabled {
   color: #57606a;
   background-color: #f6f8fa;
 }
 
-.c3:focus {
+.c4:focus {
   outline: none;
 }
 
-.c1 {
+.c2 {
   position: relative;
-  width: 100%;
+}
+
+.c2 {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -204,82 +254,107 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 48px;
-  color: #24292f;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(140,149,159,0.15);
-  border: none;
-  border-radius: 6px;
+}
+
+.c2 {
   padding: 0 8px;
+  border-radius: 4px;
+  width: 100%;
+  height: 48px;
 }
 
-.c1 .c2 {
+.c2:disabled {
+  color: #57606a !important;
+  background-color: #f6f8fa !important;
+}
+
+.c2 > .c3 {
   padding: 0 8px 0 8px;
+  color: inherit;
   background-color: inherit;
-  font-weight: 500;
   line-height: 40px;
+  font-weight: 500;
 }
 
-.c1:disabled {
-  color: #57606a;
-  background-color: #f6f8fa;
-}
-
-.c4 {
+.c5 {
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  cursor: pointer;
-  height: 40px;
   padding-left: 8px;
-  color: #24292f;
-  background-color: inherit;
+}
+
+.c5 {
   border-style: none;
   border-radius: 10px;
+  height: 40px;
 }
 
-.c4 > svg {
-  width: 16px;
-  height: 16px;
+.c5 {
+  color: #24292f;
+  background-color: inherit;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: default;
 }
 
-.c4:enabled > svg:hover {
-  color: #0969da;
-}
-
-.c4:disabled > svg {
+.c5:disabled > svg {
   cursor: default;
   color: #57606a;
 }
 
-.c5 > ul {
+.c5 > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.c5:enabled > svg:hover {
+  color: #0969da;
+}
+
+.c0 {
+  display: grid;
+  gap: 16px 0;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c6 > ul {
+  display: block;
   padding: 0;
   margin: 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
-  display: block;
-  background-color: #ffffff;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(140,149,159,0.15);
 }
 
-.c5 > ul * {
+.c6 > ul {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c6 > ul * {
   cursor: default;
 }
 
-.c5 > ul:before {
+.c6 > ul:before {
   content: attr(data-title);
   display: -webkit-box;
   display: -webkit-flex;
@@ -301,16 +376,12 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   letter-spacing: .5px;
 }
 
-.c5 > ul > li:not(:last-child) {
+.c6 > ul > li:not(:last-child) {
   border-color: var(--border);
   border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
-.c6 {
-  width: 100%;
-}
-
-.c7 {
+.c8 {
   height: 48px;
   padding: 0 15px;
   display: grid;
@@ -325,51 +396,37 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   line-height: 16px;
 }
 
-.c8 {
-  -webkit-animation: bQashm 1.5s ease-in-out infinite;
-  animation: bQashm 1.5s ease-in-out infinite;
-  background: #6e7781;
-  color: transparent;
-  cursor: progress;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.c9 {
+.c10 {
   width: 24px;
   height: 24px;
 }
 
-.c10 {
+.c11 {
   height: 24px;
   width: 100%;
-}
-
-.c0 {
-  display: grid;
-  gap: 16px 0;
 }
 
 <div
   class="c0"
 >
   <div
-    class=""
+    class="c1"
   >
     <div
-      class="c1"
+      class="c2"
     >
       <input
+        aria-disabled="false"
         aria-label="Search autocomplete"
+        aria-readonly="false"
         autocomplete="off"
-        class="c2 c3 input--focus"
-        placeholder="Search..."
+        class="c3 c4 input--focus"
+        placeholder="Search the world..."
         type="text"
         value="H"
       />
       <button
-        class="c4"
+        class="c5"
       >
         <svg
           aria-label="input-icon"
@@ -400,11 +457,11 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
     </div>
   </div>
   <div
-    class="c5"
+    class="c6"
   >
     <ul
       aria-label="Search Results"
-      class="c6"
+      class="c7"
       data-title="Search Results"
       role="listbox"
     >
@@ -413,14 +470,14 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
         tabindex="-1"
       >
         <div
-          class="c7 loading-item"
+          class="c8 loading-item"
         >
           <span
-            class="c8 c9"
+            class="c9 c10"
           />
           <span>
             <span
-              class="c8 c10"
+              class="c9 c11"
             >
               loading...
             </span>
@@ -432,14 +489,14 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
         tabindex="-1"
       >
         <div
-          class="c7 loading-item"
+          class="c8 loading-item"
         >
           <span
-            class="c8 c9"
+            class="c9 c10"
           />
           <span>
             <span
-              class="c8 c10"
+              class="c9 c11"
             >
               loading...
             </span>
@@ -452,41 +509,52 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
 `;
 
 exports[`Search.Card should render search dropdown on focus and typing 1`] = `
-.c3 {
+.c7 {
+  width: 100%;
+}
+
+.c4 {
   width: 100%;
   border-style: none;
   color: #24292f;
   background-color: #ffffff;
 }
 
-.c3::-webkit-input-placeholder {
+.c4::-webkit-input-placeholder {
   color: #6e7781;
 }
 
-.c3::-moz-placeholder {
+.c4::-moz-placeholder {
   color: #6e7781;
 }
 
-.c3:-ms-input-placeholder {
+.c4:-ms-input-placeholder {
   color: #6e7781;
 }
 
-.c3::placeholder {
+.c4::placeholder {
   color: #6e7781;
 }
 
-.c3:disabled {
+.c4:disabled {
   color: #57606a;
   background-color: #f6f8fa;
 }
 
-.c3:focus {
+.c4:focus {
   outline: none;
 }
 
-.c1 {
+.c2 {
   position: relative;
-  width: 100%;
+}
+
+.c2 {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -498,82 +566,107 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 48px;
-  color: #24292f;
-  background-color: #ffffff;
-  box-shadow: 0 3px 6px rgba(140,149,159,0.15);
-  border: none;
-  border-radius: 6px;
+}
+
+.c2 {
   padding: 0 8px;
+  border-radius: 4px;
+  width: 100%;
+  height: 48px;
 }
 
-.c1 .c2 {
+.c2:disabled {
+  color: #57606a !important;
+  background-color: #f6f8fa !important;
+}
+
+.c2 > .c3 {
   padding: 0 8px 0 8px;
+  color: inherit;
   background-color: inherit;
-  font-weight: 500;
   line-height: 40px;
+  font-weight: 500;
 }
 
-.c1:disabled {
-  color: #57606a;
-  background-color: #f6f8fa;
-}
-
-.c4 {
+.c5 {
+  cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  cursor: pointer;
-  height: 40px;
   padding-left: 8px;
-  color: #24292f;
-  background-color: inherit;
+}
+
+.c5 {
   border-style: none;
   border-radius: 10px;
+  height: 40px;
 }
 
-.c4 > svg {
-  width: 16px;
-  height: 16px;
+.c5 {
+  color: #24292f;
+  background-color: inherit;
 }
 
-.c4:disabled {
+.c5:disabled {
   cursor: default;
 }
 
-.c4:enabled > svg:hover {
-  color: #0969da;
-}
-
-.c4:disabled > svg {
+.c5:disabled > svg {
   cursor: default;
   color: #57606a;
 }
 
-.c5 > ul {
+.c5 > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.c5:enabled > svg:hover {
+  color: #0969da;
+}
+
+.c0 {
+  display: grid;
+  gap: 16px 0;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c6 > ul {
+  display: block;
   padding: 0;
   margin: 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
-  display: block;
-  background-color: #ffffff;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 3px 6px rgba(140,149,159,0.15);
 }
 
-.c5 > ul * {
+.c6 > ul {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c6 > ul * {
   cursor: pointer;
 }
 
-.c5 > ul:before {
+.c6 > ul:before {
   content: attr(data-title);
   display: -webkit-box;
   display: -webkit-flex;
@@ -595,16 +688,12 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   letter-spacing: .5px;
 }
 
-.c5 > ul > li:not(:last-child) {
+.c6 > ul > li:not(:last-child) {
   border-color: var(--border);
   border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
-.c6 {
-  width: 100%;
-}
-
-.c7 {
+.c8 {
   height: 48px;
   padding: 0 15px;
   display: grid;
@@ -619,54 +708,51 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   line-height: 16px;
 }
 
-.c7 > svg {
+.c8 > svg {
   font-size: 24px;
   width: 20px;
   height: 20px;
 }
 
-.c7:hover {
-  background-color: rgba(175,184,193,0.2);
+.c8:hover {
+  background-color: rgba(234,238,242,0.5);
 }
 
-.c8 {
+.c9 {
   font-size: 14px;
   display: inline-block;
   margin-right: 5px;
   pointer-events: none;
 }
 
-.c9 {
+.c10 {
   font-size: 12px;
   color: #6e7781;
   display: inline;
   pointer-events: none;
 }
 
-.c0 {
-  display: grid;
-  gap: 16px 0;
-}
-
 <div
   class="c0"
 >
   <div
-    class=""
+    class="c1"
   >
     <div
-      class="c1"
+      class="c2"
     >
       <input
+        aria-disabled="false"
         aria-label="Search autocomplete"
+        aria-readonly="false"
         autocomplete="off"
-        class="c2 c3 input--focus"
-        placeholder="Search..."
+        class="c3 c4 input--focus"
+        placeholder="Search the world..."
         type="text"
         value="halifa"
       />
       <button
-        class="c4"
+        class="c5"
       >
         <svg
           aria-label="input-icon"
@@ -697,11 +783,11 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
     </div>
   </div>
   <div
-    class="c5"
+    class="c6"
   >
     <ul
       aria-label="Search Results"
-      class="c6"
+      class="c7"
       data-title="Search Results"
       role="listbox"
     >
@@ -710,7 +796,7 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
         tabindex="-1"
       >
         <div
-          class="c7"
+          class="c8"
         >
           <svg
             fill="none"
@@ -734,12 +820,12 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
           </svg>
           <span>
             <span
-              class="c8"
+              class="c9"
             >
               Halifax
             </span>
             <span
-              class="c9"
+              class="c10"
             >
               United Kingdom
             </span>

@@ -11,19 +11,20 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
-import { LanguageSelect as ADVLanguageSelect } from '@advtr/tidy'
+import { LanguageSelect } from '@advtr/tidy'
 
 import messages from './messages'
 import { appLocales } from '../../i18n'
 import { changeLocale } from '../../providers/LanguageProvider/actions'
 import { makeSelectLocale } from '../../providers/LanguageProvider/selectors'
 
-function LanguageSelect (props) {
-  // This won't propagate just yet until we update Tidy props to be a little more helpful for 1.x.x
-  return <ADVLanguageSelect aria-label='Language Select' locale={props.locale} locales={appLocales} messages={messages} onLocaleToggle={props.onLocaleToggle} />
+function _LanguageSelect (props) {
+  return <LanguageSelect aria-label='Language Select' locale={props.locale} locales={appLocales} messages={messages} onLocaleToggle={props.onLocaleToggle} />
 }
 
-LanguageSelect.propTypes = {
+_LanguageSelect.displayName = `withI18N(${LanguageSelect.displayName})`
+
+_LanguageSelect.propTypes = {
   onLocaleToggle: PropTypes.func,
   locale: PropTypes.string
 }
@@ -37,12 +38,14 @@ const mapStateToProps = createSelector(
 
 export function mapDispatchToProps (dispatch) {
   return {
-    onLocaleToggle: evt => dispatch(changeLocale(evt.target.value)),
+    onLocaleToggle: selected => dispatch(changeLocale(selected.key)),
     dispatch
   }
 }
 
-export default connect(
+const ReduxLanguageSelect = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LanguageSelect)
+)(_LanguageSelect)
+
+export { ReduxLanguageSelect as LanguageSelect }

@@ -2,6 +2,6 @@
 
 exports[`LanguageProvider should render snapshot 1`] = `
 <div>
-  {"en":{"app.containers.SearchView.placeholder":"Search the world","app.containers.SearchView.title":"Search Results","boilerplate.containers.locale.en":"English","boilerplate.containers.locale.fr":"French"},"fr":{"app.containers.SearchView.placeholder":"Cherchez le monde","app.containers.SearchView.title":"Résultats de recherche","boilerplate.containers.locale.en":"Anglaise","boilerplate.containers.locale.fr":"Français"}}
+  {"en":{"app.containers.SearchView.aria-input":"Search Autocomplete","app.containers.SearchView.placeholder":"Search the world...","app.containers.SearchView.title":"Search Results","boilerplate.containers.locale.en":"English","boilerplate.containers.locale.fr":"French"},"fr":{"app.containers.SearchView.aria-input":"Recherch Remplissage automatique","app.containers.SearchView.placeholder":"Cherchez le monde...","app.containers.SearchView.title":"Résultats de recherche","boilerplate.containers.locale.en":"Anglaise","boilerplate.containers.locale.fr":"Français"}}
 </div>
 `;

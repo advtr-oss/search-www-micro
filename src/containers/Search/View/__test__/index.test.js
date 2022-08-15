@@ -11,7 +11,8 @@ import LanguageProvider from '../../../../providers/LanguageProvider'
 import { translationMessages } from '../../../../i18n'
 
 import configureStore from '../../../../configureStore'
-import View from '../index'
+import { View } from '../index'
+import { changeLocale } from '../../../../providers/LanguageProvider/actions'
 
 const store = configureStore()
 
@@ -31,6 +32,13 @@ const redux = (ui, opts) => render((
 
 describe('Search.View', function () {
   it('should render a snapshot', function () {
+    const { container } = redux(<View />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render with changed locale', function () {
+    store.dispatch(changeLocale('fr'))
+
     const { container } = redux(<View />)
     expect(container.firstChild).toMatchSnapshot()
   })

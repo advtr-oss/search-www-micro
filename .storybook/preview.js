@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
-import { ThemeProvider, GlobalStyle, get } from '@advtr/tidy'
+import { ThemeProvider, GlobalStyle, SearchListenerProvider, get } from '@advtr/tidy'
 
 import LanguageProvider from '../src/providers/LanguageProvider'
 import { translationMessages } from '../src/i18n'
@@ -25,11 +25,13 @@ const withRedux = (Story) => {
     <Provider store={store}>
       <ThemeProvider colorScheme="auto">
         <LanguageProvider messages={translationMessages}>
-          <React.Fragment>
-            <GlobalStyle />
-            <Backgrounds />
-            <Story />
-          </React.Fragment>
+          <SearchListenerProvider listener='Semicolon' escape='Escape' >
+            <React.Fragment>
+              <GlobalStyle />
+              <Backgrounds />
+              <Story />
+            </React.Fragment>
+          </SearchListenerProvider>
         </LanguageProvider>
       </ThemeProvider>
     </Provider>

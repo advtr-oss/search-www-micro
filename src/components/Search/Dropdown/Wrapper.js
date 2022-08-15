@@ -5,10 +5,25 @@
  *
  * */
 import styled, { css } from 'styled-components'
-import { get } from '@advtr/tidy'
+import { get, border, decorator, withThemeProps } from '@advtr/tidy'
+import PropTypes from 'prop-types'
+
+const adv = (ctx) => css`
+  & {
+    ${ctx.adv?.foreground && css`color: ${get(`elements.foreground.${ctx.adv?.foreground}`)({ theme: ctx.theme })} !important;`}
+    ${ctx.adv?.canvas && css`background-color: ${ctx.adv?.canvas && get(`elements.canvas.${ctx.adv?.canvas}`)({ theme: ctx.theme })} !important;`}
+    
+    ${ctx.adv?.shadow && css`box-shadow: ${ctx.adv?.shadow && get(`elements.shadow.${ctx.adv?.shadow}`)({ theme: ctx.theme })} !important;`}
+    ${ctx.adv?.border && css`border: ${ctx.adv?.border && border.custom(ctx.adv?.border)({ theme: ctx.theme })} !important;`} 
+  }
+`
 
 const Wrapper = styled.div`
   & > ul {
+    ${adv};
+    
+    display: block;
+    
     padding: 0;
     margin: 0;
     position: absolute;
@@ -16,16 +31,12 @@ const Wrapper = styled.div`
     z-index: 1000;
 
     top: 100%;
-    display: block;
-    background-color: ${get('elements.canvas.overlay')};
+    
     border-radius: ${get('layout.border.radius[2]')};
     overflow: hidden;
-
-    // Shadow
-    box-shadow: ${get('elements.shadow.medium')};
     
     // Force the cursor
-    ${({ loading }) => loading
+    ${({ isLoading }) => isLoading
             ? css` 
               & * {
                 cursor: default;
@@ -56,5 +67,12 @@ const Wrapper = styled.div`
     }
   }
 `
+
+Wrapper.propTypes = decorator([
+  withThemeProps,
+  {
+    isLoading: PropTypes.bool
+  }
+])
 
 export default Wrapper

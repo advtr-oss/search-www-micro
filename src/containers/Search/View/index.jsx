@@ -19,13 +19,13 @@ import Search from '../../../components/Search'
 const View = ({ ...props }) => {
   return (
     <Container>
-      <FormattedView title={messages.title} placeholder={messages.placeholder}>
-        {({ title, placeholder }) => (
-          <Search.Card placeholder={placeholder} searchTitle={title} />
+      <FormattedView title={messages.title} placeholder={messages.placeholder} aria-input={messages['aria-input']}>
+        {({ title, placeholder, 'aria-input': aria }) => (
+          <Search.Card placeholder={placeholder} searchTitle={title} aria-label={aria} />
         )}
       </FormattedView>
     </Container>
   )
 }
 
-export default View
+export { View }

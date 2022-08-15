@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { action } from '@storybook/addon-actions'
 
 import { Dropdown } from './index'
@@ -21,14 +20,6 @@ const mockData = [
   }
 ]
 
-export default {
-  title: 'Search/Dropdown',
-  component: Dropdown,
-  args: {
-    onSelect: action('select')
-  }
-}
-
 const style = {
   width: '420px',
   padding: '20px',
@@ -39,23 +30,49 @@ const style = {
   top: 0
 }
 
-// Place inside div to set width/height
-const Template = (args) => (
-  <div style={style}>
-    <div style={{ position: 'relative' }}>
-      <Dropdown {...args} />
-    </div>
-  </div>
-)
-
-export const Default = Template.bind({})
-
-Default.args = {
-  values: mockData
+export default {
+  title: 'Search/Dropdown',
+  component: Dropdown,
+  decorators: [
+    (Story) => (
+      <div style={style}>
+        <div style={{ position: 'relative' }}>
+          <Story />
+        </div>
+      </div>
+    )
+  ]
 }
 
-export const Loading = Template.bind({})
-Loading.args = {
-  loading: true,
-  values: []
+export const Default = {
+  render: (args) => <Dropdown {...args}/>,
+  args: {
+    onSelectionChange: action('onSelectionChange'),
+    values: mockData
+  }
 }
+
+export const Loading = {
+  render: (args) => <Dropdown {...args}/>,
+  args: {
+    ...Default.args,
+    values: [],
+    isLoading: true
+  }
+}
+
+//
+// // Place inside div to set width/height
+// const Template = (args) => <Dropdown {...args} />
+//
+// export const Default = Template.bind({})
+//
+// Default.args = {
+//   values: mockData
+// }
+//
+// export const Loading = Template.bind({})
+// Loading.args = {
+//   loading: true,
+//   values: []
+// }

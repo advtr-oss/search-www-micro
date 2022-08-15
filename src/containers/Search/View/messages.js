@@ -10,5 +10,9 @@ export default defineMessages({
   title: {
     id: `${scope}.title`,
     defaultMessage: 'Search Results'
+  },
+  'aria-input': {
+    id: `${scope}.aria-input`,
+    defaultMessage: 'Search Autocomplete'
   }
 })

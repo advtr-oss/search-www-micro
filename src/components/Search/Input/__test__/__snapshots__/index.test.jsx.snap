@@ -1,48 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search.View should render a snapshot 1`] = `
-.c6 {
+exports[`Input should display a disabled base input 1`] = `
+.c4 {
   width: 100%;
   border-style: none;
   color: #24292f;
   background-color: #ffffff;
 }
 
-.c6::-webkit-input-placeholder {
+.c4::-webkit-input-placeholder {
   color: #6e7781;
 }
 
-.c6::-moz-placeholder {
+.c4::-moz-placeholder {
   color: #6e7781;
 }
 
-.c6:-ms-input-placeholder {
+.c4:-ms-input-placeholder {
   color: #6e7781;
 }
 
-.c6::placeholder {
+.c4::placeholder {
   color: #6e7781;
 }
 
-.c6:disabled {
+.c4:disabled {
   color: #57606a;
   background-color: #f6f8fa;
 }
 
-.c6:focus {
+.c4:focus {
   outline: none;
 }
 
-.c3 {
+.c1 {
   position: relative;
 }
 
-.c3 {
+.c1 {
   background-color: #ffffff !important;
   box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
 }
 
-.c3 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,19 +56,19 @@ exports[`Search.View should render a snapshot 1`] = `
   align-items: center;
 }
 
-.c3 {
+.c1 {
   padding: 0 8px;
   border-radius: 4px;
   width: 100%;
   height: 48px;
 }
 
-.c3:disabled {
+.c1:disabled {
   color: #57606a !important;
   background-color: #f6f8fa !important;
 }
 
-.c3 > .c5 {
+.c1 > .c3 {
   padding: 0 8px 0 8px;
   color: inherit;
   background-color: inherit;
@@ -76,15 +76,12 @@ exports[`Search.View should render a snapshot 1`] = `
   font-weight: 500;
 }
 
-.c4 {
+.c2 {
   cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
 }
 
-.c4 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -92,45 +89,36 @@ exports[`Search.View should render a snapshot 1`] = `
   padding-right: 8px;
 }
 
-.c4 {
+.c2 {
   border-style: none;
   border-radius: 10px;
   height: 40px;
 }
 
-.c4 {
+.c2 {
   color: #24292f;
   background-color: inherit;
 }
 
-.c4:disabled {
+.c2:disabled {
   cursor: default;
 }
 
-.c4:disabled > svg {
+.c2:disabled > svg {
   cursor: default;
   color: #57606a;
 }
 
-.c4 > svg {
+.c2 > svg {
   width: 16px;
   height: 16px;
 }
 
-.c4:enabled > svg:hover {
+.c2:enabled > svg:hover {
   color: #0969da;
 }
 
-.c0 {
-  position: relative;
-}
-
-.c1 {
-  display: grid;
-  gap: 16px 0;
-}
-
-.c2 button {
+.c0 button {
   display: -webkit-box !important;
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
@@ -143,99 +131,95 @@ exports[`Search.View should render a snapshot 1`] = `
   <div
     class="c1"
   >
-    <div
+    <button
+      aria-disabled="true"
       class="c2"
+      disabled=""
     >
-      <div
-        class="c3"
+      <svg
+        aria-disabled="true"
+        aria-label="input-icon"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <button
-          class="c4"
-        >
-          <svg
-            aria-label="input-icon"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="11"
-              cy="11"
-              r="8"
-            />
-            <line
-              x1="21"
-              x2="16.65"
-              y1="21"
-              y2="16.65"
-            />
-          </svg>
-        </button>
-        <input
-          aria-disabled="false"
-          aria-label="Search Autocomplete"
-          aria-readonly="false"
-          autocomplete="off"
-          class="c5 c6 input--empty"
-          placeholder="Search the world..."
-          type="text"
-          value=""
+        <circle
+          cx="11"
+          cy="11"
+          r="8"
         />
-      </div>
-    </div>
+        <line
+          x1="21"
+          x2="16.65"
+          y1="21"
+          y2="16.65"
+        />
+      </svg>
+    </button>
+    <input
+      aria-disabled="true"
+      aria-label="Search autocomplete"
+      aria-readonly="false"
+      autocomplete="off"
+      class="c3 c4 input--disabled input--empty"
+      disabled=""
+      placeholder="Search the world..."
+      type="text"
+      value=""
+    />
   </div>
 </div>
 `;
 
-exports[`Search.View should render with changed locale 1`] = `
-.c6 {
+exports[`Input should display the base input 1`] = `
+.c4 {
   width: 100%;
   border-style: none;
   color: #24292f;
   background-color: #ffffff;
 }
 
-.c6::-webkit-input-placeholder {
+.c4::-webkit-input-placeholder {
   color: #6e7781;
 }
 
-.c6::-moz-placeholder {
+.c4::-moz-placeholder {
   color: #6e7781;
 }
 
-.c6:-ms-input-placeholder {
+.c4:-ms-input-placeholder {
   color: #6e7781;
 }
 
-.c6::placeholder {
+.c4::placeholder {
   color: #6e7781;
 }
 
-.c6:disabled {
+.c4:disabled {
   color: #57606a;
   background-color: #f6f8fa;
 }
 
-.c6:focus {
+.c4:focus {
   outline: none;
 }
 
-.c3 {
+.c1 {
   position: relative;
 }
 
-.c3 {
+.c1 {
   background-color: #ffffff !important;
   box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
 }
 
-.c3 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -249,19 +233,19 @@ exports[`Search.View should render with changed locale 1`] = `
   align-items: center;
 }
 
-.c3 {
+.c1 {
   padding: 0 8px;
   border-radius: 4px;
   width: 100%;
   height: 48px;
 }
 
-.c3:disabled {
+.c1:disabled {
   color: #57606a !important;
   background-color: #f6f8fa !important;
 }
 
-.c3 > .c5 {
+.c1 > .c3 {
   padding: 0 8px 0 8px;
   color: inherit;
   background-color: inherit;
@@ -269,7 +253,7 @@ exports[`Search.View should render with changed locale 1`] = `
   font-weight: 500;
 }
 
-.c4 {
+.c2 {
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -277,7 +261,7 @@ exports[`Search.View should render with changed locale 1`] = `
   display: flex;
 }
 
-.c4 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -285,45 +269,36 @@ exports[`Search.View should render with changed locale 1`] = `
   padding-right: 8px;
 }
 
-.c4 {
+.c2 {
   border-style: none;
   border-radius: 10px;
   height: 40px;
 }
 
-.c4 {
+.c2 {
   color: #24292f;
   background-color: inherit;
 }
 
-.c4:disabled {
+.c2:disabled {
   cursor: default;
 }
 
-.c4:disabled > svg {
+.c2:disabled > svg {
   cursor: default;
   color: #57606a;
 }
 
-.c4 > svg {
+.c2 > svg {
   width: 16px;
   height: 16px;
 }
 
-.c4:enabled > svg:hover {
+.c2:enabled > svg:hover {
   color: #0969da;
 }
 
-.c0 {
-  position: relative;
-}
-
-.c1 {
-  display: grid;
-  gap: 16px 0;
-}
-
-.c2 button {
+.c0 button {
   display: -webkit-box !important;
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
@@ -336,52 +311,44 @@ exports[`Search.View should render with changed locale 1`] = `
   <div
     class="c1"
   >
-    <div
+    <button
       class="c2"
     >
-      <div
-        class="c3"
+      <svg
+        aria-label="input-icon"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <button
-          class="c4"
-        >
-          <svg
-            aria-label="input-icon"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="11"
-              cy="11"
-              r="8"
-            />
-            <line
-              x1="21"
-              x2="16.65"
-              y1="21"
-              y2="16.65"
-            />
-          </svg>
-        </button>
-        <input
-          aria-disabled="false"
-          aria-label="Recherch Remplissage automatique"
-          aria-readonly="false"
-          autocomplete="off"
-          class="c5 c6 input--empty"
-          placeholder="Cherchez le monde..."
-          type="text"
-          value=""
+        <circle
+          cx="11"
+          cy="11"
+          r="8"
         />
-      </div>
-    </div>
+        <line
+          x1="21"
+          x2="16.65"
+          y1="21"
+          y2="16.65"
+        />
+      </svg>
+    </button>
+    <input
+      aria-disabled="false"
+      aria-label="Search autocomplete"
+      aria-readonly="false"
+      autocomplete="off"
+      class="c3 c4 input--empty"
+      placeholder="Search the world..."
+      type="text"
+      value=""
+    />
   </div>
 </div>
 `;

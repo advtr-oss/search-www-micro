@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { get } from '@advtr/tidy'
 
-// themes.dark.elements.inverseCanvas.overlay
-
 const Wrapper = styled.div`
   height: 48px;
   padding: 0 15px;
@@ -24,7 +22,7 @@ const Wrapper = styled.div`
   }
   
   &:hover {
-    background-color: ${get('elements.inverseCanvas.muted')};
+    background-color: ${get('elements.inverseCanvas.subtle')};
   }
 `
 

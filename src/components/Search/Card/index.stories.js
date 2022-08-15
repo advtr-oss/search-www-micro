@@ -1,17 +1,7 @@
 import React from 'react'
+import { action } from '@storybook/addon-actions'
 
-import Card from './index'
-
-export default {
-  title: 'Search/Card',
-  component: Card,
-
-  args: {
-    // Default args that aren't buttons
-    placeholder: 'Hello',
-    disabled: false
-  }
-}
+import { Card } from './index'
 
 const style = {
   width: '420px',
@@ -23,13 +13,23 @@ const style = {
   top: 0
 }
 
-const Template = (args) => (
-  <div style={style}>
-    <div style={{ position: 'relative' }}>
-      <Card {...args} />
-    </div>
-  </div>
-)
+export default {
+  title: 'Search/Card',
+  component: Card,
+  args: {
+    onSelectionChange: action('select')
+  },
+  decorators: [
+    (Story) => (
+      <div style={style}>
+        <div style={{ position: 'relative' }}>
+          <Story />
+        </div>
+      </div>
+    )
+  ]
+}
 
-export const Default = Template.bind({})
-Default.args = {}
+export const Default = {
+  render: (args) => <Card {...args} />
+}

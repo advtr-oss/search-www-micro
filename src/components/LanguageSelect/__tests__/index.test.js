@@ -8,7 +8,7 @@ import { render } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 
-import LanguageSelect from '../index'
+import { LanguageSelect } from '../index'
 import LanguageProvider from '../../../providers/LanguageProvider'
 
 import { translationMessages, DEFAULT_LOCALE } from '../../../i18n'

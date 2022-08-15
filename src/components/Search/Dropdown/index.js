@@ -1,46 +1,50 @@
 // import clsx from 'clsx'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Dropdown } from '@advtr/tidy'
 
 import Wrapper from './Wrapper'
-import { Dropdown as InternalDropdown } from '../../Dropdown'
 
 import { Loading } from './Item/Loading'
 import { Search } from './Item/Search'
 
 const loadingValues = Array(2).fill('loading...')
 
-export const Dropdown = ({ values, title, loading, onSelect, ...props }) => {
+const _Dropdown = ({ values, title, isLoading, onSelectionChange }) => {
+  const commonProps = {
+    'aria-label': title,
+    title
+  }
+
   // Change so loading can be a default value and if we get values
   // we move onto the SearchItem view
-  if (loading && values.length === 0) {
+  if (isLoading && values.length === 0) {
     return (
-      <Wrapper loading>
-        <InternalDropdown data-title={title} values={loadingValues}
-                          component={Loading} aria-label={Dropdown.defaultProps.title} />
+      <Wrapper adv={{ canvas: 'overlay', shadow: 'medium' }} isLoading>
+        <Dropdown values={loadingValues} rendered={Loading} {...commonProps} />
       </Wrapper>
     )
   }
 
   return (
-    <Wrapper>
-      <InternalDropdown data-title={title} values={values}
-                        component={Search} onSelect={onSelect}
-                        aria-label={Dropdown.defaultProps.title} />
+    <Wrapper adv={{ canvas: 'overlay', shadow: 'medium' }}>
+      <Dropdown values={values} rendered={Search} onSelectionChange={onSelectionChange} {...commonProps} />
     </Wrapper>
   )
 }
 
-Dropdown.displayName = 'Search.Dropdown'
+_Dropdown.displayName = 'Search.Dropdown'
 
-Dropdown.defaultProps = {
-  loading: false,
+_Dropdown.defaultProps = {
+  isLoading: false,
   title: 'Search Results'
 }
 
-Dropdown.propTypes = {
+_Dropdown.propTypes = {
   title: PropTypes.string,
   values: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onSelect: PropTypes.func.isRequired,
-  loading: PropTypes.bool
+  onSelectionChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool
 }
+
+export { _Dropdown as Dropdown }

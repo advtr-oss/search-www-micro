@@ -1,5 +1,6 @@
 {
-  "app.containers.SearchView.placeholder": "Cherchez le monde",
+  "app.containers.SearchView.aria-input": "Recherch Remplissage automatique",
+  "app.containers.SearchView.placeholder": "Cherchez le monde...",
   "app.containers.SearchView.title": "Résultats de recherche",
   "boilerplate.containers.locale.en": "Anglaise",
   "boilerplate.containers.locale.fr": "Français"

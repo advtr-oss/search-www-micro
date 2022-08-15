@@ -1,17 +1,13 @@
 import React from 'react'
 
-import ADVLanguageSelect from '../LanguageSelect'
+import { LanguageSelect } from '../LanguageSelect'
 
 export default {
   title: 'Select/Language',
-  component: ADVLanguageSelect
+  component: LanguageSelect
 }
 
-const Template = () => {
-  return (
-    <ADVLanguageSelect />
-  )
+export const Default = {
+  render: () => <LanguageSelect />,
+  storyName: 'LanguageSelect'
 }
-
-export const LanguageSelect = Template.bind({})
-LanguageSelect.args = {}

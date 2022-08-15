@@ -9,7 +9,7 @@ import user from '@testing-library/user-event'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 
 import configureStore from '../../../../configureStore'
-import Card from '../index'
+import { Card } from '../index'
 
 const store = configureStore()
 
@@ -97,7 +97,7 @@ describe('Search.Card', function () {
 
     const state = store.getState()
     expect(state.search.selected.loading).toBeFalsy()
-    expect(state.search.selected.queryString).toEqual(query)
+    expect(state.search.selected.$__query).toEqual(query)
   })
 
   it('should clear on button press', async function () {

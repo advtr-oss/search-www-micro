@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search.Dropdown should display the container 1`] = `
+exports[`Search.Dropdown should display empty container 1`] = `
+.c1 {
+  width: 100%;
+}
+
 .c0 > ul {
+  display: block;
   padding: 0;
   margin: 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
-  display: block;
+  border-radius: 6px;
   overflow: hidden;
+}
+
+.c0 > ul {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
 }
 
 .c0 > ul * {
@@ -28,8 +38,9 @@ exports[`Search.Dropdown should display the container 1`] = `
   -ms-flex-align: center;
   align-items: center;
   padding: 0 16px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #d0d7de;
   font-size: 12px;
+  color: #24292f;
   text-transform: uppercase;
   -webkit-letter-spacing: .5px;
   -moz-letter-spacing: .5px;
@@ -39,11 +50,7 @@ exports[`Search.Dropdown should display the container 1`] = `
 
 .c0 > ul > li:not(:last-child) {
   border-color: var(--border);
-  border-bottom: 1px solid;
-}
-
-.c1 {
-  width: 100%;
+  border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
 <div
@@ -59,15 +66,36 @@ exports[`Search.Dropdown should display the container 1`] = `
 `;
 
 exports[`Search.Dropdown should display the loading container 1`] = `
+.c1 {
+  width: 100%;
+}
+
+.c3 {
+  -webkit-animation: bQashm 1.5s ease-in-out infinite;
+  animation: bQashm 1.5s ease-in-out infinite;
+  background: #6e7781;
+  color: transparent;
+  cursor: progress;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .c0 > ul {
+  display: block;
   padding: 0;
   margin: 0;
   position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
-  display: block;
+  border-radius: 6px;
   overflow: hidden;
+}
+
+.c0 > ul {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
 }
 
 .c0 > ul * {
@@ -86,8 +114,9 @@ exports[`Search.Dropdown should display the loading container 1`] = `
   -ms-flex-align: center;
   align-items: center;
   padding: 0 16px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #d0d7de;
   font-size: 12px;
+  color: #24292f;
   text-transform: uppercase;
   -webkit-letter-spacing: .5px;
   -moz-letter-spacing: .5px;
@@ -97,11 +126,7 @@ exports[`Search.Dropdown should display the loading container 1`] = `
 
 .c0 > ul > li:not(:last-child) {
   border-color: var(--border);
-  border-bottom: 1px solid;
-}
-
-.c1 {
-  width: 100%;
+  border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
 .c2 {
@@ -117,16 +142,6 @@ exports[`Search.Dropdown should display the loading container 1`] = `
   align-items: center;
   cursor: pointer;
   line-height: 16px;
-}
-
-.c3 {
-  -webkit-animation: bQashm 1.5s ease-in-out infinite;
-  animation: bQashm 1.5s ease-in-out infinite;
-  color: transparent;
-  cursor: progress;
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 .c4 {
@@ -182,6 +197,194 @@ exports[`Search.Dropdown should display the loading container 1`] = `
             class="c3 c5"
           >
             loading...
+          </span>
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Search.Dropdown should display the mocked container 1`] = `
+.c1 {
+  width: 100%;
+}
+
+.c0 > ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  top: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.c0 > ul {
+  background-color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+}
+
+.c0 > ul * {
+  cursor: pointer;
+}
+
+.c0 > ul:before {
+  content: attr(data-title);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #d0d7de;
+  font-size: 12px;
+  color: #24292f;
+  text-transform: uppercase;
+  -webkit-letter-spacing: .5px;
+  -moz-letter-spacing: .5px;
+  -ms-letter-spacing: .5px;
+  letter-spacing: .5px;
+}
+
+.c0 > ul > li:not(:last-child) {
+  border-color: var(--border);
+  border-bottom: 1px solid rgba(27,31,36,0.15);
+}
+
+.c2 {
+  height: 48px;
+  padding: 0 15px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content;
+  grid-gap: 15px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  line-height: 16px;
+}
+
+.c2 > svg {
+  font-size: 24px;
+  width: 20px;
+  height: 20px;
+}
+
+.c2:hover {
+  background-color: rgba(234,238,242,0.5);
+}
+
+.c3 {
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 5px;
+  pointer-events: none;
+}
+
+.c4 {
+  font-size: 12px;
+  color: #6e7781;
+  display: inline;
+  pointer-events: none;
+}
+
+<div
+  class="c0"
+>
+  <ul
+    aria-label="Search Results"
+    class="c1"
+    data-title="Search Results"
+    role="listbox"
+  >
+    <li
+      role="option"
+      tabindex="-1"
+    >
+      <div
+        class="c2"
+      >
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+          />
+          <circle
+            cx="12"
+            cy="10"
+            r="3"
+          />
+        </svg>
+        <span>
+          <span
+            class="c3"
+          >
+            Halifax
+          </span>
+          <span
+            class="c4"
+          >
+            United Kingdom
+          </span>
+        </span>
+      </div>
+    </li>
+    <li
+      role="option"
+      tabindex="-1"
+    >
+      <div
+        class="c2"
+      >
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="22"
+            x2="11"
+            y1="2"
+            y2="13"
+          />
+          <polygon
+            points="22 2 15 22 11 13 2 9 22 2"
+          />
+        </svg>
+        <span>
+          <span
+            class="c3"
+          >
+            Manchester Airport
+          </span>
+          <span
+            class="c4"
+          >
+            United Kingdom
           </span>
         </span>
       </div>
