@@ -9,5 +9,5 @@ export default {
 
 export const Default = {
   render: () => <LanguageSelect />,
-  storyName: 'LanguageSelect'
+  name: 'LanguageSelect'
 }

@@ -123,7 +123,18 @@ exports[`Search.Card should render a snapshot 1`] = `
 
 .c0 {
   display: grid;
-  gap: 16px 0;
+  gap: 0;
+}
+
+.c0:focus-within > .search--input > div {
+  border-radius: 0;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: none !important;
+}
+
+.c0:focus-within > .search--dropdown > ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
 }
 
 .c1 button {
@@ -133,11 +144,46 @@ exports[`Search.Card should render a snapshot 1`] = `
   display: flex !important;
 }
 
+.c1 > div {
+  border-radius: 0 0 4px 4px;
+}
+
+@media (min-width:544px) {
+  .c0 {
+    gap: 16px 0;
+  }
+
+  .c0 .search--input {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--input > div {
+    border-radius: 4px;
+    border-bottom: none;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--dropdown > ul {
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c1 > div {
+    border-radius: 4px;
+  }
+}
+
 <div
   class="c0"
 >
   <div
-    class="c1"
+    class="c1 search--input"
   >
     <div
       class="c2"
@@ -321,23 +367,10 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   color: #0969da;
 }
 
-.c0 {
-  display: grid;
-  gap: 16px 0;
-}
-
-.c1 button {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-
 .c6 > ul {
   display: block;
   padding: 0;
   margin: 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
@@ -381,6 +414,33 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
+.c0 {
+  display: grid;
+  gap: 0;
+}
+
+.c0:focus-within > .search--input > div {
+  border-radius: 0;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: none !important;
+}
+
+.c0:focus-within > .search--dropdown > ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c1 > div {
+  border-radius: 0 0 4px 4px;
+}
+
 .c8 {
   height: 48px;
   padding: 0 15px;
@@ -406,11 +466,42 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   width: 100%;
 }
 
+@media (min-width:544px) {
+  .c0 {
+    gap: 16px 0;
+  }
+
+  .c0 .search--input {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--input > div {
+    border-radius: 4px;
+    border-bottom: none;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--dropdown > ul {
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c1 > div {
+    border-radius: 4px;
+  }
+}
+
 <div
   class="c0"
 >
   <div
-    class="c1"
+    class="c1 search--input"
   >
     <div
       class="c2"
@@ -457,7 +548,7 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
     </div>
   </div>
   <div
-    class="c6"
+    class="c6 search--dropdown"
   >
     <ul
       aria-label="Search Results"
@@ -633,23 +724,10 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   color: #0969da;
 }
 
-.c0 {
-  display: grid;
-  gap: 16px 0;
-}
-
-.c1 button {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-
 .c6 > ul {
   display: block;
   padding: 0;
   margin: 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
@@ -693,6 +771,33 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   border-bottom: 1px solid rgba(27,31,36,0.15);
 }
 
+.c0 {
+  display: grid;
+  gap: 0;
+}
+
+.c0:focus-within > .search--input > div {
+  border-radius: 0;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: none !important;
+}
+
+.c0:focus-within > .search--dropdown > ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c1 > div {
+  border-radius: 0 0 4px 4px;
+}
+
 .c8 {
   height: 48px;
   padding: 0 15px;
@@ -732,11 +837,42 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   pointer-events: none;
 }
 
+@media (min-width:544px) {
+  .c0 {
+    gap: 16px 0;
+  }
+
+  .c0 .search--input {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--input > div {
+    border-radius: 4px;
+    border-bottom: none;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c0:focus-within > .search--dropdown > ul {
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(140,149,159,0.15) !important;
+  }
+}
+
+@media (min-width:544px) {
+  .c1 > div {
+    border-radius: 4px;
+  }
+}
+
 <div
   class="c0"
 >
   <div
-    class="c1"
+    class="c1 search--input"
   >
     <div
       class="c2"
@@ -783,7 +919,7 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
     </div>
   </div>
   <div
-    class="c6"
+    class="c6 search--dropdown"
   >
     <ul
       aria-label="Search Results"

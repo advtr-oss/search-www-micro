@@ -20,14 +20,14 @@ const _Dropdown = ({ values, title, isLoading, onSelectionChange }) => {
   // we move onto the SearchItem view
   if (isLoading && values.length === 0) {
     return (
-      <Wrapper adv={{ canvas: 'overlay', shadow: 'medium' }} isLoading>
+      <Wrapper className='search--dropdown' adv={{ canvas: 'overlay', shadow: 'medium' }} isLoading>
         <Dropdown values={loadingValues} rendered={Loading} {...commonProps} />
       </Wrapper>
     )
   }
 
   return (
-    <Wrapper adv={{ canvas: 'overlay', shadow: 'medium' }}>
+    <Wrapper className='search--dropdown' adv={{ canvas: 'overlay', shadow: 'medium' }}>
       <Dropdown values={values} rendered={Search} onSelectionChange={onSelectionChange} {...commonProps} />
     </Wrapper>
   )

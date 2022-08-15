@@ -125,8 +125,18 @@ exports[`Input should display a disabled base input 1`] = `
   display: flex !important;
 }
 
+.c0 > div {
+  border-radius: 0 0 4px 4px;
+}
+
+@media (min-width:544px) {
+  .c0 > div {
+    border-radius: 4px;
+  }
+}
+
 <div
-  class="c0"
+  class="c0 search--input"
 >
   <div
     class="c1"
@@ -305,8 +315,18 @@ exports[`Input should display the base input 1`] = `
   display: flex !important;
 }
 
+.c0 > div {
+  border-radius: 0 0 4px 4px;
+}
+
+@media (min-width:544px) {
+  .c0 > div {
+    border-radius: 4px;
+  }
+}
+
 <div
-  class="c0"
+  class="c0 search--input"
 >
   <div
     class="c1"

@@ -9,7 +9,6 @@ exports[`Search.Dropdown should display empty container 1`] = `
   display: block;
   padding: 0;
   margin: 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
@@ -54,7 +53,7 @@ exports[`Search.Dropdown should display empty container 1`] = `
 }
 
 <div
-  class="c0"
+  class="c0 search--dropdown"
 >
   <ul
     aria-label="Search Results"
@@ -85,7 +84,6 @@ exports[`Search.Dropdown should display the loading container 1`] = `
   display: block;
   padding: 0;
   margin: 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
@@ -155,7 +153,7 @@ exports[`Search.Dropdown should display the loading container 1`] = `
 }
 
 <div
-  class="c0"
+  class="c0 search--dropdown"
 >
   <ul
     aria-label="Search Results"
@@ -214,7 +212,6 @@ exports[`Search.Dropdown should display the mocked container 1`] = `
   display: block;
   padding: 0;
   margin: 0;
-  position: absolute;
   width: 100%;
   z-index: 1000;
   top: 100%;
@@ -298,7 +295,7 @@ exports[`Search.Dropdown should display the mocked container 1`] = `
 }
 
 <div
-  class="c0"
+  class="c0 search--dropdown"
 >
   <ul
     aria-label="Search Results"

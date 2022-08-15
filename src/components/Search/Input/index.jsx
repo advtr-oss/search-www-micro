@@ -39,7 +39,7 @@ const Input = forwardRef((props, ref) => {
   const [Icon, side] = useMemo(() => [isShowingSearch ? Magnifier : X, isShowingSearch ? 'left' : 'right'], [isShowingSearch])
 
   return (
-    <Wrapper>
+    <Wrapper className='search--input'>
       <Search adv={{ canvas: 'overlay', shadow: 'medium' }} value={value} ref={ref} Icon={Icon}
               onChange={handleChange} side={side} {...rest} />
     </Wrapper>
