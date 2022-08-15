@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { get, media, border, alpha } from '@advtr/tidy'
-// import Input from '@advtr/tidy/dist/cjs/components/Search/Wrapper'
-import Dropdown from '../Dropdown/Wrapper'
 import isDarkMode from '../../../utils/isDarkMode'
 
 const Wrapper = styled.div`
