@@ -1,5 +1,12 @@
 /// <reference types="webpack-env" />
-import { FunctionComponent } from 'react';
+/// <reference types="node" />
+import { FC } from 'react';
+
+declare global {
+	interface SymbolConstructor {
+		readonly observable: symbol;
+	}
+}
 
 declare enum types {
     TAB = "tab",
@@ -21,7 +28,7 @@ interface RootProps {
     provider: Provider;
     history?: History;
 }
-declare const Root: FunctionComponent<RootProps>;
+declare const Root: FC<RootProps>;
 declare function renderStorybookUI(domNode: HTMLElement, provider: Provider): void;
 
 export { Provider, Root, RootProps, renderStorybookUI };
