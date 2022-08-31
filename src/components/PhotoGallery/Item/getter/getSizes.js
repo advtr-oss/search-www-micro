@@ -24,7 +24,7 @@ const getImgSizesString = (src, size, minimumVerticalHeight) => {
 
   const baseMediaCondition = maxWidth(pixel('767'))
   const horizontal = calc(minus(defaults.width, pixel(32)))
-  const vertical = calc(minus(defaults.height, pixel(20 + 155)))
+  const vertical = calc(minus(defaults.height, pixel(20 + minimumVerticalHeight)))
 
   /**
    * @param {string|URL} props.src
@@ -36,7 +36,7 @@ const getImgSizesString = (src, size, minimumVerticalHeight) => {
     const { width, height } = size
 
     const aspect = width / height
-    const calculatedWidth = aspectWidth(580, size)
+    const calculatedWidth = Math.ceil(aspectWidth(180, size))
 
     return {
       minWidthLength: min([percent(100), pixel(calculatedWidth)]),
@@ -47,8 +47,8 @@ const getImgSizesString = (src, size, minimumVerticalHeight) => {
   const { width, height } = size
   const { totalVertical, totalHorizontal } = padding
 
-  const calculatedWidth = aspectWidth(580, size)
-  const calculatedHeight = aspectHeight(calculatedWidth, size)
+  const calculatedWidth = Math.ceil(aspectWidth(180, size))
+  const calculatedHeight = Math.ceil(aspectHeight(calculatedWidth, size))
 
   return [
     { mediaCondition: baseMediaCondition, width: defaults.width },
