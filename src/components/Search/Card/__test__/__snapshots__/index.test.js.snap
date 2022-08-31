@@ -367,6 +367,33 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
   color: #0969da;
 }
 
+.c0 {
+  display: grid;
+  gap: 0;
+}
+
+.c0:focus-within > .search--input > div {
+  border-radius: 0;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: none !important;
+}
+
+.c0:focus-within > .search--dropdown > ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c1 > div {
+  border-radius: 0 0 4px 4px;
+}
+
 .c6 > ul {
   display: block;
   padding: 0;
@@ -412,33 +439,6 @@ exports[`Search.Card should render loading dropdown on focus and typing 1`] = `
 .c6 > ul > li:not(:last-child) {
   border-color: var(--border);
   border-bottom: 1px solid rgba(27,31,36,0.15);
-}
-
-.c0 {
-  display: grid;
-  gap: 0;
-}
-
-.c0:focus-within > .search--input > div {
-  border-radius: 0;
-  border-bottom: 1px solid #d0d7de;
-  box-shadow: none !important;
-}
-
-.c0:focus-within > .search--dropdown > ul {
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
-}
-
-.c1 button {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-
-.c1 > div {
-  border-radius: 0 0 4px 4px;
 }
 
 .c8 {
@@ -724,6 +724,33 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
   color: #0969da;
 }
 
+.c0 {
+  display: grid;
+  gap: 0;
+}
+
+.c0:focus-within > .search--input > div {
+  border-radius: 0;
+  border-bottom: 1px solid #d0d7de;
+  box-shadow: none !important;
+}
+
+.c0:focus-within > .search--dropdown > ul {
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
+}
+
+.c1 button {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.c1 > div {
+  border-radius: 0 0 4px 4px;
+}
+
 .c6 > ul {
   display: block;
   padding: 0;
@@ -769,33 +796,6 @@ exports[`Search.Card should render search dropdown on focus and typing 1`] = `
 .c6 > ul > li:not(:last-child) {
   border-color: var(--border);
   border-bottom: 1px solid rgba(27,31,36,0.15);
-}
-
-.c0 {
-  display: grid;
-  gap: 0;
-}
-
-.c0:focus-within > .search--input > div {
-  border-radius: 0;
-  border-bottom: 1px solid #d0d7de;
-  box-shadow: none !important;
-}
-
-.c0:focus-within > .search--dropdown > ul {
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 3px 6px -6px rgba(140,149,159,0.15) !important;
-}
-
-.c1 button {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
-
-.c1 > div {
-  border-radius: 0 0 4px 4px;
 }
 
 .c8 {
