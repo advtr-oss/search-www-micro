@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LanguageSelect } from '../LanguageSelect'
+import { LanguageSelect } from './index'
 
 export default {
   title: 'Select/Language',

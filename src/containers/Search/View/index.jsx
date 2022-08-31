@@ -16,7 +16,7 @@ import { FormattedView } from './FormattedView'
 
 import Search from '../../../components/Search'
 
-const View = ({ ...props }) => {
+const View = () => {
   return (
     <Container>
       <FormattedView title={messages.title} placeholder={messages.placeholder} aria-input={messages['aria-input']}>

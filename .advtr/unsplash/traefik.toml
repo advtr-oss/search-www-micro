@@ -1,0 +1,14 @@
+## Static configuration
+[entryPoints]
+[entryPoints.web]
+address = ":80"
+
+[providers.docker]
+exposedByDefault = false
+network = "web"
+
+[api]
+insecure = true
+
+[log]
+level = "INFO"
