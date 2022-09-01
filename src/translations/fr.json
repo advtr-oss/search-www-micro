@@ -1,4 +1,5 @@
 {
+  "app.components.PhotoGallery.watermark": "Photos fournies par",
   "app.containers.SearchView.aria-input": "Recherch Remplissage automatique",
   "app.containers.SearchView.placeholder": "Cherchez le monde...",
   "app.containers.SearchView.title": "Résultats de recherche",

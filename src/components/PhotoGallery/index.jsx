@@ -1,7 +1,9 @@
 import React from 'react'
 
 import Wrapper from './Wrapper'
+import messages from './messages'
 import { Watermark } from './components'
+import { FormattedView } from './FormattedView'
 
 import { Mosaic } from './Mosaic'
 
@@ -9,7 +11,13 @@ const PhotoGallery = ({ photos }) => {
   return (
     <Wrapper>
       <Mosaic photos={photos} />
-      <Watermark>Photos provided by <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a></Watermark>
+      <FormattedView watermark={messages.watermark}>
+        {({ watermark }) => (
+          <Watermark>
+            {watermark} <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>
+          </Watermark>
+        )}
+      </FormattedView>
     </Wrapper>
   )
 }

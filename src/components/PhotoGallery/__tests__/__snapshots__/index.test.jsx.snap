@@ -362,7 +362,8 @@ exports[`PhotoGallery should render snapshot 1`] = `
   <span
     class="c17"
   >
-    Photos provided by 
+    Photos provided by
+     
     <a
       href="https://unsplash.com/"
       rel="noreferrer"
