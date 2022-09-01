@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhotoGallery.Item should render snapshot 1`] = `
+.c2 {
+  -webkit-animation: bQashm 1.5s ease-in-out infinite;
+  animation: bQashm 1.5s ease-in-out infinite;
+  background: #6e7781;
+  color: transparent;
+  cursor: progress;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 132.1160580290145%;
+}
+
+.c0 {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.c1 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.c3 {
+  position: absolute;
+  background: #0c2626;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+<div
+  class="c0"
+>
+  <a
+    href="https://unsplash.com/photos/0L92JpocFNg"
+    rel="noreferrer"
+    target="_blank"
+  >
+    <img
+      class="c1"
+      sizes="(max-width: 767px) 100vw, (max-width: 169px) min(100%, 137px), (max-height: 352px) min(100%, 137px), (min-aspect-ratio: 1999 / 2641) calc(calc(100vh - 175px) * 0.756910), calc(100vw - 32px)"
+      src="https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1"
+      srcset="https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=118 118w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=418 418w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=718 718w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=1018 1018w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=1318 1318w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=1618 1618w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=1918 1918w, https://images.unsplash.com/photo-1643049320618-f271858d7b0a?ixid=MnwyMDE0NjF8MHwxfHNlYXJjaHwxfHxuZXd5b3JrJTJDdXNhfGVufDB8fHx8MTY2MTk0OTIyMQ&ixlib=rb-1.2.1&ar=1999%3A2641&fit=crop&w=1999 1999w"
+    />
+  </a>
+  <span
+    class="c2 c3"
+  />
+</div>
+`;

@@ -34,6 +34,8 @@ const Item = ({ urls, links, alt, color: background, rect }) => {
   )
 }
 
+Item.displayName = 'PhotoGallery.Item'
+
 Item.defaultProps = {
   defaultWidth: 400
 }
@@ -63,8 +65,7 @@ Item.propTypes = {
     download_location: PropTypes.string
   }).isRequired,
 
-  color: PropTypes.string,
-  defaultWidth: PropTypes.number
+  color: PropTypes.string
 }
 
 export { Item }

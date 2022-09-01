@@ -15,6 +15,8 @@ const Mosaic = ({ photos }) => {
   )
 }
 
+Mosaic.displayName = 'PhotoGallery.Mosaic'
+
 Mosaic.propTypes = {
   photos: PropTypes.arrayOf(PropTypes.shape({
     ...Item.propTypes
