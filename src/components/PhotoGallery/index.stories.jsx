@@ -2,9 +2,9 @@ import React from 'react'
 import { media, get } from '@advtr/tidy'
 import styled from 'styled-components'
 
-import { Mosaic } from './index'
+import { PhotoGallery } from './index'
 
-import data from '../../../../mock/photos/[200].json'
+import data from '../../../mock/photos/[200].json'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -21,8 +21,8 @@ const Wrapper = styled.div`
 `
 
 export default {
-  title: 'PhotoGallery/Mosaic',
-  component: Mosaic,
+  title: 'PhotoGallery',
+  component: PhotoGallery,
   decorators: [
     (Story) => (
       <Wrapper>
@@ -33,7 +33,7 @@ export default {
 }
 
 export const Default = {
-  render: (args) => <Mosaic {...args} />,
+  render: (args) => <PhotoGallery {...args} />,
   args: {
     photos: data.results
   }

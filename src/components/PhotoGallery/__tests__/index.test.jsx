@@ -6,8 +6,8 @@ import React from 'react'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 import { render as rtlRender } from '@testing-library/react'
 
-import { Mosaic } from '../index'
-import { results } from '../../../../../mock/photos/[200].json'
+import { PhotoGallery } from '../index'
+import { results } from '../../../../mock/photos/[200].json'
 
 const render = (ui, opts) => rtlRender(ui, {
   wrapper: ({ children }) => (
@@ -21,10 +21,10 @@ const render = (ui, opts) => rtlRender(ui, {
   ...opts
 })
 
-describe('PhotoGallery.Mosaic', function () {
+describe('PhotoGallery', function () {
   it('should render snapshot', function () {
     const { container } = render(
-      <Mosaic photos={results} />
+      <PhotoGallery photos={results} />
     )
 
     expect(container.firstChild).toMatchSnapshot()

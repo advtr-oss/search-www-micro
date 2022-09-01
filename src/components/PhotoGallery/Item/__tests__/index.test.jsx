@@ -6,7 +6,7 @@ import React from 'react'
 import { GlobalStyle, ThemeProvider } from '@advtr/tidy'
 import { render as rtlRender } from '@testing-library/react'
 
-import { Item } from "../index"
+import { Item } from '../index'
 import { results } from '../../../../../mock/photos/[200].json'
 
 const render = (ui, opts) => rtlRender(ui, {
@@ -29,4 +29,4 @@ describe('PhotoGallery.Item', function () {
 
     expect(container.firstChild).toMatchSnapshot()
   })
-});
+})
