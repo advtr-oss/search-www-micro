@@ -11,6 +11,8 @@ export const FormattedView = ({ watermark, children }) => (
   </FormattedMessage>
 )
 
+FormattedView.displayName = 'formatted(Watermark)'
+
 FormattedView.propTypes = {
   watermark: PropTypes.object,
   children: PropTypes.func

@@ -1,6 +1,6 @@
 import React from 'react'
-import { media, get } from '@advtr/tidy'
 import styled from 'styled-components'
+import { media, get } from '@advtr/tidy'
 
 import { PhotoGallery } from './index'
 

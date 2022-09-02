@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Wrapper from './Wrapper'
-import messages from './messages'
+import { Mosaic } from './Mosaic'
 import { Watermark } from './components'
 import { FormattedView } from './FormattedView'
 
-import { Mosaic } from './Mosaic'
+import messages from './messages'
 
 const PhotoGallery = ({ photos }) => {
   return (
