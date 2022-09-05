@@ -21,7 +21,7 @@ const useFeedback = (ping, onClick) => {
     const reported = new Set(JSON.parse(getCookie('FEEDBACK:WIKI:REPORTED')) || [])
     reported.add(ping)
 
-    setCookie('FEEDBACK:WIKI:REPORTED', JSON.stringify(reported), 52 * 7 * 24 * 60)
+    setCookie('FEEDBACK:WIKI:REPORTED', JSON.stringify([...reported]), 52 * 7 * 24 * 60)
 
     onClick && onClick(event)
   }, [onClick, ping])
