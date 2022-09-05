@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { get } from '@advtr/tidy'
 
+import isDarkMode from '../../utils/isDarkMode'
+
 const Watermark = styled.span`
   position: absolute;
   
@@ -8,10 +10,11 @@ const Watermark = styled.span`
   bottom: 0;
   padding: 2px 4px;
   
-  opacity: 0.8;
+  opacity: ${isDarkMode('0.8', '0.6')};
   
-  color: ${get('elements.foreground.inverse')};
-  background-color: ${get('elements.canvas.overlay')};
+  border-top-left-radius: 4px;
+  color: ${isDarkMode(get('elements.foreground.inverse'), get('elements.foreground.default'))};
+  background-color: ${isDarkMode(get('elements.canvas.overlay'), get('elements.canvas.subtle'))};
   
   font-size: ${get('typography.fontSize.0')};
   
