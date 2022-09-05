@@ -176,9 +176,10 @@ exports[`PhotoGallery should render snapshot 1`] = `
   right: 0;
   bottom: 0;
   padding: 2px 4px;
-  opacity: 0.8;
-  color: #ffffff;
-  background-color: #ffffff;
+  opacity: 0.6;
+  border-top-left-radius: 4px;
+  color: #24292f;
+  background-color: #f6f8fa;
   font-size: 12px;
 }
 
