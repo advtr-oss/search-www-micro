@@ -1,22 +1,36 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+/**
+ * This is kinda like the Google wikipedia prompt
+ * */
 
+import React from 'react'
+import ReactGA from 'react-ga'
+import PropTypes from 'prop-types'
 import sanitizeHtml from 'sanitize-html'
 
 import Wrapper from './Wrapper'
 
-const Wikipedia = ({ extract, embed, extract_html: extractHTML }) => {
-  if (embed) { return <Wrapper dangerouslySetInnerHTML={{ __html: sanitizeHtml(extractHTML, { allowedTags: ['p', 'b', 'i', 'a'] }) }} /> }
+import { Feedback } from './Feedback'
 
+/**
+ * @param {string} title
+ * @param {string} locale
+ * */
+const wiki = (title, locale = 'en') => `https://${locale}.wikipedia.org/wiki/${title.replaceAll(' ', '_')}`
+
+const Wikipedia = ({ title, embed, extract, extract_html: extractHTML }) => {
   return (
     <Wrapper>
-      {extract}
+      <div>
+        {embed ? <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(extractHTML, { allowedTags: ['b', 'i', 'a'] }) }} /> : extract}
+        <ReactGA.OutboundLink eventLabel={wiki(title, 'en')} to={wiki(title, 'en')} target="_blank">Wikipedia</ReactGA.OutboundLink>
+      </div>
+      <Feedback ping={title} className='feedback' />
     </Wrapper>
   )
 }
 
 Wikipedia.defaultProps = {
-  embed: !!process.env.REACT_APP_EMBED_HTML
+  embed: false
 }
 
 Wikipedia.propTypes = {

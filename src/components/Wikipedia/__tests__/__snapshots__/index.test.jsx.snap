@@ -1,23 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PhotoGallery should render snapshot 1`] = `
-.c0 > * {
+.c0 a {
+  padding-left: 4px;
   -webkit-text-decoration: none;
   text-decoration: none;
+  color: #0969da;
+}
+
+.c0 a:hover {
+  color: hsla(212,92%,25%,1);
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0 .feedback {
+  margin: 8px 0 0 auto;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  background-color: inherit;
+  font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+  font-size: 12px;
+}
+
+.c1 svg {
+  width: 12px;
+  height: 12px;
+}
+
+.c1 span {
+  padding-left: 8px;
 }
 
 <div
   class="c0"
 >
-  <p>
-    <b>
-      Pomology
-    </b>
-     is a branch of botany that studies and cultivates fruit. The denomination 
-    <b>
-      fruticulture
-    </b>
-     introduced from Romance languages is also used.
-  </p>
+  <div>
+    <span>
+      <b>
+        Pomology
+      </b>
+       is a branch of botany that studies and cultivates fruit. The denomination 
+      <b>
+        fruticulture
+      </b>
+       introduced from Romance languages is also used.
+    </span>
+    <a
+      href="https://en.wikipedia.org/wiki/Pomology"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Wikipedia
+    </a>
+  </div>
+  <button
+    class="c1 feedback"
+  >
+    <svg
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"
+      />
+      <line
+        x1="4"
+        x2="4"
+        y1="22"
+        y2="15"
+      />
+    </svg>
+    <span>
+      Report False Data
+    </span>
+  </button>
 </div>
 `;
