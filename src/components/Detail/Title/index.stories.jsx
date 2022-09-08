@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { get, media } from "@advtr/tidy";
+import { get, media } from '@advtr/tidy'
 
 import { Title } from './index'
-
 
 const Wrapper = styled.div`
   width: 100%;
@@ -20,7 +19,7 @@ const Wrapper = styled.div`
 `
 
 export default {
-  title: 'Section/Title',
+  title: 'Detail/Section/Title',
   component: Title,
   decorators: [
     (Story) => (

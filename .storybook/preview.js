@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Provider } from 'react-redux'
+import logger from '@harrytwright/logger'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider, GlobalStyle, SearchListenerProvider, get } from '@advtr/tidy'
 
@@ -7,10 +8,17 @@ import LanguageProvider from '../src/providers/LanguageProvider'
 import { translationMessages } from '../src/i18n'
 
 import configureStore from '../src/configureStore'
-import logger from '@harrytwright/logger'
+
+import { DEVELOPMENT, PRODUCTION, STAGING } from '../src/utils/networking'
 
 const initialState = {}
 const store = configureStore(initialState, history)
+
+const api = /staging/gi.test(process.env.NODE_ENV)
+  ? STAGING
+  : /production/gi.test(process.env.NODE_ENV)
+    ? PRODUCTION
+    : DEVELOPMENT
 
 const Backgrounds = createGlobalStyle`
   body {
@@ -21,6 +29,15 @@ const Backgrounds = createGlobalStyle`
 
 const withRedux = (Story) => {
   logger.set('level', 'notice')
+
+  useEffect(() => {
+    !Object.hasOwn(window, 'advtr') && Object.defineProperty(window, 'advtr', {
+      value: {
+        api
+      }
+    })
+  }, [])
+
   return (
     <Provider store={store}>
       <ThemeProvider colorScheme="auto">

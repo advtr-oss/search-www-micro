@@ -5,8 +5,7 @@ import isDarkMode from '../../../utils/isDarkMode'
 const Wrapper = styled.div`
   display: grid;
   gap: 0;
-
-
+  
   ${media('small')} {
     gap: 16px 0;
 
