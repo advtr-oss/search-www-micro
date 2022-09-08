@@ -17,14 +17,14 @@ import { Feedback } from './Feedback'
  * */
 const wiki = (title, locale = 'en') => `https://${locale}.wikipedia.org/wiki/${title.replaceAll(' ', '_')}`
 
-const Wikipedia = ({ title, embed, extract, extract_html: extractHTML }) => {
+const Wikipedia = ({ ping, title, embed, extract, onFeedbackClicked, extract_html: extractHTML }) => {
   return (
     <Wrapper>
       <div>
         {embed ? <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(extractHTML, { allowedTags: ['b', 'i', 'a'] }) }} /> : extract}
         <ReactGA.OutboundLink eventLabel={wiki(title, 'en')} to={wiki(title, 'en')} target="_blank">Wikipedia</ReactGA.OutboundLink>
       </div>
-      <Feedback ping={title} className='feedback' />
+      <Feedback ping={ping ?? title} onClick={onFeedbackClicked} className='feedback' />
     </Wrapper>
   )
 }
@@ -47,7 +47,10 @@ Wikipedia.propTypes = {
   extract: PropTypes.string.isRequired,
   extract_html: PropTypes.string.isRequired,
 
-  embed: PropTypes.bool
+  embed: PropTypes.bool,
+
+  ping: PropTypes.string,
+  onFeedbackClicked: PropTypes.func
 }
 
 export { Wikipedia }

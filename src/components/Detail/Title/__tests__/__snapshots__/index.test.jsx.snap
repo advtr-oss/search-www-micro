@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail.Title should render a snapshot 1`] = `
+.c1 {
+  color: #57606a !important;
+}
+
+.c0 .primary {
+  margin: 0;
+}
+
+.c0 .secondary {
+  margin: 4px 0;
+}
+
+<div
+  class="c0"
+>
+  <h3
+    class="h3 primary"
+  >
+    Calderdale, United Kingdom
+  </h3>
+  <h4
+    class="c1 h4 secondary"
+  >
+    Halifax
+  </h4>
+</div>
+`;
